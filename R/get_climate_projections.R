@@ -44,8 +44,7 @@ get_climate_projections <- function(latitude,
     df |> tidyr::pivot_longer(-time, names_to = "variable", values_to = "prediction") |>
     dplyr::rename(datetime = time) |>
     dplyr::mutate(
-      model_id = model,
-      reference_datetime = NA) |>
+      model_id = model) |>
     dplyr::left_join(units, by = "variable")
 
   return(df)

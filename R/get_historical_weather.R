@@ -50,8 +50,7 @@ get_historical_weather <- function(latitude,
     df |> tidyr::pivot_longer(-time, names_to = "variable", values_to = "prediction") |>
     dplyr::rename(datetime = time) |>
     dplyr::mutate(
-      model_id = "ERA5",
-      reference_datetime = NA) |>
+      model_id = "ERA5") |>
     dplyr::left_join(units, by = "variable")
 
   return(df)
