@@ -26,12 +26,12 @@ write_glm_format <- function(df, path) {
                                     ensemble == ensemble_list$ensemble[i]) |>
                   tidyr::pivot_wider(names_from = variable, values_from = prediction) |>
                   dplyr::rename(
-                    LongWave = longwave,
-                    ShortWave = shortwave,
-                    AirTemp = temperature,
+                    LongWave = longwave_radiation,
+                    ShortWave = shortwave_radiation,
+                    AirTemp = temperature_2m,
                     Rain = precipitation,
-                    WindSpeed = windspeed,
-                    RelHum = relativehumidity,
+                    WindSpeed = windspeed_10m,
+                    RelHum = relativehumidity_2m,
                     time = datetime
                   ) |>
                   dplyr::select(-dplyr::any_of(c("ensemble","model_id","cloudcover", "reference_datetime"))) |>
