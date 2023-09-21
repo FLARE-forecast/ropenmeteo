@@ -17,7 +17,7 @@ get_ensemble_forecast <- function(latitude, longitude, forecast_days, past_days,
                                                                                                                   "temperature_2m",
                                                                                                                   "shortwave_radiation")){
 
-  if(horizon > 35) stop("forecast_days is longer than avialable (max = 35")
+  if(forecast_days > 35) stop("forecast_days is longer than avialable (max = 35")
   if(past_days > 92) stop("hist_days is longer than avialable (max = 92)")
 
 
