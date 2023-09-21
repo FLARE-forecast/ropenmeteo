@@ -9,12 +9,12 @@ write_glm_format <- function(df, path) {
 
   variables <- unique(df$variable)
 
-  if(!("longwave" %in% variables)) warning("missing longwave")
-  if(!("shortwave" %in% variables)) warning("missing shortwave")
-  if(!("temperature" %in% variables)) warning("missing temperature")
+  if(!("longwave_radiation" %in% variables)) warning("missing longwave")
+  if(!("shortwave_radiation" %in% variables)) warning("missing shortwave")
+  if(!("temperature_2m" %in% variables)) warning("missing temperature")
   if(!("precipitation" %in% variables)) warning("missing precipitation")
-  if(!("windspeed" %in% variables)) warning("missing windspeed")
-  if(!("relativehumidity" %in% variables)) warning("missing relativehumidity")
+  if(!("windspeed_10m" %in% variables)) warning("missing windspeed")
+  if(!("relativehumidity_2m" %in% variables)) warning("missing relativehumidity")
 
   ensemble_list <- df |> dplyr::distinct(model_id, ensemble)
 
