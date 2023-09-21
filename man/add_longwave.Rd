@@ -7,7 +7,10 @@
 add_longwave(df)
 }
 \arguments{
-\item{df}{}
+\item{df}{data frame output by get_ensemble_forecast}
+}
+\value{
+data frame (in long format)
 }
 \description{
 Add longwave to ensemble forecast dataframe using Idso and Jackson (1969)

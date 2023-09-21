@@ -1,22 +1,20 @@
 #' Write ensemble forecast dataframe to GLM formated csv files
 #'
-#' @param df
-#' @param path
+#' @param df data frame output by get_ensemble_forecast
+#' @param path directory where csv files will be written
 #'
-#' @return
 #' @export
 #'
-#' @examples
 write_glm_format <- function(df, path) {
 
   variables <- unique(df$variable)
 
-  if(!(longwave %in% variables)) warning("missing longwave")
-  if(!(shortwave %in% variables)) warning("missing shortwave")
-  if(!(temperature %in% variables)) warning("missing temperature")
-  if(!(precipitation %in% variables)) warning("missing precipitation")
-  if(!(windspeed %in% variables)) warning("missing windspeed")
-  if(!(relativehumidity %in% variables)) warning("missing relativehumidity")
+  if(!("longwave" %in% variables)) warning("missing longwave")
+  if(!("shortwave" %in% variables)) warning("missing shortwave")
+  if(!("temperature" %in% variables)) warning("missing temperature")
+  if(!("precipitation" %in% variables)) warning("missing precipitation")
+  if(!("windspeed" %in% variables)) warning("missing windspeed")
+  if(!("relativehumidity" %in% variables)) warning("missing relativehumidity")
 
   ensemble_list <- df |> dplyr::distinct(model_id, ensemble)
 

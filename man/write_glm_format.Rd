@@ -7,7 +7,9 @@
 write_glm_format(df, path)
 }
 \arguments{
-\item{path}{}
+\item{df}{data frame output by get_ensemble_forecast}
+
+\item{path}{directory where csv files will be written}
 }
 \description{
 Write ensemble forecast dataframe to GLM formated csv files

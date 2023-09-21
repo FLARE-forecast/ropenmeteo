@@ -1,13 +1,18 @@
 #' Add longwave to ensemble forecast dataframe using Idso and Jackson (1969)
 #'
-#' @param df
+#' @param df data frame output by get_ensemble_forecast
 #'
-#' @return
+#' @return data frame (in long format)
 #' @export
 #'
-#' @examples
 add_longwave <- function(df) {
+
+  unit_table <- df |>
+    dplyr::distinct(variable, unit) |>
+    dplyr::bind_rows(dplyr::tibble(variable = "longwave", unit = "(W/m2)"))
+
   df |>
+    dplyr::select(-unit) |>
     tidyr::pivot_wider(names_from = variable, values_from = prediction) |>
     dplyr::mutate(cloudcover = ifelse(cloudcover < 0, 0, cloudcover)) |>
     dplyr::mutate(
@@ -17,9 +22,10 @@ add_longwave <- function(df) {
     ) |>
     dplyr::select(-eps_star) |>
     tidyr::pivot_longer(-dplyr::any_of(c(
-      "datetime", "ensemble", "model_id", "reference_datetime","unit"
+      "datetime", "ensemble", "model_id", "reference_datetime"
     )),
     names_to = "variable",
-    values_to = "prediction")
+    values_to = "prediction") |>
+    dplyr::left_join(unit_table, by = "variable")
 
 }

@@ -7,15 +7,28 @@
 get_ensemble_forecast(
   latitude,
   longitude,
-  horizon,
-  hist_days,
+  forecast_days,
+  past_days,
   model = "gfs_seamless",
   variables = c("relativehumidity_2m", "precipitation", "windspeed_10m", "cloudcover",
     "temperature_2m", "shortwave_radiation")
 )
 }
 \arguments{
-\item{variables}{}
+\item{latitude}{latitude degree north}
+
+\item{longitude}{long longitude degree east or degree west}
+
+\item{forecast_days}{Number of days in the future for forecast (starts at current day)}
+
+\item{past_days}{Number of days in the past to include in the data}
+
+\item{model}{id of forest model https://open-meteo.com/en/docs/ensemble-api}
+
+\item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api}
+}
+\value{
+data frame (in long format)
 }
 \description{
 Download point-level ensemble weather forecasting using open-meteo API

@@ -1,34 +1,41 @@
 #' Download point-level ensemble weather forecasting using open-meteo API
 #'
-#' @param latitude
-#' @param longitude
-#' @param horizon
-#' @param hist_days
-#' @param model
-#' @param variables
+#' @param latitude latitude degree north
+#' @param longitude long longitude degree east or degree west
+#' @param forecast_days Number of days in the future for forecast (starts at current day)
+#' @param past_days Number of days in the past to include in the data
+#' @param model id of forest model https://open-meteo.com/en/docs/ensemble-api
+#' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api
 #'
-#' @return
+#' @return data frame (in long format)
 #' @export
 #'
-#' @examples
-get_ensemble_forecast <- function(latitude, longitude, horizon, hist_days, model = "gfs_seamless", variables = c("relativehumidity_2m",
+get_ensemble_forecast <- function(latitude, longitude, forecast_days, past_days, model = "gfs_seamless", variables = c("relativehumidity_2m",
                                                                                                                   "precipitation",
                                                                                                                   "windspeed_10m",
                                                                                                                   "cloudcover",
                                                                                                                   "temperature_2m",
                                                                                                                   "shortwave_radiation")){
 
+  if(horizon > 35) stop("forecast_days is longer than avialable (max = 35")
+  if(past_days > 92) stop("hist_days is longer than avialable (max = 92)")
+
+
   latitude <- round(latitude, 2)
   longitude <- round(longitude, 2)
 
   if(longitude > 180) longitude <- longitude - 360
+
+  if("shortwave_radiation" %in% variables & model == "ecmwf_ifs04"){
+    message("shortwave radiation is not aviailable for ecmwf_ifs04 model")
+  }
 
   df <- NULL
   for (variable in variables) {
     v <-
       readr::read_csv(
         glue::glue(
-          "https://ensemble-api.open-meteo.com/v1/ensemble?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={horizon}&past_days={hist_days}&models={model}&format=csv"
+          "https://ensemble-api.open-meteo.com/v1/ensemble?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}&models={model}&format=csv"
         ),
         skip = 2,
         show_col_types = FALSE
