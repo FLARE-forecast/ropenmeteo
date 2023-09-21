@@ -34,7 +34,7 @@ write_glm_format <- function(df, path) {
                     RelHum = relativehumidity,
                     time = datetime
                   ) |>
-                  dplyr::select(-dplyr::any_of(c("ensemble","model_id","cloudcover", "reference_datetime"))) |>
+                  dplyr::select(-dplyr::any_of(c("ensemble","model_id","cloudcover", "reference_datetime","unit"))) |>
                   dplyr::select(time, AirTemp, ShortWave, LongWave, RelHum, WindSpeed, Rain) |>
                   dplyr::mutate(time = strftime(time, format = "%Y-%m-%d %H:%M", tz = "UTC")) |>
                   write.csv(

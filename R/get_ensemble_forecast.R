@@ -15,7 +15,7 @@ get_ensemble_forecast <- function(latitude, longitude, horizon, hist_days, model
     v <-
       readr::read_csv(
         glue::glue(
-          "https://ensemble-api.open-meteo.com/v1/ensemble?latitude={latitude}&longitude={longitude}&hourly={variable}&forecast_days={horizon}&past_days={hist_days}&models={model}&format=csv"
+          "https://ensemble-api.open-meteo.com/v1/ensemble?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={horizon}&past_days={hist_days}&models={model}&format=csv"
         ),
         skip = 2,
         show_col_types = FALSE
@@ -51,7 +51,8 @@ get_ensemble_forecast <- function(latitude, longitude, horizon, hist_days, model
         1,
         2
       ),
-      variable = stringr::str_split(variable, " ", simplify = TRUE)[, 1]
+      variable = stringr::str_split(variable, " ", simplify = TRUE)[, 1],
+      unit = stringr::str_split(variable_ens, " ", simplify = TRUE)[, 2],
     ) |>
     dplyr::select(-variable_ens) |>
     dplyr::rename(datetime = time) |>

@@ -17,7 +17,7 @@ add_longwave <- function(df) {
     ) |>
     dplyr::select(-eps_star) |>
     tidyr::pivot_longer(-dplyr::any_of(c(
-      "datetime", "ensemble", "model_id", "reference_datetime"
+      "datetime", "ensemble", "model_id", "reference_datetime","unit"
     )),
     names_to = "variable",
     values_to = "prediction")
