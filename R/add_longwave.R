@@ -17,8 +17,8 @@ add_longwave <- function(df) {
     dplyr::mutate(cloudcover = ifelse(cloudcover < 0, 0, cloudcover)) |>
     dplyr::mutate(
       eps_star = (1.0 + 0.275 * cloudcover / 100) * (1.0 - 0.261 * exp(-0.000777 * temperature_2m ^ 2.0)),
-      longwave = round((1 - 0.03) * eps_star * 5.67E-8 * (273.15 +
-                                                            temperature) ^ 4.0, 2)
+      longwave_radiation = round((1 - 0.03) * eps_star * 5.67E-8 * (273.15 +
+                                                            temperature_2m) ^ 4.0, 2)
     ) |>
     dplyr::select(-eps_star) |>
     tidyr::pivot_longer(-dplyr::any_of(c(
