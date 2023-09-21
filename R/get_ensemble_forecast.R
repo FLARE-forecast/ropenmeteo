@@ -8,6 +8,8 @@ get_ensemble_forecast <- function(latitude, longitude, horizon, hist_days, model
   latitude <- round(latitude, 2)
   longitude <- round(longitude, 2)
 
+  if(longitude > 180) longitude <- longitude - 360
+
   df <- NULL
   for (variable in variables) {
     v <-
@@ -19,7 +21,7 @@ get_ensemble_forecast <- function(latitude, longitude, horizon, hist_days, model
         show_col_types = FALSE
       )
     if (variable != variables[1]) {
-      v <- dplyr::select(v,-time)
+      v <- dplyr::select(v, -time)
     }
     df <- dplyr::bind_cols(df, v)
   }
