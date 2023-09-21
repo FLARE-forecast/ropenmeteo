@@ -20,7 +20,6 @@ get_ensemble_forecast <- function(latitude, longitude, forecast_days, past_days,
   if(forecast_days > 35) stop("forecast_days is longer than avialable (max = 35")
   if(past_days > 92) stop("hist_days is longer than avialable (max = 92)")
 
-
   latitude <- round(latitude, 2)
   longitude <- round(longitude, 2)
 
@@ -31,18 +30,21 @@ get_ensemble_forecast <- function(latitude, longitude, forecast_days, past_days,
   }
 
   df <- NULL
+  units <- NULL
   for (variable in variables) {
     v <-
     jsonlite::fromJSON(
         glue::glue(
           "https://ensemble-api.open-meteo.com/v1/ensemble?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}&models={model}"
         ))
-    v  <- dplyr::as_tibble(v $hourly) |>
+
+    units <- dplyr::bind_rows(units, dplyr::tibble(variable = names(v$hourly)[2], unit = unlist(v$hourly_units[2][1])))
+    v1  <- dplyr::as_tibble(v$hourly) |>
       dplyr::mutate(time = lubridate::as_datetime(paste0(time,":00")))
     if (variable != variables[1]) {
-      v <- dplyr::select(v, -time)
+      v1 <- dplyr::select(v1, -time)
     }
-    df <- dplyr::bind_cols(df, v)
+    df <- dplyr::bind_cols(df, v1)
   }
 
   df <-
@@ -50,35 +52,24 @@ get_ensemble_forecast <- function(latitude, longitude, forecast_days, past_days,
     dplyr::mutate(
       variable = stringr::str_split(
         variable_ens,
-        pattern = "_",
+        pattern = "_member",
         n = 2,
         simplify = TRUE
       )[, 1],
       ensemble = stringr::str_split(
         variable_ens,
-        pattern = "_",
+        pattern = "_member",
         n = 2,
         simplify = TRUE
       )[, 2],
-      ensemble = ifelse(
-        stringr::str_detect(ensemble, pattern = "member", negate = TRUE),
-        "member00 unit",
-        ensemble
-      ),
-      ensemble = stringr::str_sub(
-        stringr::str_split(ensemble, "member", n = 2, simplify = TRUE)[, 2],
-        1,
-        2
-      ),
-      variable = stringr::str_split(variable, " ", simplify = TRUE)[, 1]
-      #unit = stringr::str_split(variable_ens, " ", simplify = TRUE)[, 2],
-    ) |>
+      ensemble = ifelse(ensemble == "", "00",ensemble)) |>
     dplyr::select(-variable_ens) |>
     dplyr::rename(datetime = time) |>
     dplyr::mutate(
       model_id = model,
       reference_datetime = min(datetime) + lubridate::days(past_days)
-    )
+    ) |>
+    dplyr::left_join(units, by = "variable")
 
   return(df)
 }

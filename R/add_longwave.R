@@ -9,10 +9,10 @@ add_longwave <- function(df) {
 
   unit_table <- df |>
     dplyr::distinct(variable, unit) |>
-    dplyr::bind_rows(dplyr::tibble(variable = "longwave", unit = "(W/m2)"))
+    dplyr::bind_rows(dplyr::tibble(variable = "longwave_radiation", unit = "(W/m2)"))
 
   df |>
-    #dplyr::select(-unit) |>
+    dplyr::select(-unit) |>
     tidyr::pivot_wider(names_from = variable, values_from = prediction) |>
     dplyr::mutate(cloudcover = ifelse(cloudcover < 0, 0, cloudcover)) |>
     dplyr::mutate(
@@ -26,6 +26,6 @@ add_longwave <- function(df) {
     )),
     names_to = "variable",
     values_to = "prediction") #|>
-    #dplyr::left_join(unit_table, by = "variable")
+    dplyr::left_join(unit_table, by = "variable")
 
 }
