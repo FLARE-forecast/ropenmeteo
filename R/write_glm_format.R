@@ -20,7 +20,9 @@ write_glm_format <- function(df, path) {
 
   purrr::walk(1:nrow(ensemble_list),
               function(i, ensemble_list, df) {
-                df |> dplyr::filter(model_id == ensemble_list$model_id[i],
+                df |>
+                  dplyr::select(-unit) |>
+                  dplyr::filter(model_id == ensemble_list$model_id[i],
                                     ensemble == ensemble_list$ensemble[i]) |>
                   tidyr::pivot_wider(names_from = variable, values_from = prediction) |>
                   dplyr::rename(
@@ -32,7 +34,7 @@ write_glm_format <- function(df, path) {
                     RelHum = relativehumidity,
                     time = datetime
                   ) |>
-                  dplyr::select(-dplyr::any_of(c("ensemble","model_id","cloudcover", "reference_datetime","unit"))) |>
+                  dplyr::select(-dplyr::any_of(c("ensemble","model_id","cloudcover", "reference_datetime"))) |>
                   dplyr::select(time, AirTemp, ShortWave, LongWave, RelHum, WindSpeed, Rain) |>
                   dplyr::mutate(time = strftime(time, format = "%Y-%m-%d %H:%M", tz = "UTC")) |>
                   write.csv(
