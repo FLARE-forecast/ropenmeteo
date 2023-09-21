@@ -1,3 +1,16 @@
+#' Download point-level ensemble weather forecasting using open-meteo API
+#'
+#' @param latitude
+#' @param longitude
+#' @param horizon
+#' @param hist_days
+#' @param model
+#' @param variables
+#'
+#' @return
+#' @export
+#'
+#' @examples
 get_ensemble_forecast <- function(latitude, longitude, horizon, hist_days, model = "gfs_seamless", variables = c("relativehumidity_2m",
                                                                                                                   "precipitation",
                                                                                                                   "windspeed_10m",
