@@ -48,4 +48,28 @@ df |>
   head(read.csv(list.files(path = path, full.names = TRUE, pattern = ".csv")[1]))
 ```
 
+### Converting to the same format in `neon4cast::stage2()`
+
+https://projects.ecoforecast.org/neon4cast-docs/Shared-Forecast-Drivers.html
+
+```
+df |>
+  RopenMeteo::add_longwave() |>
+  RopenMeteo::convert_to_efi_standard()
+```
+
+Note that `neon4cast::stage3()` is similar to
+
+```
+df |>
+  RopenMeteo::add_longwave() |>
+  RopenMeteo::convert_to_efi_standard() |> 
+  filter(datetime < reference_datetime)
+```
+
+With the only difference that the number of days is equal to the `past_days` in the call to `RopenMeteo::get_ensemble_forecast()`.  The max past_days is ~60 days.
+
+If you need more historical days for model calibration and testing, historical data are available through open-meteo's historical weather API (https://open-meteo.com/en/docs/historical-weather-api).  Access to this API is forthcoming.
+
+
 
