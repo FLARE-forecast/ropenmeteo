@@ -78,7 +78,7 @@ get_ensemble_forecast <- function(latitude, longitude, forecast_days, past_days,
     dplyr::rename(datetime = time) |>
     dplyr::mutate(
       model_id = model,
-      reference_datetime = min(datetime) + lubridate::days(hist_days)
+      reference_datetime = min(datetime) + lubridate::days(past_days)
     )
 
   return(df)
