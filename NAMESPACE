@@ -2,5 +2,7 @@
 
 export(add_longwave)
 export(convert_to_efi_standard)
+export(get_climate_projections)
 export(get_ensemble_forecast)
+export(get_historical_weather)
 export(write_glm_format)
