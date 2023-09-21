@@ -8,8 +8,8 @@ Example usage:
 
 ```
 remotes::install_github("FLARE-forecast/RopenMeteo")
-path <- tempdir()
-RopenMeteo::get_ensemble_forecast(
+
+df <- RopenMeteo::get_ensemble_forecast(
   latitude = 37.30,
   longitude = -79.83,
   forecast_days = 2,
@@ -21,11 +21,8 @@ RopenMeteo::get_ensemble_forecast(
     "windspeed_10m",
     "cloudcover",
     "temperature_2m",
-    "shortwave_radiation")) |>
-    RopenMeteo::add_longwave() |>
-    RopenMeteo::write_glm_format(path = path)
-  
-  head(read.csv(list.files(path = path, full.names = TRUE, pattern = ".csv")[1]))
+    "shortwave_radiation"))
+head(df)
 ```
 
 Options for global models and variables are at https://open-meteo.com/en/docs/ensemble-api
@@ -36,6 +33,19 @@ List of model ids:
 
 ```
 icon_seamless, icon_global, gfs_seamless, gfs025, gfs05, ecmwf_ifs04, gem_global
+```
+
+### Use with the General Lake Model
+
+We have included functions that allow the output to be used with the General Lake Model.
+Since the models do not include longwave, provide a function to calculate it from the cloud cover and air temperature.
+
+```
+path <- tempdir()
+df |> 
+    RopenMeteo::add_longwave() |>
+    RopenMeteo::write_glm_format(path = path)
+  head(read.csv(list.files(path = path, full.names = TRUE, pattern = ".csv")[1]))
 ```
 
 

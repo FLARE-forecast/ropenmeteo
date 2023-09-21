@@ -12,7 +12,7 @@ add_longwave <- function(df) {
     dplyr::bind_rows(dplyr::tibble(variable = "longwave", unit = "(W/m2)"))
 
   df |>
-    dplyr::select(-unit) |>
+    #dplyr::select(-unit) |>
     tidyr::pivot_wider(names_from = variable, values_from = prediction) |>
     dplyr::mutate(cloudcover = ifelse(cloudcover < 0, 0, cloudcover)) |>
     dplyr::mutate(
@@ -25,7 +25,7 @@ add_longwave <- function(df) {
       "datetime", "ensemble", "model_id", "reference_datetime"
     )),
     names_to = "variable",
-    values_to = "prediction") |>
-    dplyr::left_join(unit_table, by = "variable")
+    values_to = "prediction") #|>
+    #dplyr::left_join(unit_table, by = "variable")
 
 }

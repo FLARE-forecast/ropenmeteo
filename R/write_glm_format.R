@@ -21,7 +21,7 @@ write_glm_format <- function(df, path) {
   purrr::walk(1:nrow(ensemble_list),
               function(i, ensemble_list, df) {
                 df |>
-                  dplyr::select(-unit) |>
+                  #dplyr::select(-unit) |>
                   dplyr::filter(model_id == ensemble_list$model_id[i],
                                     ensemble == ensemble_list$ensemble[i]) |>
                   tidyr::pivot_wider(names_from = variable, values_from = prediction) |>

@@ -33,13 +33,12 @@ get_ensemble_forecast <- function(latitude, longitude, forecast_days, past_days,
   df <- NULL
   for (variable in variables) {
     v <-
-      readr::read_csv(
+    jsonlite::fromJSON(
         glue::glue(
-          "https://ensemble-api.open-meteo.com/v1/ensemble?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}&models={model}&format=csv"
-        ),
-        skip = 2,
-        show_col_types = FALSE
-      )
+          "https://ensemble-api.open-meteo.com/v1/ensemble?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}&models={model}"
+        ))
+    v  <- dplyr::as_tibble(v $hourly) |>
+      dplyr::mutate(time = lubridate::as_datetime(paste0(time,":00")))
     if (variable != variables[1]) {
       v <- dplyr::select(v, -time)
     }
@@ -71,8 +70,8 @@ get_ensemble_forecast <- function(latitude, longitude, forecast_days, past_days,
         1,
         2
       ),
-      variable = stringr::str_split(variable, " ", simplify = TRUE)[, 1],
-      unit = stringr::str_split(variable_ens, " ", simplify = TRUE)[, 2],
+      variable = stringr::str_split(variable, " ", simplify = TRUE)[, 1]
+      #unit = stringr::str_split(variable_ens, " ", simplify = TRUE)[, 2],
     ) |>
     dplyr::select(-variable_ens) |>
     dplyr::rename(datetime = time) |>
