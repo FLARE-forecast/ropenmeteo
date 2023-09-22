@@ -42,7 +42,8 @@ get_climate_projections <- function(latitude, longitude, start_date, end_date, m
     dplyr::mutate(
       model_id = model) |>
     dplyr::left_join(units, by = "variable") |>
-    dplyr::mutate(datetime = lubridate::as_date(datetime))
+    dplyr::mutate(datetime = lubridate::as_date(datetime)) |>
+    dplyr::select(c("datetime", "model_id", "variable", "prediction","unit"))
 
   return(df)
 }

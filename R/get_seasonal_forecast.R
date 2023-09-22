@@ -54,7 +54,8 @@ get_seasonal_forecast <- function(latitude,
       model_id = model,
       reference_datetime = min(datetime) + lubridate::days(past_days)
     ) |>
-    dplyr::left_join(units, by = "variable")
+    dplyr::left_join(units, by = "variable") |>
+    dplyr::select(c("datetime", "reference_datetime", "model_id", "ensemble", "variable", "prediction","unit"))
 
   return(df)
 }

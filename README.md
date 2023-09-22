@@ -43,7 +43,7 @@ remotes::install_github("FLARE-forecast/RopenMeteo")
 
     ## 
     ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmpz6OvU1/remotesea4534fa21b9/FLARE-forecast-RopenMeteo-3dc1bac/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmpz6OvU1/remotesea4534fa21b9/FLARE-forecast-RopenMeteo-3dc1bac/DESCRIPTION’
+    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmp8XJ5uZ/remoteseeb47ac7f445/FLARE-forecast-RopenMeteo-f6cac6e/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmp8XJ5uZ/remoteseeb47ac7f445/FLARE-forecast-RopenMeteo-f6cac6e/DESCRIPTION’
     ##   ─  preparing ‘RopenMeteo’:
     ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
     ##   ─  checking for LF line-endings in source and make files and shell scripts
