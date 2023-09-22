@@ -14,6 +14,9 @@ the number of daily API calls (support for paid APIs in this package is
 pending). Learn more about the Open-Meteo project at their website
 (\[<https://open-meteo.com>\]) and consider supporting their efforts.
 
+Open-Meteo citation: Zippenfenig, Patrick. (2023). Open-Meteo.com
+Weather API (0.2.69). Zenodo. <https://doi.org/10.5281/zenodo.8112599>
+
 The package includes additional functionally to facilitate the use in
 mechanistic environmental/ecological models. This includes the
 calculation of longwave radiation (not provided through the API) from
@@ -40,17 +43,6 @@ The package uses a long format standard with the following columns
 ``` r
 remotes::install_github("FLARE-forecast/RopenMeteo")
 ```
-
-    ## 
-    ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpCs66zu/remotes102ec25b51553/FLARE-forecast-RopenMeteo-25e85b0/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpCs66zu/remotes102ec25b51553/FLARE-forecast-RopenMeteo-25e85b0/DESCRIPTION’
-    ##   ─  preparing ‘RopenMeteo’:
-    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-    ##   ─  checking for LF line-endings in source and make files and shell scripts
-    ##   ─  checking for empty or unneeded directories
-    ##   ─  building ‘RopenMeteo_0.0.0.9000.tar.gz’
-    ##      
-    ## 
 
 ``` r
 library(tidyverse)
@@ -294,19 +286,21 @@ df <- RopenMeteo::get_historical_weather(
   longitude = -79.83,
   start_date = "2023-01-01",
   end_date = Sys.Date(),
-  variables = c("temperature_2m"))
-head(df)
+  variables = c("temperature_2m")) 
+tail(df |> na.omit())
 ```
 
     ## # A tibble: 6 × 5
     ##   datetime            model_id variable       prediction unit 
     ##   <dttm>              <chr>    <chr>               <dbl> <chr>
-    ## 1 2023-01-01 00:00:00 ERA5     temperature_2m        6.3 °C   
-    ## 2 2023-01-01 01:00:00 ERA5     temperature_2m        5   °C   
-    ## 3 2023-01-01 02:00:00 ERA5     temperature_2m        4   °C   
-    ## 4 2023-01-01 03:00:00 ERA5     temperature_2m        3.7 °C   
-    ## 5 2023-01-01 04:00:00 ERA5     temperature_2m        3.8 °C   
-    ## 6 2023-01-01 05:00:00 ERA5     temperature_2m        3.9 °C
+    ## 1 2023-09-15 18:00:00 ERA5     temperature_2m       21.4 °C   
+    ## 2 2023-09-15 19:00:00 ERA5     temperature_2m       22.1 °C   
+    ## 3 2023-09-15 20:00:00 ERA5     temperature_2m       23   °C   
+    ## 4 2023-09-15 21:00:00 ERA5     temperature_2m       24   °C   
+    ## 5 2023-09-15 22:00:00 ERA5     temperature_2m       22.4 °C   
+    ## 6 2023-09-15 23:00:00 ERA5     temperature_2m       21.3 °C
+
+Notice the delay of ~7 days.
 
 ``` r
 df |> 
@@ -323,8 +317,8 @@ df |>
 
 ## Seasonal Forecasts
 
-Weather forecats for up to 9 months in the future are avialable from the
-NOAA Climate Forecasting System
+Weather forecasts for up to 9 months in the future are available from
+the NOAA Climate Forecasting System
 
 \[<https://open-meteo.com/en/docs/seasonal-forecast-api>\]
 
@@ -364,7 +358,7 @@ df |>
 
 ## Climate Projections
 
-Climate projections from different models are avialable through 2050.
+Climate projections from different models are available through 2050.
 
 \[<https://open-meteo.com/en/docs/climate-api>\]
 

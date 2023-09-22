@@ -1,10 +1,10 @@
 Package: RopenMeteo
-Title: R wrappers for open-meteo.org API for use with General Lake Model
-Version: 0.0.0.9000
+Title: R wrappers for open-meteo.org API
+Version: 0.1
 Authors@R: 
     person("Quinn", "Thomas", , "rqthomas@vt.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1282-7825"))
-Description: R wrappers for open-meteo.org API
+Description: R wrappers for APIs on Open-Meteo project.  The Open-Meteo is a amazing project that streamlines the access to a range of publicly historical and forecasted meteorology data from agencies across the world.  The free access tier allows for 10,000 API calls per day.  The paid tiers increase the number of daily API calls (support for paid APIs in this package is pending). Learn more about the Open-Meteo project at their website ([https://open-meteo.com]) and consider supporting their efforts. The Open-Meteo citation is Zippenfenig, Patrick. (2023). Open-Meteo.com Weather API (0.2.69). Zenodo. https://doi.org/10.5281/zenodo.8112599. The package includes additional functionally to facilitate the use in mechanistic environmental/ecological models.  This includes the calculation of longwave radiation (not provided through the API) from air temperature and cloud cover, the writing of output to the format required by the General Lake Model (GLM), and the conversion to the standard used in the NEON Ecological Forecasting Challenge that is run by the Ecological Initiative Research Coordination Network ([https://neon4cast.org]).  Future functionally includes the temporal downscaling of the daily climate projection output and the 6-hourly seasonal forecast to the hourly time step. The package uses a long format standard with the following columns
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

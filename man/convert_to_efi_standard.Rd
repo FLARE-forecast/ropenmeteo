@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_to_efi_standard.R
 \name{convert_to_efi_standard}
 \alias{convert_to_efi_standard}
-\title{Convert units and names to CF and EFI standard}
+\title{Convert units and names to CF and Ecological Forecasting Initiative standard}
 \usage{
 convert_to_efi_standard(df)
 }
@@ -13,5 +13,5 @@ convert_to_efi_standard(df)
 data frame
 }
 \description{
-Convert units and names to CF and EFI standard
+Convert units and names to CF and Ecological Forecasting Initiative standard
 }

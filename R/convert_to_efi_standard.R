@@ -1,4 +1,4 @@
-#' Convert units and names to CF and EFI standard
+#' Convert units and names to CF and Ecological Forecasting Initiative standard
 #'
 #' @param df data frame output by get_ensemble_forecast
 #'
