@@ -39,7 +39,7 @@ List of global model ids:
 icon_seamless, icon_global, gfs_seamless, gfs025, gfs05, ecmwf_ifs04, gem_global
 ```
 
-## Use with the General Lake Model
+### Use with the General Lake Model
 
 We have included functions that allow the output to be used with the General Lake Model.
 Since the models do not include longwave, provide a function to calculate it from the cloud cover and air temperature.
