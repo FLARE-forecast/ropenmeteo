@@ -71,13 +71,7 @@ df <- RopenMeteo::get_ensemble_forecast(
   forecast_days = 7,
   past_days = 2,
   model = "gfs_seamless",
-  variables = c(
-    "relativehumidity_2m",
-    "precipitation",
-    "windspeed_10m",
-    "cloudcover",
-    "temperature_2m",
-    "shortwave_radiation"))
+  variables = c("temperature_2m"))
 head(df)
 ```
 
@@ -104,6 +98,36 @@ icon_seamless, icon_global, gfs_seamless, gfs025, gfs05, ecmwf_ifs04, gem_global
 
 We have included functions that allow the output to be used with the General Lake Model ([https://doi.org/10.5194/gmd-12-473-2019]).
 Since the open-meteo models do not include longwave radiation, the package provides a function to calculate it from the cloud cover and air temperature.
+
+GLM requires a set of variables that are provided
+
+```{r}
+df <- RopenMeteo::get_ensemble_forecast(
+  latitude = 37.30,
+  longitude = -79.83,
+  forecast_days = 7,
+  past_days = 2,
+  model = "gfs_seamless",
+  variables = c(
+    "relativehumidity_2m",
+    "precipitation",
+    "windspeed_10m",
+    "cloudcover",
+    "temperature_2m",
+    "shortwave_radiation"))
+head(df)
+```
+
+```{r}
+df |> 
+  mutate(variable = paste(variable, unit)) |> 
+  ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
+  geom_line() + 
+  geom_vline(aes(xintercept = reference_datetime)) + 
+  facet_wrap(~variable, scale = "free", ncol = 2)
+```
+
+The following converts to GLM format
 
 ```{r}
 path <- tempdir()

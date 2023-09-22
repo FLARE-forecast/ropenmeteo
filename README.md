@@ -41,6 +41,17 @@ The package uses a long format standard with the following columns
 remotes::install_github("FLARE-forecast/RopenMeteo")
 ```
 
+    ## 
+    ## ── R CMD build ─────────────────────────────────────────────────────────────────
+    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpCs66zu/remotes102ec25b51553/FLARE-forecast-RopenMeteo-25e85b0/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpCs66zu/remotes102ec25b51553/FLARE-forecast-RopenMeteo-25e85b0/DESCRIPTION’
+    ##   ─  preparing ‘RopenMeteo’:
+    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+    ##   ─  checking for LF line-endings in source and make files and shell scripts
+    ##   ─  checking for empty or unneeded directories
+    ##   ─  building ‘RopenMeteo_0.0.0.9000.tar.gz’
+    ##      
+    ## 
+
 ``` r
 library(tidyverse)
 ```
@@ -97,6 +108,58 @@ df <- RopenMeteo::get_ensemble_forecast(
   forecast_days = 7,
   past_days = 2,
   model = "gfs_seamless",
+  variables = c("temperature_2m"))
+head(df)
+```
+
+    ## # A tibble: 6 × 7
+    ##   datetime            reference_datetime  model_id  ensemble variable prediction
+    ##   <dttm>              <dttm>              <chr>     <chr>    <chr>         <dbl>
+    ## 1 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 00       tempera…       14  
+    ## 2 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 01       tempera…       14.3
+    ## 3 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 02       tempera…       14.5
+    ## 4 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 03       tempera…       14.2
+    ## 5 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 04       tempera…       14  
+    ## 6 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 05       tempera…       14.2
+    ## # ℹ 1 more variable: unit <chr>
+
+``` r
+df |> 
+  mutate(variable = paste(variable, unit)) |> 
+  ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
+  geom_line() + 
+  geom_vline(aes(xintercept = reference_datetime)) + 
+  facet_wrap(~variable, scale = "free", ncol = 2)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+
+Options for models and variables are at
+<https://open-meteo.com/en/docs/ensemble-api>
+
+Note that `ecmwf_ifs04` does not include solar radiation.
+
+List of global model ids:
+
+    icon_seamless, icon_global, gfs_seamless, gfs025, gfs05, ecmwf_ifs04, gem_global
+
+### Use with the General Lake Model
+
+We have included functions that allow the output to be used with the
+General Lake Model (\[<https://doi.org/10.5194/gmd-12-473-2019>\]).
+Since the open-meteo models do not include longwave radiation, the
+package provides a function to calculate it from the cloud cover and air
+temperature.
+
+GLM requires a set of variables that are provided
+
+``` r
+df <- RopenMeteo::get_ensemble_forecast(
+  latitude = 37.30,
+  longitude = -79.83,
+  forecast_days = 7,
+  past_days = 2,
+  model = "gfs_seamless",
   variables = c(
     "relativehumidity_2m",
     "precipitation",
@@ -127,24 +190,9 @@ df |>
   facet_wrap(~variable, scale = "free", ncol = 2)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
-Options for models and variables are at
-<https://open-meteo.com/en/docs/ensemble-api>
-
-Note that `ecmwf_ifs04` does not include solar radiation.
-
-List of global model ids:
-
-    icon_seamless, icon_global, gfs_seamless, gfs025, gfs05, ecmwf_ifs04, gem_global
-
-### Use with the General Lake Model
-
-We have included functions that allow the output to be used with the
-General Lake Model (\[<https://doi.org/10.5194/gmd-12-473-2019>\]).
-Since the open-meteo models do not include longwave radiation, the
-package provides a function to calculate it from the cloud cover and air
-temperature.
+The following converts to GLM format
 
 ``` r
 path <- tempdir()
@@ -271,7 +319,7 @@ df |>
 
     ## Warning: Removed 168 rows containing missing values (`geom_line()`).
 
-![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 ## Seasonal Forecasts
 
@@ -312,7 +360,7 @@ df |>
 
     ## Warning: Removed 2156 rows containing missing values (`geom_line()`).
 
-![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 ## Climate Projections
 
@@ -365,4 +413,4 @@ df |>
     facet_wrap(~variable, scale = "free")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
