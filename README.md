@@ -2,10 +2,38 @@ RopenMeteo
 ================
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/FLARE-forecast/RopenMeteo/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FLARE-forecast/RopenMeteo/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-R wrappers for APIs on Open-Meteo project.
+R wrappers for APIs on Open-Meteo project. The Open-Meteo is a amazing
+project that streamlines the access to a range of publically historical
+and forecasted metereology data from agencies across the world. The free
+access tier allows for 10,000 API calls per day. The paid tiers increase
+the number of daily API calls (support for paid APIs in this package is
+pending). Learn more about the Open-Meteo project at their website
+(\[<https://open-meteo.com>\]) and consider supporting their efforts.
+
+The package includes additional functionally to facilitate the use in
+mechanistic environmental/ecological models. This includes the
+calculation of longwave radiation (not provided through the API) from
+air temperature and cloud cover, the writing of output to the format
+required by the General Lake Model (GLM), and the conversion to the
+standard used in the NEON Ecological Forecasting Challenge that is run
+by the Ecological Initiative Research Coordination Network
+(\[<https://neon4cast.org>\]). Future functionally includes the temporal
+downscaling of the daily climate projection output and the 6-hourly
+seasonal forecast to the hourly time step.
+
+The package uses a long format standard with the following columns
+
+    datetime = date and time of forecasted value
+    reference_datetime = the date and time of the beginning of the forecast (horizon = 0). Does not apply to historical weather.
+    model_id = id of model that generated the forecast
+    ensemble = ensemble member number (only for ensemble weather and seasonal forecasts)
+    variable = forecasted variable
+    prediction = forecasted value
+    unit = units of the variable
 
 ## Install
 
@@ -15,7 +43,7 @@ remotes::install_github("FLARE-forecast/RopenMeteo")
 
     ## 
     ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmpm0HUOe/remotese60b30199384/FLARE-forecast-RopenMeteo-87f4572/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmpm0HUOe/remotese60b30199384/FLARE-forecast-RopenMeteo-87f4572/DESCRIPTION’
+    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmpz6OvU1/remotesea4534fa21b9/FLARE-forecast-RopenMeteo-3dc1bac/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmpz6OvU1/remotesea4534fa21b9/FLARE-forecast-RopenMeteo-3dc1bac/DESCRIPTION’
     ##   ─  preparing ‘RopenMeteo’:
     ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
     ##   ─  checking for LF line-endings in source and make files and shell scripts
