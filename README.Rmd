@@ -7,7 +7,7 @@ output: github_document
   [![R-CMD-check](https://github.com/FLARE-forecast/RopenMeteo/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FLARE-forecast/RopenMeteo/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-R wrappers for APIs on Open-Meteo project.  The Open-Meteo is a amazing project that streamlines the access to a range of publically historical and forecasted metereology data from agencies across the world.  The free access tier allows for 10,000 API calls per day.  The paid tiers increase the number of daily API calls (support for paid APIs in this package is pending). Learn more about the Open-Meteo project at their website ([https://open-meteo.com]) and consider supporting their efforts.
+R wrappers for APIs on Open-Meteo project.  The Open-Meteo is a amazing project that streamlines the access to a range of publicly historical and forecasted meteorology data from agencies across the world.  The free access tier allows for 10,000 API calls per day.  The paid tiers increase the number of daily API calls (support for paid APIs in this package is pending). Learn more about the Open-Meteo project at their website ([https://open-meteo.com]) and consider supporting their efforts.
 
 The package includes additional functionally to facilitate the use in mechanistic environmental/ecological models.  This includes the calculation of longwave radiation (not provided through the API) from air temperature and cloud cover, the writing of output to the format required by the General Lake Model (GLM), and the conversion to the standard used in the NEON Ecological Forecasting Challenge that is run by the Ecological Initiative Research Coordination Network ([https://neon4cast.org]).  Future functionally includes the temporal downscaling of the daily climate projection output and the 6-hourly seasonal forecast to the hourly time step.
 
@@ -60,7 +60,7 @@ df |>
   ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
   geom_line() + 
   geom_vline(aes(xintercept = reference_datetime)) + 
-  facet_wrap(~variable, scale = "free")
+  facet_wrap(~variable, scale = "free", ncol = 2)
 ```
 
 Options for models and variables are at https://open-meteo.com/en/docs/ensemble-api
@@ -75,8 +75,8 @@ icon_seamless, icon_global, gfs_seamless, gfs025, gfs05, ecmwf_ifs04, gem_global
 
 ### Use with the General Lake Model
 
-We have included functions that allow the output to be used with the General Lake Model.
-Since the models do not include longwave, provide a function to calculate it from the cloud cover and air temperature.
+We have included functions that allow the output to be used with the General Lake Model ([https://doi.org/10.5194/gmd-12-473-2019]).
+Since the open-meteo models do not include longwave radiation, the package provides a function to calculate it from the cloud cover and air temperature.
 
 ```{r}
 path <- tempdir()
@@ -86,9 +86,15 @@ df |>
   head(read.csv(list.files(path = path, full.names = TRUE, pattern = ".csv")[1]))
 ```
 
-### Converting to the same format in `neon4cast::stage2()`
+### Converting to Ecological Forecasting Initative convention
 
-[https://projects.ecoforecast.org/neon4cast-docs/Shared-Forecast-Drivers.html]
+The standard used in the NEON Ecological Forecasting Challenge is slightly different from the standard in this package.  It uses the column `parameter` for ensemble because the Challenge standard allows the flexibility to use parametric distributions (i.e., normal distribution `mean` and `sd`) in the same standard as a ensemble (or sample) forecast.  The `family` column defines the distribution (here `family` = `ensemble`).
+
+The EFI standard also follows CF-conventions so the variable names are converted to be CF compliant. 
+
+The output from `RopenMeteo::convert_to_efi_standard()` is the same as the output from `neon4cast::stage2()`
+
+Learn more about `neon4cast::stage2()` here: [https://projects.ecoforecast.org/neon4cast-docs/Shared-Forecast-Drivers.html]
 
 ```{r}
 df |>
@@ -105,7 +111,7 @@ df |>
   filter(datetime < reference_datetime)
 ```
 
-With the only difference that the number of days is equal to the `past_days` in the call to `RopenMeteo::get_ensemble_forecast()`.  The max past_days is ~60 days.
+With the only difference that the number of days is equal to the `past_days` in the call to `RopenMeteo::get_ensemble_forecast()`.  The max `past_days` from open-meteo is ~60 days.
 
 ## Historical Weather
 
@@ -127,7 +133,7 @@ head(df)
 df |> 
   mutate(variable = paste(variable, unit)) |> 
   ggplot(aes(x = datetime, y = prediction)) + 
-  geom_line() + 
+  geom_line(color = "#F8766D") + 
   geom_vline(aes(xintercept = lubridate::with_tz(Sys.time(), tzone = "UTC"))) + 
   facet_wrap(~variable, scale = "free")
 ```

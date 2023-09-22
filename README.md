@@ -7,8 +7,8 @@ RopenMeteo
 <!-- badges: end -->
 
 R wrappers for APIs on Open-Meteo project. The Open-Meteo is a amazing
-project that streamlines the access to a range of publically historical
-and forecasted metereology data from agencies across the world. The free
+project that streamlines the access to a range of publicly historical
+and forecasted meteorology data from agencies across the world. The free
 access tier allows for 10,000 API calls per day. The paid tiers increase
 the number of daily API calls (support for paid APIs in this package is
 pending). Learn more about the Open-Meteo project at their website
@@ -41,17 +41,6 @@ The package uses a long format standard with the following columns
 remotes::install_github("FLARE-forecast/RopenMeteo")
 ```
 
-    ## 
-    ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmp8XJ5uZ/remoteseeb47ac7f445/FLARE-forecast-RopenMeteo-f6cac6e/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmp8XJ5uZ/remoteseeb47ac7f445/FLARE-forecast-RopenMeteo-f6cac6e/DESCRIPTION’
-    ##   ─  preparing ‘RopenMeteo’:
-    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-    ##   ─  checking for LF line-endings in source and make files and shell scripts
-    ##   ─  checking for empty or unneeded directories
-    ##   ─  building ‘RopenMeteo_0.0.0.9000.tar.gz’
-    ##      
-    ## 
-
 ``` r
 library(tidyverse)
 ```
@@ -78,14 +67,14 @@ head(df)
 ```
 
     ## # A tibble: 6 × 7
-    ##   datetime            prediction variable  ensemble model_id reference_datetime 
-    ##   <dttm>                   <dbl> <chr>     <chr>    <chr>    <dttm>             
-    ## 1 2023-09-20 00:00:00         65 relative… 00       gfs_sea… 2023-09-22 00:00:00
-    ## 2 2023-09-20 00:00:00         64 relative… 01       gfs_sea… 2023-09-22 00:00:00
-    ## 3 2023-09-20 00:00:00         66 relative… 02       gfs_sea… 2023-09-22 00:00:00
-    ## 4 2023-09-20 00:00:00         65 relative… 03       gfs_sea… 2023-09-22 00:00:00
-    ## 5 2023-09-20 00:00:00         69 relative… 04       gfs_sea… 2023-09-22 00:00:00
-    ## 6 2023-09-20 00:00:00         62 relative… 05       gfs_sea… 2023-09-22 00:00:00
+    ##   datetime            reference_datetime  model_id  ensemble variable prediction
+    ##   <dttm>              <dttm>              <chr>     <chr>    <chr>         <dbl>
+    ## 1 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 00       relativ…         65
+    ## 2 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 01       relativ…         64
+    ## 3 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 02       relativ…         66
+    ## 4 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 03       relativ…         65
+    ## 5 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 04       relativ…         69
+    ## 6 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seam… 05       relativ…         62
     ## # ℹ 1 more variable: unit <chr>
 
 ``` r
@@ -94,7 +83,7 @@ df |>
   ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
   geom_line() + 
   geom_vline(aes(xintercept = reference_datetime)) + 
-  facet_wrap(~variable, scale = "free")
+  facet_wrap(~variable, scale = "free", ncol = 2)
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
@@ -111,8 +100,10 @@ List of global model ids:
 ### Use with the General Lake Model
 
 We have included functions that allow the output to be used with the
-General Lake Model. Since the models do not include longwave, provide a
-function to calculate it from the cloud cover and air temperature.
+General Lake Model (\[<https://doi.org/10.5194/gmd-12-473-2019>\]).
+Since the open-meteo models do not include longwave radiation, the
+package provides a function to calculate it from the cloud cover and air
+temperature.
 
 ``` r
 path <- tempdir()
@@ -130,8 +121,23 @@ df |>
     ## 5 2023-09-20 04:00    10.8         0   272.31     76      1.14    0
     ## 6 2023-09-20 05:00    10.6         0   271.26     78      1.14    0
 
-### Converting to the same format in `neon4cast::stage2()`
+### Converting to Ecological Forecasting Initative convention
 
+The standard used in the NEON Ecological Forecasting Challenge is
+slightly different from the standard in this package. It uses the column
+`parameter` for ensemble because the Challenge standard allows the
+flexibility to use parametric distributions (i.e., normal distribution
+`mean` and `sd`) in the same standard as a ensemble (or sample)
+forecast. The `family` column defines the distribution (here `family` =
+`ensemble`).
+
+The EFI standard also follows CF-conventions so the variable names are
+converted to be CF compliant.
+
+The output from `RopenMeteo::convert_to_efi_standard()` is the same as
+the output from `neon4cast::stage2()`
+
+Learn more about `neon4cast::stage2()` here:
 \[<https://projects.ecoforecast.org/neon4cast-docs/Shared-Forecast-Drivers.html>\]
 
 ``` r
@@ -183,7 +189,7 @@ df |>
 
 With the only difference that the number of days is equal to the
 `past_days` in the call to `RopenMeteo::get_ensemble_forecast()`. The
-max past_days is ~60 days.
+max `past_days` from open-meteo is ~60 days.
 
 ## Historical Weather
 
@@ -204,20 +210,20 @@ head(df)
 ```
 
     ## # A tibble: 6 × 5
-    ##   datetime            variable       prediction model_id unit 
-    ##   <dttm>              <chr>               <dbl> <chr>    <chr>
-    ## 1 2023-01-01 00:00:00 temperature_2m        6.3 ERA5     °C   
-    ## 2 2023-01-01 01:00:00 temperature_2m        5   ERA5     °C   
-    ## 3 2023-01-01 02:00:00 temperature_2m        4   ERA5     °C   
-    ## 4 2023-01-01 03:00:00 temperature_2m        3.7 ERA5     °C   
-    ## 5 2023-01-01 04:00:00 temperature_2m        3.8 ERA5     °C   
-    ## 6 2023-01-01 05:00:00 temperature_2m        3.9 ERA5     °C
+    ##   datetime            model_id variable       prediction unit 
+    ##   <dttm>              <chr>    <chr>               <dbl> <chr>
+    ## 1 2023-01-01 00:00:00 ERA5     temperature_2m        6.3 °C   
+    ## 2 2023-01-01 01:00:00 ERA5     temperature_2m        5   °C   
+    ## 3 2023-01-01 02:00:00 ERA5     temperature_2m        4   °C   
+    ## 4 2023-01-01 03:00:00 ERA5     temperature_2m        3.7 °C   
+    ## 5 2023-01-01 04:00:00 ERA5     temperature_2m        3.8 °C   
+    ## 6 2023-01-01 05:00:00 ERA5     temperature_2m        3.9 °C
 
 ``` r
 df |> 
   mutate(variable = paste(variable, unit)) |> 
   ggplot(aes(x = datetime, y = prediction)) + 
-  geom_line() + 
+  geom_line(color = "#F8766D") + 
   geom_vline(aes(xintercept = lubridate::with_tz(Sys.time(), tzone = "UTC"))) + 
   facet_wrap(~variable, scale = "free")
 ```
@@ -241,14 +247,14 @@ head(df)
 ```
 
     ## # A tibble: 6 × 7
-    ##   datetime            prediction variable  ensemble model_id reference_datetime 
-    ##   <dttm>                   <dbl> <chr>     <chr>    <chr>    <dttm>             
-    ## 1 2023-09-17 00:00:00        9.5 temperat… 01       cfs      2023-09-22 00:00:00
-    ## 2 2023-09-17 00:00:00        9.7 temperat… 02       cfs      2023-09-22 00:00:00
-    ## 3 2023-09-17 00:00:00        9.7 temperat… 03       cfs      2023-09-22 00:00:00
-    ## 4 2023-09-17 00:00:00        9.8 temperat… 04       cfs      2023-09-22 00:00:00
-    ## 5 2023-09-17 06:00:00       14.4 temperat… 01       cfs      2023-09-22 00:00:00
-    ## 6 2023-09-17 06:00:00        9.3 temperat… 02       cfs      2023-09-22 00:00:00
+    ##   datetime            reference_datetime  model_id ensemble variable  prediction
+    ##   <dttm>              <dttm>              <chr>    <chr>    <chr>          <dbl>
+    ## 1 2023-09-17 00:00:00 2023-09-22 00:00:00 cfs      01       temperat…        9.5
+    ## 2 2023-09-17 00:00:00 2023-09-22 00:00:00 cfs      02       temperat…        9.7
+    ## 3 2023-09-17 00:00:00 2023-09-22 00:00:00 cfs      03       temperat…        9.7
+    ## 4 2023-09-17 00:00:00 2023-09-22 00:00:00 cfs      04       temperat…        9.8
+    ## 5 2023-09-17 06:00:00 2023-09-22 00:00:00 cfs      01       temperat…       14.4
+    ## 6 2023-09-17 06:00:00 2023-09-22 00:00:00 cfs      02       temperat…        9.3
     ## # ℹ 1 more variable: unit <chr>
 
 ``` r
@@ -280,14 +286,14 @@ head(df)
 ```
 
     ## # A tibble: 6 × 5
-    ##   datetime   variable            prediction model_id      unit 
-    ##   <date>     <chr>                    <dbl> <chr>         <chr>
-    ## 1 2023-09-22 temperature_2m_mean       13.3 EC_Earth3P_HR °C   
-    ## 2 2023-09-23 temperature_2m_mean       14.6 EC_Earth3P_HR °C   
-    ## 3 2023-09-24 temperature_2m_mean       18.1 EC_Earth3P_HR °C   
-    ## 4 2023-09-25 temperature_2m_mean       15.4 EC_Earth3P_HR °C   
-    ## 5 2023-09-26 temperature_2m_mean       16.2 EC_Earth3P_HR °C   
-    ## 6 2023-09-27 temperature_2m_mean       14.5 EC_Earth3P_HR °C
+    ##   datetime   model_id      variable            prediction unit 
+    ##   <date>     <chr>         <chr>                    <dbl> <chr>
+    ## 1 2023-09-22 EC_Earth3P_HR temperature_2m_mean       13.3 °C   
+    ## 2 2023-09-23 EC_Earth3P_HR temperature_2m_mean       14.6 °C   
+    ## 3 2023-09-24 EC_Earth3P_HR temperature_2m_mean       18.1 °C   
+    ## 4 2023-09-25 EC_Earth3P_HR temperature_2m_mean       15.4 °C   
+    ## 5 2023-09-26 EC_Earth3P_HR temperature_2m_mean       16.2 °C   
+    ## 6 2023-09-27 EC_Earth3P_HR temperature_2m_mean       14.5 °C
 
 ### Multiple climate models
 
