@@ -33,6 +33,27 @@ remotes::install_github("FLARE-forecast/RopenMeteo")
 library(tidyverse)
 ```
 
+## Weather forecasts
+
+The open-meteo project combines the the best models for each location across the globe to provide the best possible forecast.  We define this as `model_id = open_meteo_best`.
+```{r}
+df <- RopenMeteo::get_forecast(latitude = latitude, 
+                               longitude = longitude, 
+                               forecast_days = 2, 
+                               past_days = 2, 
+                               variables = c("temperature_2m"))
+head(df)
+```
+
+```{r}
+df |> 
+  mutate(variable = paste(variable, unit)) |> 
+  ggplot(aes(x = datetime, y = prediction)) + 
+  geom_line(color = "#F8766D") + 
+  geom_vline(aes(xintercept = reference_datetime)) + 
+  facet_wrap(~variable, scale = "free")
+```
+
 ## Ensemble Weather Forecasts
 
 [https://open-meteo.com/en/docs/ensemble-api]

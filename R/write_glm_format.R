@@ -16,7 +16,9 @@ write_glm_format <- function(df, path) {
   if(!("windspeed_10m" %in% variables)) warning("missing windspeed")
   if(!("relativehumidity_2m" %in% variables)) warning("missing relativehumidity")
 
-  ensemble_list <- df |> dplyr::distinct(model_id, ensemble)
+
+  if("ensemble" %in% names(df)){
+    ensemble_list <- df |> dplyr::distinct(model_id, ensemble)
 
   purrr::walk(1:nrow(ensemble_list),
               function(i, ensemble_list, df) {
@@ -53,4 +55,29 @@ write_glm_format <- function(df, path) {
                   )
 
               }, ensemble_list, df)
+  }else{
+    df |>
+      dplyr::select(-unit) |>
+      tidyr::pivot_wider(names_from = variable, values_from = prediction) |>
+      dplyr::rename(
+        LongWave = longwave_radiation,
+        ShortWave = shortwave_radiation,
+        AirTemp = temperature_2m,
+        Rain = precipitation,
+        WindSpeed = windspeed_10m,
+        RelHum = relativehumidity_2m,
+        time = datetime) |>
+      dplyr::select(-dplyr::any_of(c("ensemble","model_id","cloudcover", "reference_datetime"))) |>
+      dplyr::select(time, AirTemp, ShortWave, LongWave, RelHum, WindSpeed, Rain) |>
+      dplyr::mutate(time = strftime(time, format = "%Y-%m-%d %H:%M", tz = "UTC")) |>
+      write.csv( file = file.path(
+          normalizePath(path),
+          paste0(
+            "met.csv"
+          )
+        ),
+        quote = FALSE,
+        row.names = FALSE
+      )
+  }
 }
