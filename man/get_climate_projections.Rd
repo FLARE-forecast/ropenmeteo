@@ -9,6 +9,7 @@ get_climate_projections(
   longitude,
   start_date,
   end_date,
+  model = "EC_Earth3P_HR",
   variables = c("temperature_2m_mean")
 )
 }

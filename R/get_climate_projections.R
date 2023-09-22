@@ -9,15 +9,10 @@
 #' @return data frame
 #' @export
 #'
-get_climate_projections <- function(latitude,
-                                   longitude,
-                                   start_date,
-                                   end_date,
-                                   variables = c("temperature_2m_mean")){
+get_climate_projections <- function(latitude, longitude, start_date, end_date, model = "EC_Earth3P_HR", variables = c("temperature_2m_mean")){
 
   if(start_date < "1950-01-01") warning("start date must be on or after 1950-01-01")
   #if(end_date > Sys.Date() - lubridate::days(5))
-
 
   latitude <- round(latitude, 2)
   longitude <- round(longitude, 2)

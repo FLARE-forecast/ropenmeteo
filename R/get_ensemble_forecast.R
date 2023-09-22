@@ -10,12 +10,17 @@
 #' @return data frame (in long format)
 #' @export
 #'
-get_ensemble_forecast <- function(latitude, longitude, forecast_days, past_days, model = "gfs_seamless", variables = c("relativehumidity_2m",
-                                                                                                                  "precipitation",
-                                                                                                                  "windspeed_10m",
-                                                                                                                  "cloudcover",
-                                                                                                                  "temperature_2m",
-                                                                                                                  "shortwave_radiation")){
+get_ensemble_forecast <- function(latitude,
+                                  longitude,
+                                  forecast_days,
+                                  past_days,
+                                  model = "gfs_seamless",
+                                  variables = c("relativehumidity_2m",
+                                                "precipitation",
+                                                "windspeed_10m",
+                                                "cloudcover",
+                                                "temperature_2m",
+                                                "shortwave_radiation")){
 
   if(forecast_days > 35) stop("forecast_days is longer than avialable (max = 35")
   if(past_days > 92) stop("hist_days is longer than avialable (max = 92)")
@@ -47,23 +52,8 @@ get_ensemble_forecast <- function(latitude, longitude, forecast_days, past_days,
     df <- dplyr::bind_cols(df, v1)
   }
 
-  df <-
-    df |> tidyr::pivot_longer(-time, names_to = "variable_ens", values_to = "prediction") |>
-    dplyr::mutate(
-      variable = stringr::str_split(
-        variable_ens,
-        pattern = "_member",
-        n = 2,
-        simplify = TRUE
-      )[, 1],
-      ensemble = stringr::str_split(
-        variable_ens,
-        pattern = "_member",
-        n = 2,
-        simplify = TRUE
-      )[, 2],
-      ensemble = ifelse(ensemble == "", "00",ensemble)) |>
-    dplyr::select(-variable_ens) |>
+  df <- df |>
+    pivot_ensemble_forecast()
     dplyr::rename(datetime = time) |>
     dplyr::mutate(
       model_id = model,
