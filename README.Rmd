@@ -40,7 +40,7 @@ The open-meteo project combines the the best models for each location across the
 [https://open-meteo.com/en/docs]
 
 ```{r}
-df <- get_forecast(latitude = 37.30,
+df <- RopenMeteo::get_forecast(latitude = 37.30,
                                longitude = -79.83,
                                forecast_days = 7, 
                                past_days = 2, 

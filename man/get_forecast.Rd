@@ -9,6 +9,7 @@ get_forecast(
   longitude,
   forecast_days,
   past_days,
+  model = "generic",
   variables = c("temperature_2m")
 )
 }
@@ -20,6 +21,8 @@ get_forecast(
 \item{forecast_days}{Number of days in the future for forecast (starts at current day)}
 
 \item{past_days}{Number of days in the past to include in the data}
+
+\item{model}{id of forest model https://open-meteo.com/en/docs/climate-api}
 
 \item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api}
 }
