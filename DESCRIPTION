@@ -13,7 +13,6 @@ Imports:
   stringr,
   dplyr,
   tidyr,
-  readr,
   purrr,
   jsonlite,
   lubridate,

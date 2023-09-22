@@ -1,6 +1,10 @@
 RopenMeteo
 ================
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/FLARE-forecast/RopenMeteo/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FLARE-forecast/RopenMeteo/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 R wrappers for APIs on Open-Meteo project.
 
 ## Install
@@ -8,6 +12,17 @@ R wrappers for APIs on Open-Meteo project.
 ``` r
 remotes::install_github("FLARE-forecast/RopenMeteo")
 ```
+
+    ## 
+    ## ── R CMD build ─────────────────────────────────────────────────────────────────
+    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmpm0HUOe/remotese60b30199384/FLARE-forecast-RopenMeteo-87f4572/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/Rtmpm0HUOe/remotese60b30199384/FLARE-forecast-RopenMeteo-87f4572/DESCRIPTION’
+    ##   ─  preparing ‘RopenMeteo’:
+    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+    ##   ─  checking for LF line-endings in source and make files and shell scripts
+    ##   ─  checking for empty or unneeded directories
+    ##   ─  building ‘RopenMeteo_0.0.0.9000.tar.gz’
+    ##      
+    ## 
 
 ``` r
 library(tidyverse)

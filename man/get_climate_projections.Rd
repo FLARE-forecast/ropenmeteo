@@ -22,7 +22,9 @@ get_climate_projections(
 
 \item{end_date}{Number of days in the past to include in the data}
 
-\item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api}
+\item{model}{id of forest model https://open-meteo.com/en/docs/climate-api}
+
+\item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/climate-api}
 }
 \value{
 data frame

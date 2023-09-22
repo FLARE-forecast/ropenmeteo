@@ -4,7 +4,8 @@
 #' @param longitude long longitude degree east or degree west
 #' @param start_date Number of days in the future for forecast (starts at current day)
 #' @param end_date Number of days in the past to include in the data
-#' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api
+#' @param model id of forest model https://open-meteo.com/en/docs/climate-api
+#' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/climate-api
 #'
 #' @return data frame
 #' @export
