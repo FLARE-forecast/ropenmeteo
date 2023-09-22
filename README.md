@@ -111,8 +111,8 @@ head(df)
 df <- RopenMeteo::get_climate_projections(
   latitude = 37.30,
   longitude = -79.83,
-  start_day = "2025-01-10",
-  end_day = "2025-01-20",
+  start_date = "2025-01-10",
+  end_date = "2025-01-20",
   model = "EC_Earth3P_HR",
   variables = c("temperature_2m_min",
   "temperature_2m_max"))

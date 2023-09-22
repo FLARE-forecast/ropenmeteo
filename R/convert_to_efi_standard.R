@@ -6,7 +6,7 @@
 #' @export
 convert_to_efi_standard <- function(df){
 
-  df |>
+  df <- df |>
     dplyr::mutate(variable = ifelse(variable == "temperature_2m", "air_temperature", variable),
            prediction = ifelse(variable == "air_temperature", prediction + 273.15, prediction),
            variable = ifelse(variable == "relativehumidity_2m", "relative_humidity", variable),
@@ -20,8 +20,10 @@ convert_to_efi_standard <- function(df){
            prediction = ifelse(variable == "air_pressure", prediction * 100, prediction),
            variable = ifelse(variable == "cloud_area_fraction", "cloudcover", variable),
            prediction = ifelse(variable == "cloud_area_fraction", prediction/100, prediction)) |>
-    dplyr::rename(parameter = ensemble) |>
-    dplyr::select(-units) |>
-    dplyr::select(model_id, datetime, parameter, reference_datetime, variable, prediction)
+    dplyr::select(-unit) |>
+    dplyr::select(dplyr::any_of(c("model_id", "datetime", "parameter", "ensemble", "reference_datetime", "variable", "prediction")))
 
+  if("ensemble" %in% names(df)) df <- df |> dplyr::rename(parameter = ensemble)
+
+  return(df)
 }
