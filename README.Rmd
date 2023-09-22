@@ -35,7 +35,7 @@ library(tidyverse)
 
 ## Weather forecasts
 
-The open-meteo project combines the the best models for each location across the globe to provide the best possible forecast.  open-meteo defines this as `model_id = "generic"`.
+The open-meteo project combines the the best models for each location across the globe to provide the best possible forecast.  open-meteo defines this as `model = "generic"`.
 
 [https://open-meteo.com/en/docs]
 
@@ -44,6 +44,7 @@ df <- RopenMeteo::get_forecast(latitude = 37.30,
                                longitude = -79.83,
                                forecast_days = 7, 
                                past_days = 2, 
+                               model = "generic",
                                variables = c("temperature_2m"))
 head(df)
 ```

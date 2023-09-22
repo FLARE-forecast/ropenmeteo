@@ -45,7 +45,48 @@ remotes::install_github("FLARE-forecast/RopenMeteo")
 library(tidyverse)
 ```
 
+## Weather forecasts
+
+The open-meteo project combines the the best models for each location
+across the globe to provide the best possible forecast. open-meteo
+defines this as `model = "generic"`.
+
+\[<https://open-meteo.com/en/docs>\]
+
+``` r
+df <- RopenMeteo::get_forecast(latitude = 37.30,
+                               longitude = -79.83,
+                               forecast_days = 7, 
+                               past_days = 2, 
+                               model = "generic",
+                               variables = c("temperature_2m"))
+head(df)
+```
+
+    ## # A tibble: 6 × 6
+    ##   datetime            reference_datetime  model_id variable     prediction unit 
+    ##   <dttm>              <dttm>              <chr>    <chr>             <dbl> <chr>
+    ## 1 2023-09-20 00:00:00 2023-09-22 00:00:00 generic  temperature…       16.8 °C   
+    ## 2 2023-09-20 01:00:00 2023-09-22 00:00:00 generic  temperature…       15.3 °C   
+    ## 3 2023-09-20 02:00:00 2023-09-22 00:00:00 generic  temperature…       16.2 °C   
+    ## 4 2023-09-20 03:00:00 2023-09-22 00:00:00 generic  temperature…       15.5 °C   
+    ## 5 2023-09-20 04:00:00 2023-09-22 00:00:00 generic  temperature…       14.9 °C   
+    ## 6 2023-09-20 05:00:00 2023-09-22 00:00:00 generic  temperature…       14.3 °C
+
+``` r
+df |> 
+  mutate(variable = paste(variable, unit)) |> 
+  ggplot(aes(x = datetime, y = prediction)) + 
+  geom_line(color = "#F8766D") + 
+  geom_vline(aes(xintercept = reference_datetime)) + 
+  facet_wrap(~variable, scale = "free")
+```
+
+![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
 ## Ensemble Weather Forecasts
+
+Ensemble forecasts from individual models are available.
 
 \[<https://open-meteo.com/en/docs/ensemble-api>\]
 
@@ -86,7 +127,7 @@ df |>
   facet_wrap(~variable, scale = "free", ncol = 2)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 Options for models and variables are at
 <https://open-meteo.com/en/docs/ensemble-api>
@@ -146,19 +187,19 @@ df |>
   RopenMeteo::convert_to_efi_standard()
 ```
 
-    ## # A tibble: 46,872 × 6
-    ##    model_id     datetime            parameter reference_datetime  variable      
-    ##    <chr>        <dttm>              <chr>     <dttm>              <chr>         
-    ##  1 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 relative_humi…
-    ##  2 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 precipitation…
-    ##  3 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 wind_speed    
-    ##  4 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 cloudcover    
-    ##  5 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 air_temperatu…
-    ##  6 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 surface_downw…
-    ##  7 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 longwave_radi…
-    ##  8 gfs_seamless 2023-09-20 00:00:00 01        2023-09-22 00:00:00 relative_humi…
-    ##  9 gfs_seamless 2023-09-20 00:00:00 01        2023-09-22 00:00:00 precipitation…
-    ## 10 gfs_seamless 2023-09-20 00:00:00 01        2023-09-22 00:00:00 wind_speed    
+    ## # A tibble: 46,872 × 7
+    ##    datetime            reference_datetime  model_id    family parameter variable
+    ##    <dttm>              <dttm>              <chr>       <chr>  <chr>     <chr>   
+    ##  1 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        relativ…
+    ##  2 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        precipi…
+    ##  3 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        wind_sp…
+    ##  4 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        cloudco…
+    ##  5 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        air_tem…
+    ##  6 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        surface…
+    ##  7 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        longwav…
+    ##  8 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 01        relativ…
+    ##  9 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 01        precipi…
+    ## 10 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 01        wind_sp…
     ## # ℹ 46,862 more rows
     ## # ℹ 1 more variable: prediction <dbl>
 
@@ -171,19 +212,19 @@ df |>
   filter(datetime < reference_datetime)
 ```
 
-    ## # A tibble: 10,416 × 6
-    ##    model_id     datetime            parameter reference_datetime  variable      
-    ##    <chr>        <dttm>              <chr>     <dttm>              <chr>         
-    ##  1 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 relative_humi…
-    ##  2 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 precipitation…
-    ##  3 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 wind_speed    
-    ##  4 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 cloudcover    
-    ##  5 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 air_temperatu…
-    ##  6 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 surface_downw…
-    ##  7 gfs_seamless 2023-09-20 00:00:00 00        2023-09-22 00:00:00 longwave_radi…
-    ##  8 gfs_seamless 2023-09-20 00:00:00 01        2023-09-22 00:00:00 relative_humi…
-    ##  9 gfs_seamless 2023-09-20 00:00:00 01        2023-09-22 00:00:00 precipitation…
-    ## 10 gfs_seamless 2023-09-20 00:00:00 01        2023-09-22 00:00:00 wind_speed    
+    ## # A tibble: 10,416 × 7
+    ##    datetime            reference_datetime  model_id    family parameter variable
+    ##    <dttm>              <dttm>              <chr>       <chr>  <chr>     <chr>   
+    ##  1 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        relativ…
+    ##  2 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        precipi…
+    ##  3 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        wind_sp…
+    ##  4 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        cloudco…
+    ##  5 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        air_tem…
+    ##  6 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        surface…
+    ##  7 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 00        longwav…
+    ##  8 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 01        relativ…
+    ##  9 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 01        precipi…
+    ## 10 2023-09-20 00:00:00 2023-09-22 00:00:00 gfs_seamle… ensem… 01        wind_sp…
     ## # ℹ 10,406 more rows
     ## # ℹ 1 more variable: prediction <dbl>
 
@@ -230,9 +271,12 @@ df |>
 
     ## Warning: Removed 168 rows containing missing values (`geom_line()`).
 
-![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ## Seasonal Forecasts
+
+Weather forecats for up to 9 months in the future are avialable from the
+NOAA Climate Forecasting System
 
 \[<https://open-meteo.com/en/docs/seasonal-forecast-api>\]
 
@@ -268,9 +312,11 @@ df |>
 
     ## Warning: Removed 2156 rows containing missing values (`geom_line()`).
 
-![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 ## Climate Projections
+
+Climate projections from different models are avialable through 2050.
 
 \[<https://open-meteo.com/en/docs/climate-api>\]
 
@@ -319,4 +365,4 @@ df |>
     facet_wrap(~variable, scale = "free")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-16-1.png)<!-- -->
