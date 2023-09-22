@@ -2,15 +2,17 @@
 
 R wrappers for APIs on Open-Meteo project.  
 
+## Install
+
+```
+remotes::install_github("FLARE-forecast/RopenMeteo")
+```
+
 ## Ensemble Weather Forecasts
 
 [https://open-meteo.com/en/docs/ensemble-api]
 
-Example usage:
-
 ```
-remotes::install_github("FLARE-forecast/RopenMeteo")
-
 df <- RopenMeteo::get_ensemble_forecast(
   latitude = 37.30,
   longitude = -79.83,
@@ -27,11 +29,11 @@ df <- RopenMeteo::get_ensemble_forecast(
 head(df)
 ```
 
-Options for global models and variables are at https://open-meteo.com/en/docs/ensemble-api
+Options for models and variables are at https://open-meteo.com/en/docs/ensemble-api
 
 Note that `ecmwf_ifs04` does not include solar radiation.  
 
-List of model ids: 
+List of global model ids: 
 
 ```
 icon_seamless, icon_global, gfs_seamless, gfs025, gfs05, ecmwf_ifs04, gem_global
@@ -101,7 +103,6 @@ df <- RopenMeteo::get_seasonal_forecast(
 head(df)
 ```
 
-
 ## Climate Projections
 
 [https://open-meteo.com/en/docs/climate-api]
@@ -117,3 +118,5 @@ df <- RopenMeteo::get_climate_projections(
   "temperature_2m_max"))
 head(df)
 ```
+
+
