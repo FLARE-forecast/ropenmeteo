@@ -35,11 +35,14 @@ library(tidyverse)
 
 ## Weather forecasts
 
-The open-meteo project combines the the best models for each location across the globe to provide the best possible forecast.  We define this as `model_id = open_meteo_best`.
+The open-meteo project combines the the best models for each location across the globe to provide the best possible forecast.  open-meteo defines this as `model_id = "generic"`.
+
+[https://open-meteo.com/en/docs]
+
 ```{r}
-df <- RopenMeteo::get_forecast(latitude = latitude, 
-                               longitude = longitude, 
-                               forecast_days = 2, 
+df <- get_forecast(latitude = 37.30,
+                               longitude = -79.83,
+                               forecast_days = 7, 
                                past_days = 2, 
                                variables = c("temperature_2m"))
 head(df)
@@ -55,6 +58,8 @@ df |>
 ```
 
 ## Ensemble Weather Forecasts
+
+Ensemble forecasts from individual models are available. 
 
 [https://open-meteo.com/en/docs/ensemble-api]
 
@@ -161,6 +166,8 @@ df |>
 
 ## Seasonal Forecasts
 
+Weather forecats for up to 9 months in the future are avialable from the NOAA Climate Forecasting System
+
 [https://open-meteo.com/en/docs/seasonal-forecast-api]
 
 ```{r}
@@ -183,6 +190,8 @@ df |>
 ```
 
 ## Climate Projections
+
+Climate projections from different models are avialable through 2050.
 
 [https://open-meteo.com/en/docs/climate-api]
 

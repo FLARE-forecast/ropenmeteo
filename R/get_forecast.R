@@ -4,6 +4,7 @@
 #' @param longitude long longitude degree east or degree west
 #' @param forecast_days Number of days in the future for forecast (starts at current day)
 #' @param past_days Number of days in the past to include in the data
+#' @param model id of forest model https://open-meteo.com/en/docs/climate-api
 #' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api
 #'
 #' @return data frame (in long format)
@@ -13,10 +14,21 @@ get_forecast <- function(latitude,
                          longitude,
                          forecast_days,
                          past_days,
+                         model = "generic",
                          variables = c("temperature_2m")){
 
   if(forecast_days > 35) stop("forecast_days is longer than avialable (max = 35")
   if(past_days > 92) stop("hist_days is longer than avialable (max = 92)")
+
+  api <- switch(model,
+         "generic" = "https://api.open-meteo.com/v1/forecast",
+         "metno" = "https://api.open-meteo.com/v1/metno",
+         "dwd" = "https://api.open-meteo.com/v1/dwd",
+         "gfs" = "https://api.open-meteo.com/v1/gfs",
+         "meteofrance" = "https://api.open-meteo.com/v1/meteofrance",
+         "ecmwf" = "https://api.open-meteo.com/v1/ecmwf",
+         "jma"= "https://api.open-meteo.com/v1/jma",
+         "gem" = "https://api.open-meteo.com/v1/gem")
 
   latitude <- round(latitude, 2)
   longitude <- round(longitude, 2)
@@ -29,7 +41,7 @@ get_forecast <- function(latitude,
     v <-
       jsonlite::fromJSON(
         glue::glue(
-          "https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
+          "{api}?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
         ))
 
     units <- dplyr::bind_rows(units, dplyr::tibble(variable = names(v$hourly)[2], unit = unlist(v$hourly_units[2][1])))
@@ -44,10 +56,10 @@ get_forecast <- function(latitude,
   df <- df |>
     tidyr::pivot_longer(-time, names_to = "variable", values_to = "prediction") |>
     dplyr::rename(datetime = time) |>
-    dplyr::mutate( model_id = "open_meteo_best",
-                   reference_datetime = min(datetime) + lubridate::days(past_days)) |>
+    dplyr::mutate( model_id = model,
+                  reference_datetime = min(datetime) + lubridate::days(past_days)) |>
     dplyr::left_join(units, by = "variable") |>
-    dplyr::select(c("datetime", "model_id", "variable", "prediction","unit"))
+    dplyr::select(c("datetime", "reference_datetime", "model_id", "variable", "prediction","unit"))
 
   return(df)
 }
