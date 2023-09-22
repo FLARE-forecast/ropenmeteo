@@ -53,7 +53,7 @@ get_ensemble_forecast <- function(latitude,
   }
 
   df <- df |>
-    pivot_ensemble_forecast()
+    pivot_ensemble_forecast() |>
     dplyr::rename(datetime = time) |>
     dplyr::mutate(
       model_id = model,
