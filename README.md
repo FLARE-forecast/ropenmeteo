@@ -51,6 +51,17 @@ The package uses a long format standard with the following columns
     ```r
     remotes::install_github("FLARE-forecast/RopenMeteo")
 
+    ## 
+    ## ── R CMD build ─────────────────────────────────────────────────────────────────
+    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpWkq07I/remotes15c014be82b80/FLARE-forecast-RopenMeteo-0ac69b6/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpWkq07I/remotes15c014be82b80/FLARE-forecast-RopenMeteo-0ac69b6/DESCRIPTION’
+    ##   ─  preparing ‘RopenMeteo’:
+    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+    ##   ─  checking for LF line-endings in source and make files and shell scripts
+    ##   ─  checking for empty or unneeded directories
+    ##   ─  building ‘RopenMeteo_0.1.tar.gz’
+    ##      
+    ## 
+
 ``` r
 library(tidyverse)
 ```
