@@ -19,7 +19,8 @@ glm_variables <- function(product, time_step){
       "windspeed_10m",
       "cloudcover",
       "temperature_2m",
-      "shortwave_radiation")
+      "shortwave_radiation",
+      "surface_pressure")
 
     return(glm_vars)
 
