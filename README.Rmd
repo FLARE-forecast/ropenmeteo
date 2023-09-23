@@ -15,15 +15,15 @@ The package includes additional functionally to facilitate the use in mechanisti
 
 The package uses a long format standard with the following columns
 
-```
-datetime = date and time of forecasted value
-reference_datetime = the date and time of the beginning of the forecast (horizon = 0). Does not apply to historical weather.
-site_id = optional column to identify site location
-model_id = id of model that generated the forecast
-ensemble = ensemble member number (only for ensemble weather and seasonal forecasts)
-variable = forecasted variable
-prediction = forecasted value
-unit = units of the variable
+
+- `datetime` = date and time of forecasted value
+- `reference_datetime` = the date and time of the beginning of the forecast (horizon = 0). Does not apply to historical weather.
+- `site_id` = column to identify site location. If null in function call it defaults to latitude_longitude
+- `model_id` = id of model that generated the forecast
+- `ensemble` = ensemble member number (only for ensemble weather and seasonal forecasts)
+- `variable` = forecasted variable
+- `prediction` = forecasted value
+- `unit` = units of the variable
 ```
 
 ## Install

@@ -50,14 +50,8 @@ get_climate_projections <- function(latitude,
       model_id = model) |>
     dplyr::left_join(units, by = "variable") |>
     dplyr::mutate(datetime = lubridate::as_date(datetime)) |>
-    dplyr::select(c("datetime", "model_id", "variable", "prediction","unit"))
-
-  if(!is.null(site_id)){
-    df <- df |>
-      dplyr::mutate(site_id = site_id) |>
-      dplyr::select(c("datetime", "site_id", "model_id", "variable", "prediction","unit"))
-  }
-
+    dplyr::mutate(site_id = ifelse(is.null(site_id), paste0(latitude,"_",longitude), site_id)) |>
+    dplyr::select(c("datetime", "site_id", "model_id", "variable", "prediction","unit"))
 
   return(df)
 }

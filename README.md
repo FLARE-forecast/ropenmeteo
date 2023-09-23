@@ -30,31 +30,26 @@ seasonal forecast to the hourly time step.
 
 The package uses a long format standard with the following columns
 
-    datetime = date and time of forecasted value
-    reference_datetime = the date and time of the beginning of the forecast (horizon = 0). Does not apply to historical weather.
-    site_id = optional column to identify site location
-    model_id = id of model that generated the forecast
-    ensemble = ensemble member number (only for ensemble weather and seasonal forecasts)
-    variable = forecasted variable
-    prediction = forecasted value
-    unit = units of the variable
+- `datetime` = date and time of forecasted value
+- `reference_datetime` = the date and time of the beginning of the
+  forecast (horizon = 0). Does not apply to historical weather.
+- `site_id` = column to identify site location. If null in function call
+  it defaults to latitude_longitude
+- `model_id` = id of model that generated the forecast
+- `ensemble` = ensemble member number (only for ensemble weather and
+  seasonal forecasts)
+- `variable` = forecasted variable
+- `prediction` = forecasted value
+- `unit` = units of the variable
 
-## Install
+<!-- -->
 
-``` r
-remotes::install_github("FLARE-forecast/RopenMeteo")
-```
 
-    ## 
-    ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpCDlkv6/remotes155811a455fe2/FLARE-forecast-RopenMeteo-4a22c6a/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpCDlkv6/remotes155811a455fe2/FLARE-forecast-RopenMeteo-4a22c6a/DESCRIPTION’
-    ##   ─  preparing ‘RopenMeteo’:
-    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-    ##   ─  checking for LF line-endings in source and make files and shell scripts
-    ##   ─  checking for empty or unneeded directories
-    ##   ─  building ‘RopenMeteo_0.1.tar.gz’
-    ##      
-    ## 
+    ## Install
+
+
+    ```r
+    remotes::install_github("FLARE-forecast/RopenMeteo")
 
 ``` r
 library(tidyverse)
@@ -78,15 +73,16 @@ df <- RopenMeteo::get_forecast(latitude = 37.30,
 head(df)
 ```
 
-    ## # A tibble: 6 × 6
-    ##   datetime            reference_datetime  model_id variable     prediction unit 
-    ##   <dttm>              <dttm>              <chr>    <chr>             <dbl> <chr>
-    ## 1 2023-09-21 00:00:00 2023-09-23 00:00:00 generic  temperature…       18   °C   
-    ## 2 2023-09-21 01:00:00 2023-09-23 00:00:00 generic  temperature…       17   °C   
-    ## 3 2023-09-21 02:00:00 2023-09-23 00:00:00 generic  temperature…       16.4 °C   
-    ## 4 2023-09-21 03:00:00 2023-09-23 00:00:00 generic  temperature…       17   °C   
-    ## 5 2023-09-21 04:00:00 2023-09-23 00:00:00 generic  temperature…       17.1 °C   
-    ## 6 2023-09-21 05:00:00 2023-09-23 00:00:00 generic  temperature…       17.6 °C
+    ## # A tibble: 6 × 7
+    ##   datetime            reference_datetime  site_id   model_id variable prediction
+    ##   <dttm>              <dttm>              <chr>     <chr>    <chr>         <dbl>
+    ## 1 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       18  
+    ## 2 2023-09-21 01:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       17  
+    ## 3 2023-09-21 02:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       16.4
+    ## 4 2023-09-21 03:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       17  
+    ## 5 2023-09-21 04:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       17.1
+    ## 6 2023-09-21 05:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       17.6
+    ## # ℹ 1 more variable: unit <chr>
 
 ``` r
 df |> 
@@ -116,16 +112,16 @@ df <- RopenMeteo::get_ensemble_forecast(
 head(df)
 ```
 
-    ## # A tibble: 6 × 7
-    ##   datetime            reference_datetime  model_id  ensemble variable prediction
-    ##   <dttm>              <dttm>              <chr>     <chr>    <chr>         <dbl>
-    ## 1 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 00       tempera…       17  
-    ## 2 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 01       tempera…       17.4
-    ## 3 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 02       tempera…       17.6
-    ## 4 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 03       tempera…       17.3
-    ## 5 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 04       tempera…       17.4
-    ## 6 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 05       tempera…       17.2
-    ## # ℹ 1 more variable: unit <chr>
+    ## # A tibble: 6 × 8
+    ##   datetime            reference_datetime  site_id     model_id ensemble variable
+    ##   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
+    ## 1 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…
+    ## 2 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…
+    ## 3 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…
+    ## 4 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…
+    ## 5 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…
+    ## 6 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…
+    ## # ℹ 2 more variables: prediction <dbl>, unit <chr>
 
 ``` r
 df |> 
@@ -169,16 +165,16 @@ df <- RopenMeteo::get_ensemble_forecast(
 head(df)
 ```
 
-    ## # A tibble: 6 × 7
-    ##   datetime            reference_datetime  model_id  ensemble variable prediction
-    ##   <dttm>              <dttm>              <chr>     <chr>    <chr>         <dbl>
-    ## 1 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 00       relativ…         68
-    ## 2 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 01       relativ…         69
-    ## 3 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 02       relativ…         65
-    ## 4 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 03       relativ…         66
-    ## 5 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 04       relativ…         69
-    ## 6 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seam… 05       relativ…         67
-    ## # ℹ 1 more variable: unit <chr>
+    ## # A tibble: 6 × 8
+    ##   datetime            reference_datetime  site_id     model_id ensemble variable
+    ##   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
+    ## 1 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 00       relativ…
+    ## 2 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 01       relativ…
+    ## 3 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 02       relativ…
+    ## 4 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 03       relativ…
+    ## 5 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 04       relativ…
+    ## 6 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 05       relativ…
+    ## # ℹ 2 more variables: prediction <dbl>, unit <chr>
 
 ``` r
 df |> 
@@ -234,21 +230,21 @@ df |>
   RopenMeteo::convert_to_efi_standard()
 ```
 
-    ## # A tibble: 46,872 × 7
-    ##    datetime            reference_datetime  model_id    family parameter variable
-    ##    <dttm>              <dttm>              <chr>       <chr>  <chr>     <chr>   
-    ##  1 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        relativ…
-    ##  2 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        precipi…
-    ##  3 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        wind_sp…
-    ##  4 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        cloudco…
-    ##  5 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        air_tem…
-    ##  6 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        surface…
-    ##  7 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        longwav…
-    ##  8 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 01        relativ…
-    ##  9 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 01        precipi…
-    ## 10 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 01        wind_sp…
+    ## # A tibble: 46,872 × 8
+    ##    datetime            reference_datetime  site_id     model_id family parameter
+    ##    <dttm>              <dttm>              <chr>       <chr>    <chr>  <chr>    
+    ##  1 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  2 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  3 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  4 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  5 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  6 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  7 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  8 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+    ##  9 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+    ## 10 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
     ## # ℹ 46,862 more rows
-    ## # ℹ 1 more variable: prediction <dbl>
+    ## # ℹ 2 more variables: variable <chr>, prediction <dbl>
 
 Note that `neon4cast::stage3()` is similar to
 
@@ -259,21 +255,21 @@ df |>
   filter(datetime < reference_datetime)
 ```
 
-    ## # A tibble: 10,416 × 7
-    ##    datetime            reference_datetime  model_id    family parameter variable
-    ##    <dttm>              <dttm>              <chr>       <chr>  <chr>     <chr>   
-    ##  1 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        relativ…
-    ##  2 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        precipi…
-    ##  3 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        wind_sp…
-    ##  4 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        cloudco…
-    ##  5 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        air_tem…
-    ##  6 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        surface…
-    ##  7 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 00        longwav…
-    ##  8 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 01        relativ…
-    ##  9 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 01        precipi…
-    ## 10 2023-09-21 00:00:00 2023-09-23 00:00:00 gfs_seamle… ensem… 01        wind_sp…
+    ## # A tibble: 10,416 × 8
+    ##    datetime            reference_datetime  site_id     model_id family parameter
+    ##    <dttm>              <dttm>              <chr>       <chr>    <chr>  <chr>    
+    ##  1 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  2 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  3 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  4 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  5 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  6 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  7 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  8 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+    ##  9 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+    ## 10 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
     ## # ℹ 10,406 more rows
-    ## # ℹ 1 more variable: prediction <dbl>
+    ## # ℹ 2 more variables: variable <chr>, prediction <dbl>
 
 With the only difference that the number of days is equal to the
 `past_days` in the call to `RopenMeteo::get_ensemble_forecast()`. The
@@ -297,15 +293,15 @@ df <- RopenMeteo::get_historical_weather(
 tail(df |> na.omit())
 ```
 
-    ## # A tibble: 6 × 5
-    ##   datetime            model_id variable       prediction unit 
-    ##   <dttm>              <chr>    <chr>               <dbl> <chr>
-    ## 1 2023-09-16 18:00:00 ERA5     temperature_2m       24.2 °C   
-    ## 2 2023-09-16 19:00:00 ERA5     temperature_2m       24.6 °C   
-    ## 3 2023-09-16 20:00:00 ERA5     temperature_2m       25.4 °C   
-    ## 4 2023-09-16 21:00:00 ERA5     temperature_2m       25.6 °C   
-    ## 5 2023-09-16 22:00:00 ERA5     temperature_2m       23.8 °C   
-    ## 6 2023-09-16 23:00:00 ERA5     temperature_2m       23.1 °C
+    ## # A tibble: 6 × 6
+    ##   datetime            site_id     model_id variable       prediction unit 
+    ##   <dttm>              <chr>       <chr>    <chr>               <dbl> <chr>
+    ## 1 2023-09-16 18:00:00 37.3_-79.83 ERA5     temperature_2m       24.2 °C   
+    ## 2 2023-09-16 19:00:00 37.3_-79.83 ERA5     temperature_2m       24.6 °C   
+    ## 3 2023-09-16 20:00:00 37.3_-79.83 ERA5     temperature_2m       25.4 °C   
+    ## 4 2023-09-16 21:00:00 37.3_-79.83 ERA5     temperature_2m       25.6 °C   
+    ## 5 2023-09-16 22:00:00 37.3_-79.83 ERA5     temperature_2m       23.8 °C   
+    ## 6 2023-09-16 23:00:00 37.3_-79.83 ERA5     temperature_2m       23.1 °C
 
 Notice the delay of ~7 days.
 
@@ -339,16 +335,16 @@ df <- RopenMeteo::get_seasonal_forecast(
 head(df)
 ```
 
-    ## # A tibble: 6 × 7
-    ##   datetime            reference_datetime  model_id ensemble variable  prediction
-    ##   <dttm>              <dttm>              <chr>    <chr>    <chr>          <dbl>
-    ## 1 2023-09-18 00:00:00 2023-09-23 00:00:00 cfs      01       temperat…       15.3
-    ## 2 2023-09-18 00:00:00 2023-09-23 00:00:00 cfs      02       temperat…       15.8
-    ## 3 2023-09-18 00:00:00 2023-09-23 00:00:00 cfs      03       temperat…       15.3
-    ## 4 2023-09-18 00:00:00 2023-09-23 00:00:00 cfs      04       temperat…       15.2
-    ## 5 2023-09-18 06:00:00 2023-09-23 00:00:00 cfs      01       temperat…       13  
-    ## 6 2023-09-18 06:00:00 2023-09-23 00:00:00 cfs      02       temperat…       12.4
-    ## # ℹ 1 more variable: unit <chr>
+    ## # A tibble: 6 × 8
+    ##   datetime            reference_datetime  site_id     model_id ensemble variable
+    ##   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
+    ## 1 2023-09-18 00:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      01       tempera…
+    ## 2 2023-09-18 00:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      02       tempera…
+    ## 3 2023-09-18 00:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      03       tempera…
+    ## 4 2023-09-18 00:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      04       tempera…
+    ## 5 2023-09-18 06:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      01       tempera…
+    ## 6 2023-09-18 06:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      02       tempera…
+    ## # ℹ 2 more variables: prediction <dbl>, unit <chr>
 
 ``` r
 df |> 
@@ -380,15 +376,15 @@ df <- RopenMeteo::get_climate_projections(
 head(df)
 ```
 
-    ## # A tibble: 6 × 5
-    ##   datetime   model_id      variable            prediction unit 
-    ##   <date>     <chr>         <chr>                    <dbl> <chr>
-    ## 1 2023-09-23 EC_Earth3P_HR temperature_2m_mean       14.6 °C   
-    ## 2 2023-09-24 EC_Earth3P_HR temperature_2m_mean       18.1 °C   
-    ## 3 2023-09-25 EC_Earth3P_HR temperature_2m_mean       15.4 °C   
-    ## 4 2023-09-26 EC_Earth3P_HR temperature_2m_mean       16.2 °C   
-    ## 5 2023-09-27 EC_Earth3P_HR temperature_2m_mean       14.5 °C   
-    ## 6 2023-09-28 EC_Earth3P_HR temperature_2m_mean       12.4 °C
+    ## # A tibble: 6 × 6
+    ##   datetime   site_id     model_id      variable            prediction unit 
+    ##   <date>     <chr>       <chr>         <chr>                    <dbl> <chr>
+    ## 1 2023-09-23 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       14.6 °C   
+    ## 2 2023-09-24 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       18.1 °C   
+    ## 3 2023-09-25 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       15.4 °C   
+    ## 4 2023-09-26 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       16.2 °C   
+    ## 5 2023-09-27 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       14.5 °C   
+    ## 6 2023-09-28 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       12.4 °C
 
 ``` r
 df |> 

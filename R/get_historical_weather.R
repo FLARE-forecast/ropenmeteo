@@ -54,13 +54,9 @@ get_historical_weather <- function(latitude,
     dplyr::mutate(
       model_id = "ERA5") |>
     dplyr::left_join(units, by = "variable") |>
-    dplyr::select(c("datetime", "model_id", "variable", "prediction","unit"))
+    dplyr::mutate(site_id = ifelse(is.null(site_id), paste0(latitude,"_",longitude), site_id)) |>
+    dplyr::select(c("datetime", "site_id", "model_id", "variable", "prediction","unit"))
 
-  if(!is.null(site_id)){
-    df <- df |>
-      dplyr::mutate(site_id = site_id) |>
-      dplyr::select(c("datetime", "site_id", "model_id", "variable", "prediction","unit"))
-  }
 
   return(df)
 }
