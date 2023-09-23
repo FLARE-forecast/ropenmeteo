@@ -7,6 +7,7 @@
 get_historical_weather(
   latitude,
   longitude,
+  site_id = NULL,
   start_date,
   end_date,
   variables = c("relativehumidity_2m", "precipitation", "windspeed_10m", "cloudcover",
@@ -17,6 +18,8 @@ get_historical_weather(
 \item{latitude}{latitude degree north}
 
 \item{longitude}{long longitude degree east or degree west}
+
+\item{site_id}{= name of site location (optional, default = NULL)}
 
 \item{start_date}{Number of days in the future for forecast (starts at current day)}
 

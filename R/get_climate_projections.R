@@ -2,6 +2,7 @@
 #'
 #' @param latitude latitude degree north
 #' @param longitude long longitude degree east or degree west
+#' @param site_id = name of site location (optional, default = NULL)
 #' @param start_date Number of days in the future for forecast (starts at current day)
 #' @param end_date Number of days in the past to include in the data
 #' @param model id of forest model https://open-meteo.com/en/docs/climate-api
@@ -10,7 +11,13 @@
 #' @return data frame
 #' @export
 #'
-get_climate_projections <- function(latitude, longitude, start_date, end_date, model = "EC_Earth3P_HR", variables = c("temperature_2m_mean")){
+get_climate_projections <- function(latitude,
+                                    longitude,
+                                    site_id = NULL,
+                                    start_date,
+                                    end_date,
+                                    model = "EC_Earth3P_HR",
+                                    variables = c("temperature_2m_mean")){
 
   if(start_date < "1950-01-01") warning("start date must be on or after 1950-01-01")
   #if(end_date > Sys.Date() - lubridate::days(5))
@@ -44,6 +51,13 @@ get_climate_projections <- function(latitude, longitude, start_date, end_date, m
     dplyr::left_join(units, by = "variable") |>
     dplyr::mutate(datetime = lubridate::as_date(datetime)) |>
     dplyr::select(c("datetime", "model_id", "variable", "prediction","unit"))
+
+  if(!is.null(site_id)){
+    df <- df |>
+      dplyr::mutate(site_id = site_id) |>
+      dplyr::select(c("datetime", "site_id", "model_id", "variable", "prediction","unit"))
+  }
+
 
   return(df)
 }

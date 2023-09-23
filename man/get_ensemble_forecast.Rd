@@ -7,6 +7,7 @@
 get_ensemble_forecast(
   latitude,
   longitude,
+  site_id = NULL,
   forecast_days,
   past_days,
   model = "gfs_seamless",

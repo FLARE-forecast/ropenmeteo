@@ -2,16 +2,18 @@
 #'
 #' @param latitude latitude degree north
 #' @param longitude long longitude degree east or degree west
+#' @param site_id = name of site location (optional, default = NULL)
 #' @param forecast_days Number of days in the future for forecast (starts at current day)
 #' @param past_days Number of days in the past to include in the data
-#' @param model id of forest model https://open-meteo.com/en/docs/climate-api
-#' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api
+#' @param model id of forest model https://open-meteo.com/en/docs/climate-api. Default = "generic"
+#' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api.
 #'
 #' @return data frame (in long format)
 #' @export
 #'
 get_forecast <- function(latitude,
                          longitude,
+                         site_id = NULL,
                          forecast_days,
                          past_days,
                          model = "generic",
@@ -60,6 +62,12 @@ get_forecast <- function(latitude,
                   reference_datetime = min(datetime) + lubridate::days(past_days)) |>
     dplyr::left_join(units, by = "variable") |>
     dplyr::select(c("datetime", "reference_datetime", "model_id", "variable", "prediction","unit"))
+
+  if(!is.null(site_id)){
+    df <- df |>
+      dplyr::mutate(site_id = site_id) |>
+      dplyr::select(c("datetime", "reference_datetime", "site_id", "model_id", "variable", "prediction","unit"))
+  }
 
   return(df)
 }

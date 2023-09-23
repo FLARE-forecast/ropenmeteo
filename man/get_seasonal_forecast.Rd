@@ -7,6 +7,7 @@
 get_seasonal_forecast(
   latitude,
   longitude,
+  site_id = NULL,
   forecast_days,
   past_days,
   model = "cfs",
@@ -17,6 +18,8 @@ get_seasonal_forecast(
 \item{latitude}{latitude degree north}
 
 \item{longitude}{long longitude degree east or degree west}
+
+\item{site_id}{= name of site location (optional, default = NULL)}
 
 \item{forecast_days}{Number of days in the future for forecast (starts at current day)}
 

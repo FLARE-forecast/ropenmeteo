@@ -12,6 +12,7 @@
 #'
 get_ensemble_forecast <- function(latitude,
                                   longitude,
+                                  site_id = NULL,
                                   forecast_days,
                                   past_days,
                                   model = "gfs_seamless",
@@ -62,6 +63,11 @@ get_ensemble_forecast <- function(latitude,
     dplyr::left_join(units, by = "variable") |>
     dplyr::select(c("datetime", "reference_datetime", "model_id", "ensemble", "variable", "prediction","unit"))
 
+  if(!is.null(site_id)){
+    df <- df |>
+      dplyr::mutate(site_id = site_id) |>
+      dplyr::select(c("datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit"))
+  }
   return(df)
 }
 

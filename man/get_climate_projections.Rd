@@ -7,6 +7,7 @@
 get_climate_projections(
   latitude,
   longitude,
+  site_id = NULL,
   start_date,
   end_date,
   model = "EC_Earth3P_HR",
@@ -17,6 +18,8 @@ get_climate_projections(
 \item{latitude}{latitude degree north}
 
 \item{longitude}{long longitude degree east or degree west}
+
+\item{site_id}{= name of site location (optional, default = NULL)}
 
 \item{start_date}{Number of days in the future for forecast (starts at current day)}
 

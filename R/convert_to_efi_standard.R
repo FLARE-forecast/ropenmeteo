@@ -22,7 +22,7 @@ convert_to_efi_standard <- function(df){
            prediction = ifelse(variable == "cloud_area_fraction", prediction/100, prediction)) |>
     dplyr::mutate(family = "ensemble") |>
     dplyr::select(-unit) |>
-    dplyr::select(dplyr::any_of(c("datetime", "reference_datetime", "model_id", "family", "ensemble", "parameter", "variable", "prediction")))
+    dplyr::select(dplyr::any_of(c("datetime", "reference_datetime", "site_id", "model_id", "family", "ensemble", "parameter", "variable", "prediction")))
 
   if("ensemble" %in% names(df)) df <- df |> dplyr::rename(parameter = ensemble)
 

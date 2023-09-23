@@ -18,6 +18,7 @@ The package uses a long format standard with the following columns
 ```
 datetime = date and time of forecasted value
 reference_datetime = the date and time of the beginning of the forecast (horizon = 0). Does not apply to historical weather.
+site_id = optional column to identify site location
 model_id = id of model that generated the forecast
 ensemble = ensemble member number (only for ensemble weather and seasonal forecasts)
 variable = forecasted variable
@@ -235,7 +236,17 @@ df <- RopenMeteo::get_climate_projections(
 head(df)
 ```
 
-### Multiple climate models
+```{r}
+df |> 
+    mutate(variable = paste(variable, unit)) |> 
+    ggplot(aes(x = datetime, y = prediction)) + 
+    geom_line(color = "#F8766D") + 
+    facet_wrap(~variable, scale = "free")
+```
+
+## Downloading multiple sites or models
+
+### Multiple models
 
 ```{r}
 models <- c("CMCC_CM2_VHR4","FGOALS_f3_H","HiRAM_SIT_HR","MRI_AGCM3_2_S","EC_Earth3P_HR","MPI_ESM1_2_XR","NICAM16_8S")
@@ -260,4 +271,34 @@ df |>
     facet_wrap(~variable, scale = "free")
 ```
 
+### multiple sites
+
+The download of multiple sites uses the optional `site_id` to add column that denotes the different sites.
+
+```{r}
+sites <- tibble::tibble(site_id = c("fcre", "sunp"),
+                        latitude = c(37.30, 43.39),
+                        longitude = c(-79.83, -72.05))
+
+df <- purrr::map_df(1:nrow(sites), function(i, sites){
+  RopenMeteo::get_climate_projections(
+    latitude = sites$latitude[i],
+    longitude = sites$longitude[i],
+    site_id = sites$site_id[i],
+    start_date = Sys.Date(),
+    end_date = Sys.Date() + lubridate::years(1),
+    model = "MPI_ESM1_2_XR",
+    variables = c("temperature_2m_mean"))
+  },
+  sites)
+head(df)
+```
+
+```{r}
+df |> 
+    mutate(variable = paste(variable, unit)) |> 
+    ggplot(aes(x = datetime, y = prediction, color = site_id)) + 
+    geom_line() +
+    facet_wrap(~variable, scale = "free")
+```
 

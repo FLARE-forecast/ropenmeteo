@@ -7,6 +7,7 @@
 get_forecast(
   latitude,
   longitude,
+  site_id = NULL,
   forecast_days,
   past_days,
   model = "generic",
@@ -18,13 +19,15 @@ get_forecast(
 
 \item{longitude}{long longitude degree east or degree west}
 
+\item{site_id}{= name of site location (optional, default = NULL)}
+
 \item{forecast_days}{Number of days in the future for forecast (starts at current day)}
 
 \item{past_days}{Number of days in the past to include in the data}
 
-\item{model}{id of forest model https://open-meteo.com/en/docs/climate-api}
+\item{model}{id of forest model https://open-meteo.com/en/docs/climate-api. Default = "generic"}
 
-\item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api}
+\item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api.}
 }
 \value{
 data frame (in long format)

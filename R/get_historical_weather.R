@@ -2,6 +2,7 @@
 #'
 #' @param latitude latitude degree north
 #' @param longitude long longitude degree east or degree west
+#' @param site_id = name of site location (optional, default = NULL)
 #' @param start_date Number of days in the future for forecast (starts at current day)
 #' @param end_date Number of days in the past to include in the data
 #' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api
@@ -11,6 +12,7 @@
 #'
 get_historical_weather <- function(latitude,
                                   longitude,
+                                  site_id = NULL,
                                   start_date,
                                   end_date,
                                   variables = c("relativehumidity_2m",
@@ -53,6 +55,12 @@ get_historical_weather <- function(latitude,
       model_id = "ERA5") |>
     dplyr::left_join(units, by = "variable") |>
     dplyr::select(c("datetime", "model_id", "variable", "prediction","unit"))
+
+  if(!is.null(site_id)){
+    df <- df |>
+      dplyr::mutate(site_id = site_id) |>
+      dplyr::select(c("datetime", "site_id", "model_id", "variable", "prediction","unit"))
+  }
 
   return(df)
 }
