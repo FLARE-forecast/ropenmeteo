@@ -47,7 +47,7 @@ remotes::install_github("FLARE-forecast/RopenMeteo")
 
     ## 
     ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpTQj1ta/remotes1512eaae94a9/FLARE-forecast-RopenMeteo-e4e1b22/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpTQj1ta/remotes1512eaae94a9/FLARE-forecast-RopenMeteo-e4e1b22/DESCRIPTION’
+    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpCDlkv6/remotes155811a455fe2/FLARE-forecast-RopenMeteo-4a22c6a/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpCDlkv6/remotes155811a455fe2/FLARE-forecast-RopenMeteo-4a22c6a/DESCRIPTION’
     ##   ─  preparing ‘RopenMeteo’:
     ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
     ##   ─  checking for LF line-endings in source and make files and shell scripts
@@ -164,13 +164,8 @@ df <- RopenMeteo::get_ensemble_forecast(
   forecast_days = 7,
   past_days = 2,
   model = "gfs_seamless",
-  variables = c(
-    "relativehumidity_2m",
-    "precipitation",
-    "windspeed_10m",
-    "cloudcover",
-    "temperature_2m",
-    "shortwave_radiation"))
+  variables = RopenMeteo::glm_variables(product = "ensemble_forecast", 
+                                        time_step = "hourly"))
 head(df)
 ```
 

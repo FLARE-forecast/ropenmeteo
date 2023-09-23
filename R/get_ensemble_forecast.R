@@ -2,6 +2,7 @@
 #'
 #' @param latitude latitude degree north
 #' @param longitude long longitude degree east or degree west
+#' @param site_id = name of site location (optional, default = NULL)
 #' @param forecast_days Number of days in the future for forecast (starts at current day)
 #' @param past_days Number of days in the past to include in the data
 #' @param model id of forest model https://open-meteo.com/en/docs/ensemble-api

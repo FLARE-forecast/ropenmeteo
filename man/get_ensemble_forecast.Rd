@@ -20,6 +20,8 @@ get_ensemble_forecast(
 
 \item{longitude}{long longitude degree east or degree west}
 
+\item{site_id}{= name of site location (optional, default = NULL)}
+
 \item{forecast_days}{Number of days in the future for forecast (starts at current day)}
 
 \item{past_days}{Number of days in the past to include in the data}
