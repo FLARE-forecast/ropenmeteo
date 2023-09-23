@@ -26,6 +26,6 @@ add_longwave <- function(df) {
     names_to = "variable",
     values_to = "prediction") |>
     dplyr::left_join(unit_table, by = "variable") |>
-    dplyr::select(plyr::any_of(c("datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit")))
+    dplyr::select(dplyr::any_of(c("datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit")))
 
 }
