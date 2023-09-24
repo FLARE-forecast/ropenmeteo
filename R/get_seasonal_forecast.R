@@ -27,31 +27,16 @@ get_seasonal_forecast <- function(latitude,
 
   if(longitude > 180) longitude <- longitude - 360
 
-  df <- NULL
-  units <- NULL
-  for (variable in variables) {
-    v <-
-      jsonlite::fromJSON(
-        glue::glue(
-          "https://seasonal-api.open-meteo.com/v1/seasonal?latitude={latitude}&longitude={longitude}&&forecast_days={forecast_days}&past_days={past_days}&six_hourly={variable}&windspeed_unit=ms"
-        ))
-    units <- dplyr::bind_rows(units, dplyr::tibble(variable = names(v$six_hourly)[2], unit = unlist(v$six_hourly_units[2][1])))
-    v1  <- dplyr::as_tibble(v$six_hourly) |>
-      dplyr::mutate(time = lubridate::as_datetime(paste0(time,":00")))
-    if (variable != variables[1]) {
-      v1 <- dplyr::select(v1, -time)
-    }
-    df <- dplyr::bind_cols(df, v1)
-    Sys.sleep(5)
-  }
+  variables_api <- paste(variables,collapse=",")
+  v <- jsonlite::fromJSON(
+    glue::glue(
+      "https://seasonal-api.open-meteo.com/v1/seasonal?latitude={latitude}&longitude={longitude}&six_hourly={variables_api}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
+    ))
 
-  units$variable <- stringr::str_split(units$variable,
-                                       pattern = "_member",
-                                       n = 2,
-                                       simplify = TRUE)[, 1]
-
-  df <-
-    df |> pivot_ensemble_forecast() |>
+  units <- dplyr::tibble(variable = stringr::str_split_i(names(v$six_hourly),"_member",1), unit = unlist(v$six_hourly_units)) |> dplyr::distinct() |> dplyr::filter(variable != "time")
+  df  <- dplyr::as_tibble(v$six_hourly) |>
+    dplyr::mutate(time = lubridate::as_datetime(paste0(time,":00")))  |>
+    RopenMeteo:::pivot_ensemble_forecast() |>
     dplyr::rename(datetime = time) |>
     dplyr::mutate(
       model_id = model,

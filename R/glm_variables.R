@@ -24,6 +24,17 @@ glm_variables <- function(product, time_step){
 
     return(glm_vars)
 
+    }else if(product_time_step %in% c("seasonal_forecast_6hourly")){
+
+      glm_vars <- c("relativehumidity_2m",
+                    "precipitation",
+                    "windspeed_10m",
+                    "cloudcover",
+                    "temperature_2m",
+                    "shortwave_radiation")
+
+      return(glm_vars)
+
     }else{
 
       stop(paste0(paste0(product, " ", time_step) ," GLM variables not supported yet"))
