@@ -44,7 +44,7 @@ get_ensemble_forecast <- function(latitude,
       ))
 
   units <- dplyr::tibble(variable = stringr::str_split_i(names(v$hourly),"_member",1), unit = unlist(v$hourly_units)) |> dplyr::distinct() |> dplyr::filter(variable != "time")
-  v1  <- dplyr::as_tibble(v$hourly) |>
+  df  <- dplyr::as_tibble(v$hourly) |>
     dplyr::mutate(time = lubridate::as_datetime(paste0(time,":00")))  |>
     RopenMeteo:::pivot_ensemble_forecast() |>
     dplyr::rename(datetime = time) |>
