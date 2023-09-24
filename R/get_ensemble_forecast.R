@@ -36,26 +36,17 @@ get_ensemble_forecast <- function(latitude,
     message("shortwave radiation is not aviailable for ecmwf_ifs04 model")
   }
 
-  df <- NULL
-  units <- NULL
-  for (variable in variables) {
-    v <-
-    jsonlite::fromJSON(
-        glue::glue(
-          "https://ensemble-api.open-meteo.com/v1/ensemble?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}&models={model}"
-        ))
+  variables_api <- paste(variables,collapse=",")
 
-    units <- dplyr::bind_rows(units, dplyr::tibble(variable = names(v$hourly)[2], unit = unlist(v$hourly_units[2][1])))
-    v1  <- dplyr::as_tibble(v$hourly) |>
-      dplyr::mutate(time = lubridate::as_datetime(paste0(time,":00")))
-    if (variable != variables[1]) {
-      v1 <- dplyr::select(v1, -time)
-    }
-    df <- dplyr::bind_cols(df, v1)
-  }
+  v <- jsonlite::fromJSON(
+      glue::glue(
+        "https://ensemble-api.open-meteo.com/v1/ensemble?latitude={latitude}&longitude={longitude}&hourly={variables_api}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}&models={model}"
+      ))
 
-  df <- df |>
-    pivot_ensemble_forecast() |>
+  units <- dplyr::tibble(variable = stringr::str_split_i(names(v$hourly),"_member",1), unit = unlist(v$hourly_units)) |> dplyr::distinct() |> dplyr::filter(variable != "time")
+  v1  <- dplyr::as_tibble(v$hourly) |>
+    dplyr::mutate(time = lubridate::as_datetime(paste0(time,":00")))  |>
+    RopenMeteo:::pivot_ensemble_forecast() |>
     dplyr::rename(datetime = time) |>
     dplyr::mutate(
       model_id = model,
@@ -64,6 +55,7 @@ get_ensemble_forecast <- function(latitude,
     dplyr::left_join(units, by = "variable") |>
     dplyr::mutate(site_id = ifelse(is.null(site_id), paste0(latitude,"_",longitude), site_id)) |>
     dplyr::select(c("datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit"))
+
 
   return(df)
 }

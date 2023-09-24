@@ -42,6 +42,7 @@ get_seasonal_forecast <- function(latitude,
       v1 <- dplyr::select(v1, -time)
     }
     df <- dplyr::bind_cols(df, v1)
+    Sys.sleep(5)
   }
 
   units$variable <- stringr::str_split(units$variable,
