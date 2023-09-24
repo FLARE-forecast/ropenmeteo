@@ -16,6 +16,7 @@ Imports:
   purrr,
   jsonlite,
   lubridate,
-  glue
+  glue,
+  httr
 Suggests:
   ggplot2
