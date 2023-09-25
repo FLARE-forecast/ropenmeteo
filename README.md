@@ -42,25 +42,11 @@ The package uses a long format standard with the following columns
 - `prediction` = forecasted value
 - `unit` = units of the variable
 
-<!-- -->
+## Install
 
-
-    ## Install
-
-
-    ```r
-    remotes::install_github("FLARE-forecast/RopenMeteo")
-
-    ## 
-    ## ── R CMD build ─────────────────────────────────────────────────────────────────
-    ##      checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpWkq07I/remotes15c014be82b80/FLARE-forecast-RopenMeteo-0ac69b6/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/ms/kf9vk0w17p18pvs8k_23t5y80000gq/T/RtmpWkq07I/remotes15c014be82b80/FLARE-forecast-RopenMeteo-0ac69b6/DESCRIPTION’
-    ##   ─  preparing ‘RopenMeteo’:
-    ##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-    ##   ─  checking for LF line-endings in source and make files and shell scripts
-    ##   ─  checking for empty or unneeded directories
-    ##   ─  building ‘RopenMeteo_0.1.tar.gz’
-    ##      
-    ## 
+``` r
+remotes::install_github("FLARE-forecast/RopenMeteo")
+```
 
 ``` r
 library(tidyverse)
@@ -87,12 +73,12 @@ head(df)
     ## # A tibble: 6 × 7
     ##   datetime            reference_datetime  site_id   model_id variable prediction
     ##   <dttm>              <dttm>              <chr>     <chr>    <chr>         <dbl>
-    ## 1 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       18  
-    ## 2 2023-09-21 01:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       17  
-    ## 3 2023-09-21 02:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       16.4
-    ## 4 2023-09-21 03:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       17  
-    ## 5 2023-09-21 04:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       17.1
-    ## 6 2023-09-21 05:00:00 2023-09-23 00:00:00 37.3_-79… generic  tempera…       17.6
+    ## 1 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79… generic  tempera…       16.6
+    ## 2 2023-09-23 01:00:00 2023-09-25 00:00:00 37.3_-79… generic  tempera…       16  
+    ## 3 2023-09-23 02:00:00 2023-09-25 00:00:00 37.3_-79… generic  tempera…       15.4
+    ## 4 2023-09-23 03:00:00 2023-09-25 00:00:00 37.3_-79… generic  tempera…       15.7
+    ## 5 2023-09-23 04:00:00 2023-09-25 00:00:00 37.3_-79… generic  tempera…       14.7
+    ## 6 2023-09-23 05:00:00 2023-09-25 00:00:00 37.3_-79… generic  tempera…       14  
     ## # ℹ 1 more variable: unit <chr>
 
 ``` r
@@ -126,12 +112,12 @@ head(df)
     ## # A tibble: 6 × 8
     ##   datetime            reference_datetime  site_id     model_id ensemble variable
     ##   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
-    ## 1 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…
-    ## 2 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…
-    ## 3 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…
-    ## 4 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…
-    ## 5 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…
-    ## 6 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…
+    ## 1 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…
+    ## 2 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…
+    ## 3 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…
+    ## 4 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…
+    ## 5 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…
+    ## 6 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…
     ## # ℹ 2 more variables: prediction <dbl>, unit <chr>
 
 ``` r
@@ -179,12 +165,12 @@ head(df)
     ## # A tibble: 6 × 8
     ##   datetime            reference_datetime  site_id     model_id ensemble variable
     ##   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
-    ## 1 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 00       relativ…
-    ## 2 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 01       relativ…
-    ## 3 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 02       relativ…
-    ## 4 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 03       relativ…
-    ## 5 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 04       relativ…
-    ## 6 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… 05       relativ…
+    ## 1 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 00       relativ…
+    ## 2 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 01       relativ…
+    ## 3 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 02       relativ…
+    ## 4 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 03       relativ…
+    ## 5 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 04       relativ…
+    ## 6 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… 05       relativ…
     ## # ℹ 2 more variables: prediction <dbl>, unit <chr>
 
 ``` r
@@ -209,12 +195,12 @@ df |>
 ```
 
     ##               time AirTemp ShortWave LongWave RelHum WindSpeed Rain
-    ## 1 2023-09-21 00:00    17.0         5   388.28     68      1.02    0
-    ## 2 2023-09-21 01:00    15.7         0   379.65     73      0.72    0
-    ## 3 2023-09-21 02:00    14.8         0   374.34     77      0.54    0
-    ## 4 2023-09-21 03:00    14.1         0   370.65     80      0.51    0
-    ## 5 2023-09-21 04:00    13.5         0   366.19     83      0.50    0
-    ## 6 2023-09-21 05:00    13.0         0   362.54     85      0.50    0
+    ## 1 2023-09-23 00:00    13.7         0   359.60     67      2.41    0
+    ## 2 2023-09-23 01:00    12.7         0   357.53     73      2.33    0
+    ## 3 2023-09-23 02:00    12.3         0   356.12     77      2.38    0
+    ## 4 2023-09-23 03:00    12.1         0   356.12     79      2.53    0
+    ## 5 2023-09-23 04:00    12.1         0   356.83     78      2.72    0
+    ## 6 2023-09-23 05:00    12.2         0   356.83     76      3.07    0
 
 ### Converting to Ecological Forecasting Initative convention
 
@@ -241,20 +227,20 @@ df |>
   RopenMeteo::convert_to_efi_standard()
 ```
 
-    ## # A tibble: 46,872 × 8
+    ## # A tibble: 53,568 × 8
     ##    datetime            reference_datetime  site_id     model_id family parameter
     ##    <dttm>              <dttm>              <chr>       <chr>    <chr>  <chr>    
-    ##  1 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  2 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  3 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  4 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  5 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  6 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  7 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  8 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
-    ##  9 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
-    ## 10 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
-    ## # ℹ 46,862 more rows
+    ##  1 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  2 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  3 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  4 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  5 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  6 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  7 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  8 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  9 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+    ## 10 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+    ## # ℹ 53,558 more rows
     ## # ℹ 2 more variables: variable <chr>, prediction <dbl>
 
 Note that `neon4cast::stage3()` is similar to
@@ -266,20 +252,20 @@ df |>
   filter(datetime < reference_datetime)
 ```
 
-    ## # A tibble: 10,416 × 8
+    ## # A tibble: 11,904 × 8
     ##    datetime            reference_datetime  site_id     model_id family parameter
     ##    <dttm>              <dttm>              <chr>       <chr>    <chr>  <chr>    
-    ##  1 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  2 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  3 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  4 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  5 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  6 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  7 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-    ##  8 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
-    ##  9 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
-    ## 10 2023-09-21 00:00:00 2023-09-23 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
-    ## # ℹ 10,406 more rows
+    ##  1 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  2 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  3 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  4 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  5 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  6 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  7 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  8 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+    ##  9 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+    ## 10 2023-09-23 00:00:00 2023-09-25 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+    ## # ℹ 11,894 more rows
     ## # ℹ 2 more variables: variable <chr>, prediction <dbl>
 
 With the only difference that the number of days is equal to the
@@ -307,12 +293,12 @@ tail(df |> na.omit())
     ## # A tibble: 6 × 6
     ##   datetime            site_id     model_id variable       prediction unit 
     ##   <dttm>              <chr>       <chr>    <chr>               <dbl> <chr>
-    ## 1 2023-09-16 18:00:00 37.3_-79.83 ERA5     temperature_2m       24.2 °C   
-    ## 2 2023-09-16 19:00:00 37.3_-79.83 ERA5     temperature_2m       24.6 °C   
-    ## 3 2023-09-16 20:00:00 37.3_-79.83 ERA5     temperature_2m       25.4 °C   
-    ## 4 2023-09-16 21:00:00 37.3_-79.83 ERA5     temperature_2m       25.6 °C   
-    ## 5 2023-09-16 22:00:00 37.3_-79.83 ERA5     temperature_2m       23.8 °C   
-    ## 6 2023-09-16 23:00:00 37.3_-79.83 ERA5     temperature_2m       23.1 °C
+    ## 1 2023-09-18 18:00:00 37.3_-79.83 ERA5     temperature_2m       21.3 °C   
+    ## 2 2023-09-18 19:00:00 37.3_-79.83 ERA5     temperature_2m       21.5 °C   
+    ## 3 2023-09-18 20:00:00 37.3_-79.83 ERA5     temperature_2m       21.5 °C   
+    ## 4 2023-09-18 21:00:00 37.3_-79.83 ERA5     temperature_2m       21.5 °C   
+    ## 5 2023-09-18 22:00:00 37.3_-79.83 ERA5     temperature_2m       19.5 °C   
+    ## 6 2023-09-18 23:00:00 37.3_-79.83 ERA5     temperature_2m       18.6 °C
 
 Notice the delay of ~7 days.
 
@@ -349,12 +335,12 @@ head(df)
     ## # A tibble: 6 × 8
     ##   datetime            reference_datetime  site_id     model_id ensemble variable
     ##   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
-    ## 1 2023-09-18 00:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      01       tempera…
-    ## 2 2023-09-18 00:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      02       tempera…
-    ## 3 2023-09-18 00:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      03       tempera…
-    ## 4 2023-09-18 00:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      04       tempera…
-    ## 5 2023-09-18 06:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      01       tempera…
-    ## 6 2023-09-18 06:00:00 2023-09-23 00:00:00 37.3_-79.83 cfs      02       tempera…
+    ## 1 2023-09-20 00:00:00 2023-09-25 00:00:00 37.3_-79.83 cfs      01       tempera…
+    ## 2 2023-09-20 00:00:00 2023-09-25 00:00:00 37.3_-79.83 cfs      02       tempera…
+    ## 3 2023-09-20 00:00:00 2023-09-25 00:00:00 37.3_-79.83 cfs      03       tempera…
+    ## 4 2023-09-20 00:00:00 2023-09-25 00:00:00 37.3_-79.83 cfs      04       tempera…
+    ## 5 2023-09-20 06:00:00 2023-09-25 00:00:00 37.3_-79.83 cfs      01       tempera…
+    ## 6 2023-09-20 06:00:00 2023-09-25 00:00:00 37.3_-79.83 cfs      02       tempera…
     ## # ℹ 2 more variables: prediction <dbl>, unit <chr>
 
 ``` r
@@ -366,13 +352,47 @@ df |>
   facet_wrap(~variable, scale = "free")
 ```
 
-    ## Warning: Removed 2172 rows containing missing values (`geom_line()`).
+    ## Warning: Removed 2204 rows containing missing values (`geom_line()`).
 
 ![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+
+### Downscaling from 6 hour to 1 hour time-step
+
+The downscaling uses the GLM variables
+
+``` r
+df <- RopenMeteo::get_seasonal_forecast(
+  latitude = 37.30,
+  longitude = -79.83,
+  forecast_days = 30,
+  past_days = 5,
+  variables = RopenMeteo::glm_variables(product = "seasonal_forecast", 
+                                        time_step = "6hourly"))
+```
+
+``` r
+df |> 
+  RopenMeteo::six_hourly_to_hourly(latitude = 37.30, longitude = -79.83, use_solar_geom = TRUE) |> 
+  mutate(variable = paste(variable, unit)) |> 
+  ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
+  geom_line() + 
+  geom_vline(aes(xintercept = reference_datetime)) + 
+  facet_wrap(~variable, scale = "free", ncol = 2)
+```
+
+    ## Registered S3 method overwritten by 'quantmod':
+    ##   method            from
+    ##   as.zoo.data.frame zoo
+
+![](README_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
 
 ## Climate Projections
 
 Climate projections from different models are available through 2050.
+The output is a daily time-step.
+
+Note the units for shortwave radiation are different for the climate
+projection.
 
 \[<https://open-meteo.com/en/docs/climate-api>\]
 
@@ -390,12 +410,12 @@ head(df)
     ## # A tibble: 6 × 6
     ##   datetime   site_id     model_id      variable            prediction unit 
     ##   <date>     <chr>       <chr>         <chr>                    <dbl> <chr>
-    ## 1 2023-09-23 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       14.6 °C   
-    ## 2 2023-09-24 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       18.1 °C   
-    ## 3 2023-09-25 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       15.4 °C   
-    ## 4 2023-09-26 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       16.2 °C   
-    ## 5 2023-09-27 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       14.5 °C   
-    ## 6 2023-09-28 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       12.4 °C
+    ## 1 2023-09-25 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       15.4 °C   
+    ## 2 2023-09-26 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       16.2 °C   
+    ## 3 2023-09-27 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       14.5 °C   
+    ## 4 2023-09-28 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       12.4 °C   
+    ## 5 2023-09-29 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       12.6 °C   
+    ## 6 2023-09-30 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       13.2 °C
 
 ``` r
 df |> 
@@ -405,7 +425,7 @@ df |>
     facet_wrap(~variable, scale = "free")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
 
 ## Downloading multiple sites or models
 
@@ -433,9 +453,9 @@ df |>
     facet_wrap(~variable, scale = "free")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
 
-### multiple sites
+### Multiple sites
 
 The download of multiple sites uses the optional `site_id` to add column
 that denotes the different sites.
@@ -462,12 +482,12 @@ head(df)
     ## # A tibble: 6 × 6
     ##   datetime   site_id model_id      variable            prediction unit 
     ##   <date>     <chr>   <chr>         <chr>                    <dbl> <chr>
-    ## 1 2023-09-23 fcre    MPI_ESM1_2_XR temperature_2m_mean       12.2 °C   
-    ## 2 2023-09-24 fcre    MPI_ESM1_2_XR temperature_2m_mean       12   °C   
-    ## 3 2023-09-25 fcre    MPI_ESM1_2_XR temperature_2m_mean       14.7 °C   
-    ## 4 2023-09-26 fcre    MPI_ESM1_2_XR temperature_2m_mean       17.8 °C   
-    ## 5 2023-09-27 fcre    MPI_ESM1_2_XR temperature_2m_mean       19.3 °C   
-    ## 6 2023-09-28 fcre    MPI_ESM1_2_XR temperature_2m_mean       21.6 °C
+    ## 1 2023-09-25 fcre    MPI_ESM1_2_XR temperature_2m_mean       14.7 °C   
+    ## 2 2023-09-26 fcre    MPI_ESM1_2_XR temperature_2m_mean       17.8 °C   
+    ## 3 2023-09-27 fcre    MPI_ESM1_2_XR temperature_2m_mean       19.3 °C   
+    ## 4 2023-09-28 fcre    MPI_ESM1_2_XR temperature_2m_mean       21.6 °C   
+    ## 5 2023-09-29 fcre    MPI_ESM1_2_XR temperature_2m_mean       15.9 °C   
+    ## 6 2023-09-30 fcre    MPI_ESM1_2_XR temperature_2m_mean       11   °C
 
 ``` r
 df |> 
@@ -477,4 +497,36 @@ df |>
     facet_wrap(~variable, scale = "free")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+
+### Converting from daily to hourly time-step
+
+Photosynthesis is non-linearly sensitive to shortwave radiation.
+Therefore, the photosynthesis response to hourly radiation is different
+than the response to the aggregated daily mean radiation. To address
+this issue, we provide a function to convert the daily sum of shortwave
+radiation to hourly values that uses solar geometry to impute.
+Additionally, the sum of precipitation is divided by 24 hours to convert
+to an hourly time-step. All other variables have their daily mean
+applied to each hour.
+
+``` r
+df <- RopenMeteo::get_climate_projections(
+  latitude = 37.30,
+  longitude = -79.83,
+  start_date = Sys.Date(),
+  end_date = Sys.Date() + lubridate::years(1),
+  model = "EC_Earth3P_HR",
+  variables = RopenMeteo::glm_variables(product = "climate_projection", time_step = "daily"))
+```
+
+``` r
+df |> 
+ RopenMeteo::daily_to_hourly(latitude = 37.30, longitude = -79.83) |> 
+  mutate(variable = paste(variable, unit)) |> 
+  ggplot(aes(x = datetime, y = prediction)) + 
+  geom_line(color = "#F8766D") + 
+  facet_wrap(~variable, scale = "free", ncol = 2)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->

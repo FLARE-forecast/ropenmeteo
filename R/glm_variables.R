@@ -35,8 +35,16 @@ glm_variables <- function(product, time_step){
 
       return(glm_vars)
 
-    }else{
+    }else if(product_time_step == "climate_projection_daily"){
 
+      glm_vars <- c("temperature_2m_mean",
+                    "windspeed_10m_mean",
+                    "cloudcover_mean",
+                    "shortwave_radiation_sum",
+                    "relative_humidity_2m_mean",
+                    "precipitation_sum")
+
+    }else{
       stop(paste0(paste0(product, " ", time_step) ," GLM variables not supported yet"))
 
     }

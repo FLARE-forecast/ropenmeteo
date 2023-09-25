@@ -24,11 +24,10 @@ The package uses a long format standard with the following columns
 - `variable` = forecasted variable
 - `prediction` = forecasted value
 - `unit` = units of the variable
-```
 
 ## Install
 
-```{r message = FALSE, warning = FALSE}
+```{r message = FALSE, warning = FALSE, eval = FALSE}
 remotes::install_github("FLARE-forecast/RopenMeteo")
 ```
 
@@ -214,9 +213,37 @@ df |>
   facet_wrap(~variable, scale = "free")
 ```
 
+### Downscaling from 6 hour to 1 hour time-step
+
+The downscaling uses the GLM variables
+
+```{r}
+df <- RopenMeteo::get_seasonal_forecast(
+  latitude = 37.30,
+  longitude = -79.83,
+  forecast_days = 30,
+  past_days = 5,
+  variables = RopenMeteo::glm_variables(product = "seasonal_forecast", 
+                                        time_step = "6hourly"))
+```
+
+
+```{r}
+df |> 
+  RopenMeteo::six_hourly_to_hourly(latitude = 37.30, longitude = -79.83, use_solar_geom = TRUE) |> 
+  mutate(variable = paste(variable, unit)) |> 
+  ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
+  geom_line() + 
+  geom_vline(aes(xintercept = reference_datetime)) + 
+  facet_wrap(~variable, scale = "free", ncol = 2)
+```
+
+
 ## Climate Projections
 
-Climate projections from different models are available through 2050.
+Climate projections from different models are available through 2050.  The output is a daily time-step.
+
+Note the units for shortwave radiation are different for the climate projection.
 
 [https://open-meteo.com/en/docs/climate-api]
 
@@ -266,7 +293,7 @@ df |>
     facet_wrap(~variable, scale = "free")
 ```
 
-### multiple sites
+### Multiple sites
 
 The download of multiple sites uses the optional `site_id` to add column that denotes the different sites.
 
@@ -297,3 +324,25 @@ df |>
     facet_wrap(~variable, scale = "free")
 ```
 
+### Converting from daily to hourly time-step
+
+Photosynthesis is non-linearly sensitive to shortwave radiation.  Therefore, the photosynthesis response to hourly radiation is different than the response to the aggregated daily mean radiation.  To address this issue, we provide a function to convert the daily sum of shortwave radiation to hourly values that uses solar geometry to impute.  Additionally, the sum of precipitation is divided by 24 hours to convert to an hourly time-step.  All other variables have their daily mean applied to each hour.
+
+```{r}
+df <- RopenMeteo::get_climate_projections(
+  latitude = 37.30,
+  longitude = -79.83,
+  start_date = Sys.Date(),
+  end_date = Sys.Date() + lubridate::years(1),
+  model = "EC_Earth3P_HR",
+  variables = RopenMeteo::glm_variables(product = "climate_projection", time_step = "daily"))
+```
+
+```{r}
+df |> 
+ RopenMeteo::daily_to_hourly(latitude = 37.30, longitude = -79.83) |> 
+  mutate(variable = paste(variable, unit)) |> 
+  ggplot(aes(x = datetime, y = prediction)) + 
+  geom_line(color = "#F8766D") + 
+  facet_wrap(~variable, scale = "free", ncol = 2)
+```
