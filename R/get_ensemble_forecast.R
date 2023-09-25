@@ -42,7 +42,7 @@ get_ensemble_forecast <- function(latitude,
     "https://ensemble-api.open-meteo.com/v1/ensemble?latitude={latitude}&longitude={longitude}&hourly={variables_api}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}&models={model}"
   )
 
-  df <- read_url(url)
+  v <- read_url(url)
 
   units <- dplyr::tibble(variable = stringr::str_split_i(names(v$hourly),"_member",1), unit = unlist(v$hourly_units)) |> dplyr::distinct() |> dplyr::filter(variable != "time")
   df  <- dplyr::as_tibble(v$hourly) |>
