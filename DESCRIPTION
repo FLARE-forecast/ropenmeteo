@@ -17,6 +17,7 @@ Imports:
   jsonlite,
   lubridate,
   glue,
-  httr
+  httr,
+  imputeTS
 Suggests:
   ggplot2

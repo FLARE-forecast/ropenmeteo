@@ -3,6 +3,7 @@
 #' @param df data frame output by get_seasonal_forecast
 #' @param latitude latitude degree north
 #' @param longitude long longitude degree east or degree west
+#' @param use_solar_geom use solar geometry to determine hourly variables
 #'
 #' @return data frame
 #' @export

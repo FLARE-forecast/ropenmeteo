@@ -12,6 +12,8 @@ six_hourly_to_hourly(df, latitude, longitude, use_solar_geom = TRUE)
 \item{latitude}{latitude degree north}
 
 \item{longitude}{long longitude degree east or degree west}
+
+\item{use_solar_geom}{use solar geometry to determine hourly variables}
 }
 \value{
 data frame
