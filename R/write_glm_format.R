@@ -16,7 +16,7 @@ write_glm_format <- function(df, path) {
   if(!("windspeed_10m" %in% variables)) warning("missing windspeed")
   if(!("relativehumidity_2m" %in% variables)) warning("missing relativehumidity")
 
-
+  df <- df |> mutate(prediction = round(prediction, 2))
   if("ensemble" %in% names(df)){
     ensemble_list <- df |> dplyr::distinct(model_id, ensemble)
 
