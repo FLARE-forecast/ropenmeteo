@@ -18,13 +18,12 @@ six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE)
   if(!("relativehumidity_2m" %in% variables)) warning("missing relativehumidity")
 
   df <- df |>
-    filter(datetime <= max(df$datetime) - lubridate::hours(18)) |> #remove last day
-    dplyr::mutate(family = "ensemble")
+    filter(datetime <= max(df$datetime) - lubridate::hours(18)) #remove last day
 
   units <- df |> distinct(variable, unit)
 
   ensemble_maxtime <- df |>
-    dplyr::group_by(site_id, family, model_id, ensemble, reference_datetime) |>
+    dplyr::group_by(site_id, model_id, ensemble, reference_datetime) |>
     dplyr::summarise(max_time = max(datetime), .groups = "drop")
 
   ensembles <- unique(df$ensemble)
@@ -48,9 +47,9 @@ six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE)
   df1 <- df |>
     dplyr::select(-unit) |>
     tidyr::pivot_wider(names_from = variable, values_from = prediction) |>
-    dplyr::right_join(full_time, by = c("site_id", "model_id", "ensemble", "datetime", "reference_datetime", "family")) |>
-    dplyr::arrange(site_id, family, ensemble, datetime) |>
-    dplyr::group_by(site_id, family, ensemble)  |>
+    dplyr::right_join(full_time, by = c("site_id", "model_id", "ensemble", "datetime", "reference_datetime")) |>
+    dplyr::arrange(site_id, ensemble, datetime) |>
+    dplyr::group_by(site_id, ensemble)  |>
     tidyr::fill(c("precipitation"), .direction = "up") |>
     tidyr::fill(c("shortwave_radiation"), .direction = "up") |>
     dplyr::mutate(relativehumidity_2m =  imputeTS::na_interpolation(relativehumidity_2m, option = "linear"),
@@ -58,7 +57,7 @@ six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE)
                   cloudcover =  imputeTS::na_interpolation(cloudcover, option = "linear"),
                   temperature_2m =  imputeTS::na_interpolation(temperature_2m, option = "linear"),
                   precipitation = precipitation/6) |>
-    tidyr::pivot_longer(-c("site_id", "model_id", "family", "ensemble", "datetime", "reference_datetime"), names_to = "variable", values_to = "prediction")
+    tidyr::pivot_longer(-c("site_id", "model_id", "ensemble", "datetime", "reference_datetime"), names_to = "variable", values_to = "prediction")
 
   #the first time step is the 6 hour sum from the previous day
   df1 <- df1 |>
@@ -79,7 +78,7 @@ six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE)
                     lon = ifelse(longitude < 0, 360 + longitude,longitude),
                     rpot = downscale_solar_geom(doy, lon, latitude)) |>  # hourly sw flux calculated using solar geometry
       dplyr::select(-shifted_datetime) |>
-      dplyr::group_by(site_id, family, ensemble, reference_datetime, date, variable) |>
+      dplyr::group_by(site_id, ensemble, reference_datetime, date, variable) |>
       dplyr::mutate(avg.rpot = mean(rpot, na.rm = TRUE),
                     avg.SW = mean(prediction, na.rm = TRUE))|> # daily sw mean from solar geometry
       dplyr::ungroup() |>
