@@ -22,10 +22,10 @@ add_longwave <- function(df) {
     ) |>
     dplyr::select(-eps_star) |>
     tidyr::pivot_longer(-dplyr::any_of(c(
-      "datetime", "ensemble", "model_id", "reference_datetime", "site_id")),
+      "datetime", "ensemble", "model_id", "reference_datetime", "site_id", "parameter", "family")),
     names_to = "variable",
     values_to = "prediction") |>
     dplyr::left_join(unit_table, by = "variable") |>
-    dplyr::select(dplyr::any_of(c("datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit")))
+    dplyr::select(dplyr::any_of(c("datetime", "reference_datetime", "site_id", "model_id", "parameter", "family", "ensemble", "variable", "prediction","unit")))
 
 }
