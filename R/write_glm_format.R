@@ -66,7 +66,8 @@ write_glm_format <- function(df, path) {
     df |>
       dplyr::mutate(datetime = ifelse(variable %in% c("longwave_radiation","shortwave_radiation", "precipitation"),
                                       datetime - lubridate::hours(1),
-                                      datetime)) |>
+                                      datetime),
+                   datetime = lubridate::as_datetime(datetime)) |>
       dplyr::select(-unit) |>
       tidyr::pivot_wider(names_from = variable, values_from = prediction) |>
       dplyr::rename(
