@@ -60,7 +60,7 @@ daily_to_hourly <- function(df, latitude, longitude){
                   shortwave_radiation_sum = (shortwave_radiation_sum/86400)*1000000) |>
     dplyr::rename(precipitation = precipitation_sum,
                   shortwave_radiation = shortwave_radiation_sum,
-                  relative_humidity_2m = relative_humidity_2m_mean,
+                  relativehumidity_2m = relative_humidity_2m_mean,
                   windspeed_10m = windspeed_10m_mean,
                   cloudcover = cloudcover_mean,
                   temperature_2m = temperature_2m_mean) |>
