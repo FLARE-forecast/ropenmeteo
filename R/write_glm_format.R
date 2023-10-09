@@ -64,7 +64,7 @@ write_glm_format <- function(df, path) {
               }, ensemble_list, df)
   }else{
     df |>
-      dplyr::mutate(datetime = ifelse(variable %in% c("longwave_radiation","shortwave_radiation", "precipitation"),
+      dplyr::mutate(datetime = ifelse(variable %in% c("longwave_radiation","shortwave_radiation", "precipitation") & model_id != "ERA5",
                                       datetime - lubridate::hours(1),
                                       datetime),
                    datetime = lubridate::as_datetime(datetime)) |>
