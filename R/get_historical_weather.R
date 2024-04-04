@@ -2,9 +2,9 @@
 #'
 #' @param latitude latitude degree north
 #' @param longitude long longitude degree east or degree west
-#' @param site_id = name of site location (optional, default = NULL)
-#' @param start_date Number of days in the future for forecast (starts at current day)
-#' @param end_date Number of days in the past to include in the data
+#' @param site_id name of site location (optional, default = NULL)
+#' @param start_date earliest date requested. Must be on or after 1950-01-01
+#' @param end_date latest date requested
 #' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api
 #'
 #' @return data frame
