@@ -14,10 +14,10 @@ glm_variables <- function(product, time_step){
                               "forecast_hourly",
                               "historical_hourly")){
 
-    glm_vars <- c("relativehumidity_2m",
+    glm_vars <- c("relative_humidity_2m",
       "precipitation",
-      "windspeed_10m",
-      "cloudcover",
+      "wind_speed_10m",
+      "cloud_cover",
       "temperature_2m",
       "shortwave_radiation",
       "surface_pressure")
@@ -26,10 +26,10 @@ glm_variables <- function(product, time_step){
 
     }else if(product_time_step %in% c("seasonal_forecast_6hourly")){
 
-      glm_vars <- c("relativehumidity_2m",
+      glm_vars <- c("relative_humidity_2m",
                     "precipitation",
-                    "windspeed_10m",
-                    "cloudcover",
+                    "wind_speed_10m",
+                    "cloud_cover",
                     "temperature_2m",
                     "shortwave_radiation")
 
@@ -38,8 +38,8 @@ glm_variables <- function(product, time_step){
     }else if(product_time_step == "climate_projection_daily"){
 
       glm_vars <- c("temperature_2m_mean",
-                    "windspeed_10m_mean",
-                    "cloudcover_mean",
+                    "wind_speed_10m_mean",
+                    "cloud_cover_mean",
                     "shortwave_radiation_sum",
                     "relative_humidity_2m_mean",
                     "precipitation_sum")
