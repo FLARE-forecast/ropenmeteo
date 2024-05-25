@@ -15,10 +15,10 @@ get_historical_weather <- function(latitude,
                                   site_id = NULL,
                                   start_date,
                                   end_date,
-                                  variables = c("relativehumidity_2m",
+                                  variables = c("relative_humidity_2m",
                                                 "precipitation",
-                                                "windspeed_10m",
-                                                "cloudcover",
+                                                "wind_speed_10m",
+                                                "cloud_cover",
                                                 "temperature_2m",
                                                 "shortwave_radiation")){
 
