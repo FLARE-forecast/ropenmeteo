@@ -20,7 +20,7 @@ convert_to_efi_standard <- function(df){
     dplyr::mutate(variable = ifelse(variable == "temperature_2m", "air_temperature", variable),
            prediction = ifelse(variable == "air_temperature", prediction + 273.15, prediction),
            unit = ifelse(variable == "air_temperature", "K", unit),
-           variable = ifelse(variable == "relativehumidity_2m", "relative_humidity", variable),
+           variable = ifelse(variable == "relative_humidity_2m", "relative_humidity", variable),
            prediction = ifelse(variable == "relative_humidity", prediction/100, prediction),
            unit = ifelse(variable == "relative_humidity", "proportion", unit),
            variable = ifelse(variable == "longwave", "surface_downwelling_longwave_flux_in_air", variable),
@@ -28,13 +28,13 @@ convert_to_efi_standard <- function(df){
            variable = ifelse(variable == "precipitation", "precipitation_flux", variable),
            prediction = ifelse(variable == "precipitation_flux", prediction/(60 * 60), prediction),
            unit = ifelse(variable == "precipitation_flux", "kg/m2/s", unit),
-           variable = ifelse(variable == "windspeed_10m", "wind_speed", variable),
+           variable = ifelse(variable == "wind_speed_10m", "wind_speed", variable),
            variable = ifelse(variable == "surface_pressure", "air_pressure", variable),
            prediction = ifelse(variable == "air_pressure", prediction * 100, prediction),
            unit = ifelse(variable == "air_pressure", "Pa", unit),
-           variable = ifelse(variable == "cloud_area_fraction", "cloudcover", variable),
-           prediction = ifelse(variable == "cloudcover", prediction/100, prediction),
-           unit = ifelse(variable == "cloudcover", "proportion", unit)) |>
+           variable = ifelse(variable == "cloud_area_fraction", "cloud_cover", variable),
+           prediction = ifelse(variable == "cloud_cover", prediction/100, prediction),
+           unit = ifelse(variable == "cloud_cover", "proportion", unit)) |>
     dplyr::mutate(family = "ensemble") |>
     dplyr::select(dplyr::any_of(c("datetime", "reference_datetime", "site_id", "model_id", "family", "ensemble", "parameter", "variable", "prediction")))
 
