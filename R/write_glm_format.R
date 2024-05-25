@@ -14,7 +14,7 @@ write_glm_format <- function(df, path) {
   if(!("temperature_2m" %in% variables)) warning("missing temperature")
   if(!("precipitation" %in% variables)) warning("missing precipitation")
   if(!("windspeed_10m" %in% variables)) warning("missing windspeed")
-  if(!("relativehumidity_2m" %in% variables)) warning("missing relativehumidity")
+  if(!("relative_humidity_2m" %in% variables)) warning("missing relative humidity")
 
   df <- df |> mutate(prediction = round(prediction, 2))
   if("ensemble" %in% names(df)){
@@ -37,11 +37,11 @@ write_glm_format <- function(df, path) {
                     AirTemp = temperature_2m,
                     Rain = precipitation,
                     WindSpeed = windspeed_10m,
-                    RelHum = relativehumidity_2m,
+                    RelHum = relative_humidity_2m,
                     time = datetime
                   ) |>
                   dplyr::mutate(Rain = Rain * 0.024) |>
-                  dplyr::select(-dplyr::any_of(c("ensemble","model_id","site_id", "cloudcover", "reference_datetime"))) |>
+                  dplyr::select(-dplyr::any_of(c("ensemble","model_id","site_id", "cloud_cover", "reference_datetime"))) |>
                   dplyr::select(time, AirTemp, ShortWave, LongWave, RelHum, WindSpeed, Rain) |>
                   dplyr::arrange(time) |>
                   dplyr::mutate(time = strftime(time, format = "%Y-%m-%d %H:%M", tz = "UTC")) |>
@@ -75,11 +75,11 @@ write_glm_format <- function(df, path) {
         ShortWave = shortwave_radiation,
         AirTemp = temperature_2m,
         Rain = precipitation,
-        WindSpeed = windspeed_10m,
-        RelHum = relativehumidity_2m,
+        WindSpeed = wind_speed_10m,
+        RelHum = relative_humidity_2m,
         time = datetime) |>
       dplyr::mutate(Rain = Rain * 0.024) |>
-      dplyr::select(-dplyr::any_of(c("ensemble","model_id","site_id", "cloudcover", "reference_datetime"))) |>
+      dplyr::select(-dplyr::any_of(c("ensemble","model_id","site_id", "cloud_cover", "reference_datetime"))) |>
       dplyr::select(time, AirTemp, ShortWave, LongWave, RelHum, WindSpeed, Rain) |>
       dplyr::arrange(time) |>
       dplyr::mutate(time = strftime(time, format = "%Y-%m-%d %H:%M", tz = "UTC")) |>
