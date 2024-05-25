@@ -18,7 +18,7 @@ daily_to_hourly <- function(df, latitude, longitude){
   if(!("cloudcover_mean" %in% variables)) warning("missing cloudcover_mean")
 
   units <- dplyr::tibble(variable = c("shortwave_radiation", "temperature_2m", "precipitation",
-                                      "windspeed_10m", "relative_humidity_2m", "cloudcover"),
+                                      "wind_speed_10m", "relative_humidity_2m", "cloud_cover"),
                          unit = c("W/m2","C","mm/hr","m/s","%","%"))
 
 
@@ -60,7 +60,7 @@ daily_to_hourly <- function(df, latitude, longitude){
                   shortwave_radiation_sum = (shortwave_radiation_sum/86400)*1000000) |>
     dplyr::rename(precipitation = precipitation_sum,
                   shortwave_radiation = shortwave_radiation_sum,
-                  relativehumidity_2m = relative_humidity_2m_mean,
+                  relative_humidity_2m = relative_humidity_2m_mean,
                   windspeed_10m = windspeed_10m_mean,
                   cloudcover = cloudcover_mean,
                   temperature_2m = temperature_2m_mean) |>
