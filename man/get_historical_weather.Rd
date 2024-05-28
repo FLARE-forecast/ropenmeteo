@@ -19,11 +19,11 @@ get_historical_weather(
 
 \item{longitude}{long longitude degree east or degree west}
 
-\item{site_id}{= name of site location (optional, default = NULL)}
+\item{site_id}{name of site location (optional, default = NULL)}
 
-\item{start_date}{Number of days in the future for forecast (starts at current day)}
+\item{start_date}{earliest date requested. Must be on or after 1950-01-01}
 
-\item{end_date}{Number of days in the past to include in the data}
+\item{end_date}{latest date requested}
 
 \item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api}
 }

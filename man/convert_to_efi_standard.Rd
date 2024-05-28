@@ -13,5 +13,15 @@ convert_to_efi_standard(df)
 data frame
 }
 \description{
-Convert units and names to CF and Ecological Forecasting Initiative standard
+Output units:
+\itemize{
+\item air_temperature: K
+\item relative_humidity: proportion
+\item surface_downwelling_longwave_flux_in_air: W m-2
+\item surface_downwelling_shortwave_flux_in_air: W m-2
+\item precipitation_flux: kg m-2 s-1
+\item wind_speed: m s-1
+\item air_pressure: Pa
+\item cloud_cover: proportion
+}
 }
