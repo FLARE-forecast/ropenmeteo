@@ -14,8 +14,8 @@ six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE)
   if(!("shortwave_radiation" %in% variables)) warning("missing shortwave")
   if(!("temperature_2m" %in% variables)) warning("missing temperature")
   if(!("precipitation" %in% variables)) warning("missing precipitation")
-  if(!("windspeed_10m" %in% variables)) warning("missing windspeed")
-  if(!("relativehumidity_2m" %in% variables)) warning("missing relativehumidity")
+  if(!("wind_speed_10m" %in% variables)) warning("missing wind_speed")
+  if(!("relative_humidity_2m" %in% variables)) warning("missing relative_humidity")
 
   df <- df |>
     filter(datetime <= max(df$datetime) - lubridate::hours(18)) #remove last day
@@ -52,9 +52,9 @@ six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE)
     dplyr::group_by(site_id, ensemble)  |>
     tidyr::fill(c("precipitation"), .direction = "up") |>
     tidyr::fill(c("shortwave_radiation"), .direction = "up") |>
-    dplyr::mutate(relativehumidity_2m =  imputeTS::na_interpolation(relativehumidity_2m, option = "linear"),
-                  windspeed_10m =  imputeTS::na_interpolation(windspeed_10m, option = "linear"),
-                  cloudcover =  imputeTS::na_interpolation(cloudcover, option = "linear"),
+    dplyr::mutate(relative_humidity_2m =  imputeTS::na_interpolation(relative_humidity_2m, option = "linear"),
+                  wind_speed_10m =  imputeTS::na_interpolation(wind_speed_10m, option = "linear"),
+                  cloud_cover =  imputeTS::na_interpolation(cloud_cover, option = "linear"),
                   temperature_2m =  imputeTS::na_interpolation(temperature_2m, option = "linear"),
                   precipitation = precipitation/6) |>
     tidyr::pivot_longer(-c("site_id", "model_id", "ensemble", "datetime", "reference_datetime"), names_to = "variable", values_to = "prediction")
