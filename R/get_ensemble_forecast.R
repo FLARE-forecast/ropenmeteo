@@ -19,7 +19,7 @@ get_ensemble_forecast <- function(latitude,
                                   model = "gfs_seamless",
                                   variables = c("relative_humidity_2m",
                                                 "precipitation",
-                                                "windspeed_10m",
+                                                "wind_speed_10m",
                                                 "cloud_cover",
                                                 "temperature_2m",
                                                 "shortwave_radiation")){
