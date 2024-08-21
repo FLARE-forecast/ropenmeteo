@@ -17,7 +17,7 @@
 #'                          time_step = "6hourly")) |>
 #' six_hourly_to_hourly(
 #'     latitude = 37.30,
-#'     longitude = -79.83.
+#'     longitude = -79.83,
 #'     use_solar_geom = TRUE)
 #'
 six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE){
