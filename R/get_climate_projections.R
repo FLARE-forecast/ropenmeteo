@@ -40,9 +40,9 @@ get_climate_projections <- function(latitude,
   units <- NULL
   for (variable in variables) {
 
-    url_base <- "https://climate-api.open-meteo.com"
+    url_base <- "https://climate-api.open-meteo.com/v1/climate"
     url_path <-  glue::glue(
-      "/v1/climate?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&daily={variable}&windspeed_unit=ms&models={model}"
+      "?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&daily={variable}&windspeed_unit=ms&models={model}"
     )
     v <- read_url(url_base, url_path)
 

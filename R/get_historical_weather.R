@@ -40,11 +40,11 @@ get_historical_weather <- function(latitude,
 
   df <- NULL
   units <- NULL
-  url_base <- "https://archive-api.open-meteo.com"
+  url_base <- "https://archive-api.open-meteo.com/v1/archive"
   for (variable in variables) {
 
     url_path <-  glue::glue(
-      "/v1/archive?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&hourly={variable}&windspeed_unit=ms"
+      "?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&hourly={variable}&windspeed_unit=ms"
     )
     v <- read_url(url_base, url_path)
 

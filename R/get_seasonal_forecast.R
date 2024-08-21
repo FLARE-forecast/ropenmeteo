@@ -38,9 +38,9 @@ get_seasonal_forecast <- function(latitude,
 
   variables_api <- paste(variables,collapse=",")
 
-  url_base <- "https://seasonal-api.open-meteo.com"
+  url_base <- "https://seasonal-api.open-meteo.com/v1/seasonal"
   url_path <-  glue::glue(
-    "/v1/seasonal?latitude={latitude}&longitude={longitude}&six_hourly={variables_api}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
+    "?latitude={latitude}&longitude={longitude}&six_hourly={variables_api}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
   )
   v <- read_url(url_base, url_path)
 
