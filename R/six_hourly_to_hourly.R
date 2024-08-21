@@ -7,6 +7,19 @@
 #'
 #' @return data frame
 #' @export
+#' @examples
+#' get_seasonal_forecast(
+#' latitude = 37.30,
+#' longitude = -79.83,
+#' forecast_days = 30,
+#' past_days = 5,
+#' variables = glm_variables(product = "seasonal_forecast",
+#'                          time_step = "6hourly")) |>
+#' six_hourly_to_hourly(
+#'     latitude = 37.30,
+#'     longitude = -79.83.
+#'     use_solar_geom = TRUE)
+#'
 six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE){
 
   variables <- unique(df$variable)

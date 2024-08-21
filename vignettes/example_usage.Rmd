@@ -14,31 +14,6 @@ comment = "#>"
 )
 ```
 
-
-R wrappers for APIs on Open-Meteo project.  The Open-Meteo is a amazing project that streamlines the access to a range of publicly historical and forecasted meteorology data from agencies across the world.  The free access tier allows for 10,000 API calls per day.  The paid tiers increase the number of daily API calls (support for paid APIs in this package is pending). Learn more about the Open-Meteo project at their website ([https://open-meteo.com]) and consider supporting their efforts.
-
-Open-Meteo citation: Zippenfenig, Patrick. (2023). Open-Meteo.com Weather API (0.2.69). Zenodo. https://doi.org/10.5281/zenodo.8112599
-
-The package includes additional functionally to facilitate the use in mechanistic environmental/ecological models.  This includes the calculation of longwave radiation (not provided through the API) from air temperature and cloud cover, the writing of output to the format required by the General Lake Model (GLM), and the conversion to the standard used in the NEON Ecological Forecasting Challenge that is run by the Ecological Initiative Research Coordination Network ([https://neon4cast.org]).  Future functionally includes the temporal downscaling of the daily climate projection output and the 6-hourly seasonal forecast to the hourly time step.
-
-The package uses a long format standard with the following columns
-
-
-- `datetime` = date and time of forecasted value
-- `reference_datetime` = the date and time of the beginning of the forecast (horizon = 0). Does not apply to historical weather.
-- `site_id` = column to identify site location. If null in function call it defaults to latitude_longitude
-- `model_id` = id of model that generated the forecast
-- `ensemble` = ensemble member number (only for ensemble weather and seasonal forecasts)
-- `variable` = forecasted variable
-- `prediction` = forecasted value
-- `unit` = units of the variable
-
-## Install
-
-```{r message = FALSE, warning = FALSE, eval = FALSE}
-remotes::install_github("FLARE-forecast/RopenMeteo")
-```
-
 ```{r message = FALSE}
 library(ggplot2)
 library(dplyr)
@@ -91,7 +66,7 @@ df <- get_ensemble_forecast(
 head(df)
 ```
 
-```{r}
+```{r forecast-plot}
 df |> 
   mutate(variable = paste(variable, unit)) |> 
   ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
@@ -129,7 +104,7 @@ df <- get_ensemble_forecast(
 head(df)
 ```
 
-```{r}
+```{r emsemble-plot}
 df |> 
   mutate(variable = paste(variable, unit)) |> 
   ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
@@ -193,7 +168,7 @@ tail(df |> na.omit())
 
 Notice the delay of ~7 days. 
 
-```{r}
+```{r hist-plot}
 df |> 
   mutate(variable = paste(variable, unit)) |> 
   ggplot(aes(x = datetime, y = prediction)) + 
@@ -218,7 +193,7 @@ df <- get_seasonal_forecast(
 head(df)
 ```
 
-```{r}
+```{r seasonal-plot}
 df |> 
   mutate(variable = paste(variable, unit)) |> 
   ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
@@ -242,7 +217,7 @@ df <- get_seasonal_forecast(
 ```
 
 
-```{r}
+```{r downscale-plot}
 df |> 
   six_hourly_to_hourly(latitude = 37.30, longitude = -79.83, use_solar_geom = TRUE) |> 
   mutate(variable = paste(variable, unit)) |> 
@@ -272,7 +247,7 @@ df <- get_climate_projections(
 head(df)
 ```
 
-```{r}
+```{r climate-plot}
 df |> 
   mutate(variable = paste(variable, unit)) |> 
   ggplot(aes(x = datetime, y = prediction)) + 
@@ -299,7 +274,7 @@ df <- map_df(models, function(model){
 
 ```
 
-```{r}
+```{r multi-climate-plot}
 df |> 
   mutate(variable = paste(variable, unit)) |> 
   ggplot(aes(x = datetime, y = prediction, color = model_id)) + 
@@ -330,7 +305,7 @@ sites)
 head(df)
 ```
 
-```{r}
+```{r multi-site-plot}
 df |> 
   mutate(variable = paste(variable, unit)) |> 
   ggplot(aes(x = datetime, y = prediction, color = site_id)) + 
@@ -352,7 +327,7 @@ df <- get_climate_projections(
   variables = glm_variables(product = "climate_projection", time_step = "daily"))
 ```
 
-```{r}
+```{r daily-to-hourly-plot}
 df |> 
   daily_to_hourly(latitude = 37.30, longitude = -79.83) |> 
   mutate(variable = paste(variable, unit)) |> 

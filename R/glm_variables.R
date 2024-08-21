@@ -5,6 +5,10 @@
 #'
 #' @return character vector
 #' @export
+#'
+#' @examples
+#' glm_variables(product = "ensemble_forecast", time_step = "hourly")
+#'
 
 glm_variables <- function(product, time_step){
 

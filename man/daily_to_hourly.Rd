@@ -19,3 +19,14 @@ data frame
 \description{
 Convert daily climate projections to hourly time-step
 }
+\examples{
+get_climate_projections(
+latitude = 37.30,
+longitude = -79.83,
+start_date = Sys.Date(),
+end_date = Sys.Date() + years(1),
+model = "EC_Earth3P_HR",
+variables = glm_variables(product = "climate_projection", time_step = "daily")) |>
+daily_to_hourly(latitude = 37.30, longitude = -79.83)
+
+}

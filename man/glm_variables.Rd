@@ -17,3 +17,7 @@ character vector
 \description{
 Get set of variables required for the GLM model
 }
+\examples{
+glm_variables(product = "ensemble_forecast", time_step = "hourly")
+
+}

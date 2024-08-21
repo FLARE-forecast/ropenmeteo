@@ -2,7 +2,7 @@ Package: RopenMeteo
 Title: R wrappers for open-meteo.org API
 Version: 0.1
 Authors@R: 
-    person("Quinn", "Thomas", , "rqthomas@vt.edu", role = c("aut", "cre"),
+    person("Quinn", "Thomas", , "rqthomas@vt.edu", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0003-1282-7825"))
 Description: This package uses provides R wrappers for the APIs from Open-Meteo project along with helper functions.  The Open-Meteo is a project that streamlines access to a range of publicly historical and forecasted meteorology data from agencies across the world.
 License: MIT + file LICENSE
@@ -30,3 +30,4 @@ VignetteBuilder: knitr
 Config/testthat/edition: 3
 Language: en-US
 URL: http://flare-forecast.org/RopenMeteo/
+BugReports: https://github.com/flare-forecast/RopenMeteo/issues
