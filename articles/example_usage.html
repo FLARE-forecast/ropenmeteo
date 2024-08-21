@@ -338,7 +338,11 @@ the NOAA Climate Forecasting System</p>
 <span>  forecast_days <span class="op">=</span> <span class="fl">30</span>,</span>
 <span>  past_days <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="../reference/glm_variables.html">glm_variables</a></span><span class="op">(</span>product <span class="op">=</span> <span class="st">"seasonal_forecast"</span>, </span>
-<span>                            time_step <span class="op">=</span> <span class="st">"6hourly"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>                            time_step <span class="op">=</span> <span class="st">"6hourly"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■                       </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■    </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/six_hourly_to_hourly.html">six_hourly_to_hourly</a></span><span class="op">(</span>latitude <span class="op">=</span> <span class="fl">37.30</span>, longitude <span class="op">=</span> <span class="op">-</span><span class="fl">79.83</span>, use_solar_geom <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -404,7 +408,28 @@ projection.</p>
 <span>    end_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/period.html" class="external-link">years</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span>    model <span class="op">=</span> <span class="va">model</span>,</span>
 <span>    variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature_2m_mean"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■                        </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■         </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■                         </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■                         </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■           </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■            </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■            </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="va">unit</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -434,6 +459,12 @@ to add column that denotes the different sites.</p>
 <span>    variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature_2m_mean"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span>,</span>
 <span><span class="va">sites</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■            </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■           </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
 <span><span class="co">#&gt;   datetime   site_id model_id      variable            prediction unit </span></span>
@@ -470,7 +501,25 @@ applied to each hour.</p>
 <span>  start_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  end_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/period.html" class="external-link">years</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span>  model <span class="op">=</span> <span class="st">"EC_Earth3P_HR"</span>,</span>
-<span>  variables <span class="op">=</span> <span class="fu"><a href="../reference/glm_variables.html">glm_variables</a></span><span class="op">(</span>product <span class="op">=</span> <span class="st">"climate_projection"</span>, time_step <span class="op">=</span> <span class="st">"daily"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>  variables <span class="op">=</span> <span class="fu"><a href="../reference/glm_variables.html">glm_variables</a></span><span class="op">(</span>product <span class="op">=</span> <span class="st">"climate_projection"</span>, time_step <span class="op">=</span> <span class="st">"daily"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■             </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■           </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■                        </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■         </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■                         </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■                         </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■           </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span></code></pre></div>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/daily_to_hourly.html">daily_to_hourly</a></span><span class="op">(</span>latitude <span class="op">=</span> <span class="fl">37.30</span>, longitude <span class="op">=</span> <span class="op">-</span><span class="fl">79.83</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
