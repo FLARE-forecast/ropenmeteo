@@ -2,15 +2,37 @@
 % Please edit documentation in R/write_glm_format.R
 \name{write_glm_format}
 \alias{write_glm_format}
-\title{Write ensemble forecast dataframe to GLM formated csv files}
+\title{Write ensemble forecast dataframe to General Lake Model formatted csv files}
 \usage{
 write_glm_format(df, path)
 }
 \arguments{
-\item{df}{data frame output by get_ensemble_forecast}
+\item{df}{data frame output by \code{get_ensemble_forecast()}}
 
 \item{path}{directory where csv files will be written}
 }
 \description{
-Write ensemble forecast dataframe to GLM formated csv files
+Write ensemble forecast dataframe to General Lake Model formatted csv files
+}
+\examples{
+
+\dontshow{
+# Hide setting tempfile, since a user would specify a persistent location
+ path <- tempdir()
+}
+
+get_ensemble_forecast(
+latitude = 37.30,
+longitude = -79.83,
+forecast_days = 7,
+past_days = 2,
+model = "gfs_seamless",
+variables = RopenMeteo::glm_variables(product = "ensemble_forecast",
+                                     time_step = "hourly")) |>
+   add_longwave() |>
+   write_glm_format(path = path)
+\dontshow{
+# tidy
+ unlink(path)
+}
 }
