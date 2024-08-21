@@ -120,17 +120,7 @@ defines this as <code>model = "generic"</code>.</p>
 <span>  past_days <span class="op">=</span> <span class="fl">2</span>,</span>
 <span>  model <span class="op">=</span> <span class="st">"gfs_seamless"</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature_2m"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
-<span><span class="co">#&gt;   datetime            reference_datetime  site_id     model_id ensemble variable</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-19 <span style="color: #949494;">00:00:00</span> 2024-08-21 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 00       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-19 <span style="color: #949494;">00:00:00</span> 2024-08-21 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 01       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-19 <span style="color: #949494;">00:00:00</span> 2024-08-21 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 02       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-19 <span style="color: #949494;">00:00:00</span> 2024-08-21 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 03       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-19 <span style="color: #949494;">00:00:00</span> 2024-08-21 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 04       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-19 <span style="color: #949494;">00:00:00</span> 2024-08-21 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 05       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: prediction &lt;dbl&gt;, unit &lt;chr&gt;</span></span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="va">unit</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -138,7 +128,6 @@ defines this as <code>model = "generic"</code>.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_vline</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">reference_datetime</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">variable</span>, scale <span class="op">=</span> <span class="st">"free"</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="example_usage_files/figure-html/forecast-plot-1.png" width="700"></p>
 <p>Options for models and variables are at <a href="https://open-meteo.com/en/docs/ensemble-api" class="external-link uri">https://open-meteo.com/en/docs/ensemble-api</a></p>
 <p>Note that <code>ecmwf_ifs04</code> does not include solar
 radiation.</p>
