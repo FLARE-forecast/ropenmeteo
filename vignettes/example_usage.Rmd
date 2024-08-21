@@ -55,7 +55,7 @@ Ensemble forecasts from individual models are available.
 
 [https://open-meteo.com/en/docs/ensemble-api]
 
-```{r}
+```{r eval = FALSE}
 df <- get_ensemble_forecast(
   latitude = 37.30,
   longitude = -79.83,
@@ -66,7 +66,7 @@ df <- get_ensemble_forecast(
 head(df)
 ```
 
-```{r forecast-plot}
+```{r forecast-plot, eval=FALSE}
 df |> 
   mutate(variable = paste(variable, unit)) |> 
   ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
