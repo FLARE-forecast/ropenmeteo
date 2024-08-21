@@ -23,6 +23,7 @@
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/flare-forecast/RopenMeteo/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -32,7 +33,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Get set of variables required for the GLM model</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/flare-forecast/RopenMeteo/blob/master/R/glm_variables.R" class="external-link"><code>R/glm_variables.R</code></a></small>
       <div class="d-none name"><code>glm_variables.Rd</code></div>
     </div>
 
@@ -62,6 +63,15 @@
     <p>character vector</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">glm_variables</span><span class="op">(</span>product <span class="op">=</span> <span class="st">"ensemble_forecast"</span>, time_step <span class="op">=</span> <span class="st">"hourly"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "relative_humidity_2m" "precipitation"        "wind_speed_10m"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "cloud_cover"          "temperature_2m"       "shortwave_radiation" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [7] "surface_pressure"    </span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
