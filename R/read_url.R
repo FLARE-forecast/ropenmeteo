@@ -1,34 +1,6 @@
-read_url <- function(url, max_tries = 3){
+read_url <- function(url_base, url_path){
 
-  tries <- 0
-  pass <- FALSE
-  while(!pass){
-
-    tries <- tries + 1
-
-    out <- tryCatch(
-      {
-        jsonlite::fromJSON(url)
-      },
-      error=function(cond) {
-        message(cond)
-        # Choose a return value in case of error
-        return(NULL)
-      },
-      warning=function(cond) {
-        message(cond)
-        # Choose a return value in case of warning
-        return(NULL)
-      },
-      finally={}
-    )
-
-    if(tries == max_tries | !is.null(out)){
-      pass = TRUE
-    }else{
-      Sys.sleep(2)
-    }
-  }
+  out <- httr2::request(url_base) |> httr2::req_url_path(url_path) |> httr2::req_retry(max_tries = 5, backoff = ~ 5) |> httr2::req_perform() |> httr2::resp_body_json(simplifyVector = TRUE)
 
   return(out)
 }

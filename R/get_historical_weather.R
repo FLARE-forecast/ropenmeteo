@@ -40,12 +40,14 @@ get_historical_weather <- function(latitude,
 
   df <- NULL
   units <- NULL
+  url_base <- "https://archive-api.open-meteo.com"
   for (variable in variables) {
-    v <-
-    jsonlite::fromJSON(
-        glue::glue(
-          "https://archive-api.open-meteo.com/v1/archive?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&hourly={variable}&windspeed_unit=ms"
-        ))
+
+    url_path <-  glue::glue(
+      "/v1/archive?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&hourly={variable}&windspeed_unit=ms"
+    )
+    v <- read_url(url_base, url_path)
+
     units <- dplyr::bind_rows(units, dplyr::tibble(variable = names(v$hourly)[2], unit = unlist(v$hourly_units[2][1])))
     v1  <- dplyr::as_tibble(v$hourly) |>
       dplyr::mutate(time = lubridate::as_datetime(paste0(time,":00")))

@@ -14,10 +14,10 @@ Imports:
   dplyr,
   tidyr,
   purrr,
-  jsonlite,
   lubridate,
   glue,
-  imputeTS
+  imputeTS,
+  httr2
 Suggests: 
     ggplot2,
     knitr,
@@ -27,6 +27,7 @@ Suggests:
     tibble,
     spelling
 Config/testthat/edition: 3
+VignetteBuilder: knitr
 Language: en-US
 URL: http://flare-forecast.org/RopenMeteo/
 BugReports: https://github.com/flare-forecast/RopenMeteo/issues

@@ -37,10 +37,13 @@ get_seasonal_forecast <- function(latitude,
   if(longitude > 180) longitude <- longitude - 360
 
   variables_api <- paste(variables,collapse=",")
-  v <- jsonlite::fromJSON(
-    glue::glue(
-      "https://seasonal-api.open-meteo.com/v1/seasonal?latitude={latitude}&longitude={longitude}&six_hourly={variables_api}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
-    ))
+
+  url_base <- "https://seasonal-api.open-meteo.com"
+  url_path <-  glue::glue(
+    "/v1/seasonal?latitude={latitude}&longitude={longitude}&six_hourly={variables_api}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
+  )
+  v <- read_url(url_base, url_path)
+
 
   units <- dplyr::tibble(variable = stringr::str_split_i(names(v$six_hourly),"_member",1), unit = unlist(v$six_hourly_units)) |> dplyr::distinct() |> dplyr::filter(variable != "time")
   df  <- dplyr::as_tibble(v$six_hourly) |>

@@ -30,14 +30,14 @@ get_forecast <- function(latitude,
   if(past_days > 92) stop("hist_days is longer than avialable (max = 92)")
 
   api <- switch(model,
-                "generic" = "https://api.open-meteo.com/v1/forecast",
-                "metno" = "https://api.open-meteo.com/v1/metno",
-                "dwd" = "https://api.open-meteo.com/v1/dwd",
-                "gfs" = "https://api.open-meteo.com/v1/gfs",
-                "meteofrance" = "https://api.open-meteo.com/v1/meteofrance",
-                "ecmwf" = "https://api.open-meteo.com/v1/ecmwf",
-                "jma"= "https://api.open-meteo.com/v1/jma",
-                "gem" = "https://api.open-meteo.com/v1/gem")
+                "generic" = "/v1/forecast",
+                "metno" = "/v1/metno",
+                "dwd" = "/v1/dwd",
+                "gfs" = "/v1/gfs",
+                "meteofrance" = "/v1/meteofrance",
+                "ecmwf" = "/v1/ecmwf",
+                "jma"= "/v1/jma",
+                "gem" = "/v1/gem")
 
   latitude <- round(latitude, 2)
   longitude <- round(longitude, 2)
@@ -47,11 +47,12 @@ get_forecast <- function(latitude,
   df <- NULL
   units <- NULL
   for (variable in variables) {
-    v <-
-      jsonlite::fromJSON(
-        glue::glue(
-          "{api}?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
-        ))
+
+    url_base <- "https://api.open-meteo.com"
+    url_path <-  glue::glue(
+      "{api}?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
+    )
+    v <- read_url(url_base, url_path)
 
     units <- dplyr::bind_rows(units, dplyr::tibble(variable = names(v$hourly)[2], unit = unlist(v$hourly_units[2][1])))
     v1  <- dplyr::as_tibble(v$hourly) |>
