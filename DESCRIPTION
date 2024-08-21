@@ -1,5 +1,5 @@
 Package: RopenMeteo
-Title: R Wrappers For Open Meteo API
+Title: R Wrappers for Open Meteo API
 Version: 0.1
 Authors@R: 
     person("Quinn", "Thomas", , "rqthomas@vt.edu", role = c("aut", "cre", "cph"),
