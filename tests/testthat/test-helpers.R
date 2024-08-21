@@ -1,14 +1,7 @@
 test_that("write_glm_format works", {
-  skip_if_offline()
 
-  df <- get_ensemble_forecast(
-    latitude = 37.30,
-    longitude = -79.83,
-    forecast_days = 7,
-    past_days = 2,
-    model = "gfs_seamless",
-    variables = RopenMeteo::glm_variables(product = "ensemble_forecast",
-                                          time_step = "hourly"))
+  file <- system.file("extdata", "test-data.csv", package="RopenMeteo")
+  df <- readr::read_csv(file, show_col_types = FALSE)
 
   df <- df |>
     add_longwave()

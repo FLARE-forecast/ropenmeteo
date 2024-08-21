@@ -5,13 +5,10 @@
 #' @return data frame (in long format)
 #' @export
 #' @examples
-#' get_ensemble_forecast(
-#'     latitude = 37.30,
-#'     longitude = -79.83,
-#'     forecast_days = 7,
-#'     past_days = 2,
-#'     model = "gfs_seamless",
-#'     variables = c("cloud_cover", "temperature_2m")) |>
+#'
+#' file <- system.file("extdata", "test-data.csv", package="RopenMeteo")
+#' df <- readr::read_csv(file, show_col_types = FALSE)
+#' df  |>
 #' add_longwave()
 #'
 add_longwave <- function(df) {

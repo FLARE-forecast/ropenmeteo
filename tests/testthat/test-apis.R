@@ -1,5 +1,6 @@
 test_that("get_ensemble_forecast works", {
   skip_if_offline()
+  skip_on_cran()
 
   df <- get_ensemble_forecast(
     latitude = 37.30,
@@ -15,6 +16,7 @@ test_that("get_ensemble_forecast works", {
 
 test_that("get_ensemble_forecast works", {
   skip_if_offline()
+  skip_on_cran()
 
   df <- get_ensemble_forecast(
     latitude = 37.30,
@@ -30,6 +32,7 @@ test_that("get_ensemble_forecast works", {
 
 test_that("get_historical_weather works", {
   skip_if_offline()
+  skip_on_cran()
 
   df <- get_historical_weather(
     latitude = 37.30,
@@ -43,6 +46,7 @@ test_that("get_historical_weather works", {
 
 test_that("get_seasonal_forecast works", {
   skip_if_offline()
+  skip_on_cran()
 
   df <- get_seasonal_forecast(
     latitude = 37.30,
@@ -56,6 +60,7 @@ test_that("get_seasonal_forecast works", {
 
 test_that("get_climate_projections works", {
   skip_if_offline()
+  skip_on_cran()
 
   df <- get_climate_projections(
     latitude = 37.30,
@@ -70,6 +75,7 @@ test_that("get_climate_projections works", {
 
 test_that("get_forecast works", {
   skip_if_offline()
+  skip_on_cran()
 
   df <- get_forecast(latitude = 37.30,
                      longitude = -79.83,
