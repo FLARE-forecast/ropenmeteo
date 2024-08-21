@@ -1,9 +1,18 @@
-#' Add longwave to ensemble forecast dataframe using Idso and Jackson (1969)
+#' Add longwave to ensemble forecast dataframe using Idso and Jackson (1969).  Requires cloud cover and temperature variables in input data frame.
 #'
-#' @param df data frame output by get_ensemble_forecast
+#' @param df data frame output by `get_ensemble_forecast()`
 #'
 #' @return data frame (in long format)
 #' @export
+#' @examples
+#' get_ensemble_forecast(
+#'     latitude = 37.30,
+#'     longitude = -79.83,
+#'     forecast_days = 7,
+#'     past_days = 2,
+#'     model = "gfs_seamless",
+#'     variables = c("cloud_cover", "temperature_2m")) |>
+#' add_longwave()
 #'
 add_longwave <- function(df) {
 

@@ -17,9 +17,9 @@ get_seasonal_forecast(
 \arguments{
 \item{latitude}{latitude degree north}
 
-\item{longitude}{long longitude degree east or degree west}
+\item{longitude}{longitude degree east}
 
-\item{site_id}{= name of site location (optional, default = NULL)}
+\item{site_id}{name of site location (optional, default = NULL)}
 
 \item{forecast_days}{Number of days in the future for forecast (starts at current day)}
 
@@ -34,4 +34,15 @@ data frame (in long format)
 }
 \description{
 Download point-level seasonal weather forecast using open-meteo API
+}
+\examples{
+
+get_seasonal_forecast(
+latitude = 37.30,
+longitude = -79.83,
+forecast_days = 30,
+past_days = 5,
+variables = glm_variables(product = "seasonal_forecast",
+                         time_step = "6hourly"))
+
 }

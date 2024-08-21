@@ -1,7 +1,7 @@
 #' Download point-level historical weather (ERA5) using open-meteo API
 #'
 #' @param latitude latitude degree north
-#' @param longitude long longitude degree east or degree west
+#' @param longitude longitude degree east
 #' @param site_id name of site location (optional, default = NULL)
 #' @param start_date earliest date requested. Must be on or after 1950-01-01
 #' @param end_date latest date requested
@@ -9,6 +9,13 @@
 #'
 #' @return data frame
 #' @export
+#' @examples
+#' get_historical_weather(
+#' latitude = 37.30,
+#' longitude = -79.83,
+#' start_date = "2023-01-01",
+#' end_date = Sys.Date(),
+#' variables = c("temperature_2m"))
 #'
 get_historical_weather <- function(latitude,
                                   longitude,

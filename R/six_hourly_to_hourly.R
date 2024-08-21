@@ -2,8 +2,8 @@
 #'
 #' @param df data frame output by get_seasonal_forecast
 #' @param latitude latitude degree north
-#' @param longitude long longitude degree east or degree west
-#' @param use_solar_geom use solar geometry to determine hourly variables
+#' @param longitude long longitude degree east
+#' @param use_solar_geom use solar geometry to determine hourly solar radiation
 #'
 #' @return data frame
 #' @export
@@ -18,9 +18,9 @@ six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE)
   if(!("relative_humidity_2m" %in% variables)) warning("missing relative_humidity")
 
   df <- df |>
-    filter(datetime <= max(df$datetime) - lubridate::hours(18)) #remove last day
+    dplyr::filter(datetime <= max(df$datetime) - lubridate::hours(18)) #remove last day
 
-  units <- df |> distinct(variable, unit)
+  units <- df |> dplyr::distinct(variable, unit)
 
   ensemble_maxtime <- df |>
     dplyr::group_by(site_id, model_id, ensemble, reference_datetime) |>
@@ -61,7 +61,7 @@ six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE)
 
   #the first time step is the 6 hour sum from the previous day
   df1 <- df1 |>
-    mutate(prediction = ifelse(variable == "precipitation" & datetime == min(df1$datetime),
+    dplyr::mutate(prediction = ifelse(variable == "precipitation" & datetime == min(df1$datetime),
                                prediction/6,
                                prediction))
 
@@ -83,7 +83,7 @@ six_hourly_to_hourly <- function(df, latitude, longitude, use_solar_geom = TRUE)
                     avg.SW = mean(prediction, na.rm = TRUE))|> # daily sw mean from solar geometry
       dplyr::ungroup() |>
       dplyr::mutate(prediction = ifelse(variable %in% c("shortwave_radiation","surface_downwelling_shortwave_flux_in_air") & avg.rpot > 0.0, rpot * (avg.SW/avg.rpot),prediction)) |>
-      dplyr::select(any_of(var_order)) |>
+      dplyr::select(dplyr::any_of(var_order)) |>
       dplyr::left_join(units, by = "variable")
   }
 

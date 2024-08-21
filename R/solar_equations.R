@@ -24,7 +24,7 @@ equation_of_time <- function(doy) {
 
 downscale_solar_geom <- function(doy, lon, lat) {
 
-  dt <- median(diff(doy)) * 86400 # average number of seconds in time interval
+  dt <- stats::median(diff(doy)) * 86400 # average number of seconds in time interval
   hr <- (doy - floor(doy)) * 24 # hour of day for each element of doy
 
   ## calculate potential radiation

@@ -7,11 +7,11 @@
 daily_to_hourly(df, latitude, longitude)
 }
 \arguments{
-\item{df}{data frame output by get_seasonal_forecast}
+\item{df}{data frame output by \code{get_seasonal_forecast()}}
 
 \item{latitude}{latitude degree north}
 
-\item{longitude}{long longitude degree east or degree west}
+\item{longitude}{longitude degree east}
 }
 \value{
 data frame

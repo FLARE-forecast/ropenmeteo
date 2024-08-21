@@ -1,8 +1,8 @@
 #' Convert daily climate projections to hourly time-step
 #'
-#' @param df data frame output by get_seasonal_forecast
+#' @param df data frame output by `get_seasonal_forecast()`
 #' @param latitude latitude degree north
-#' @param longitude long longitude degree east or degree west
+#' @param longitude longitude degree east
 #'
 #' @return data frame
 #' @export
@@ -13,9 +13,9 @@ daily_to_hourly <- function(df, latitude, longitude){
   if(!("shortwave_radiation_sum" %in% variables)) warning("missing shortwave_radiation_sum")
   if(!("temperature_2m_mean" %in% variables)) warning("missing temperature_2m_mean")
   if(!("precipitation_sum" %in% variables)) warning("missing precipitation_sum")
-  if(!("windspeed_10m_mean" %in% variables)) warning("missing windspeed_10m_mean")
+  if(!("wind_speed_10m_mean" %in% variables)) warning("missing wind_speed_10m_mean")
   if(!("relative_humidity_2m_mean" %in% variables)) warning("missing relative_humidity_2m_mean")
-  if(!("cloudcover_mean" %in% variables)) warning("missing cloudcover_mean")
+  if(!("cloud_cover_mean" %in% variables)) warning("missing cloud_cover_mean")
 
   units <- dplyr::tibble(variable = c("shortwave_radiation", "temperature_2m", "precipitation",
                                       "wind_speed_10m", "relative_humidity_2m", "cloud_cover"),
@@ -27,7 +27,7 @@ daily_to_hourly <- function(df, latitude, longitude){
     dplyr::summarise(max_time = max(datetime), .groups = "drop")
 
   df1 <- df |>
-    mutate(datetime = lubridate::as_datetime(datetime))
+    dplyr::mutate(datetime = lubridate::as_datetime(datetime))
 
 
   datetime <- seq(min(df1$datetime), max(df1$datetime), by = "1 hour")
@@ -53,16 +53,16 @@ daily_to_hourly <- function(df, latitude, longitude){
     tidyr::fill(c("precipitation_sum"), .direction = "down") |>
     tidyr::fill(c("shortwave_radiation_sum"), .direction = "down") |>
     tidyr::fill(c("relative_humidity_2m_mean"), .direction = "down") |>
-    tidyr::fill(c("windspeed_10m_mean"), .direction = "down") |>
-    tidyr::fill(c("cloudcover_mean"), .direction = "down") |>
+    tidyr::fill(c("wind_speed_10m_mean"), .direction = "down") |>
+    tidyr::fill(c("cloud_cover_mean"), .direction = "down") |>
     tidyr::fill(c("temperature_2m_mean"), .direction = "down") |>
     dplyr::mutate(precipitation_sum = precipitation_sum/24,
                   shortwave_radiation_sum = (shortwave_radiation_sum/86400)*1000000) |>
     dplyr::rename(precipitation = precipitation_sum,
                   shortwave_radiation = shortwave_radiation_sum,
                   relative_humidity_2m = relative_humidity_2m_mean,
-                  windspeed_10m = windspeed_10m_mean,
-                  cloudcover = cloudcover_mean,
+                  wind_speed_10m = wind_speed_10m_mean,
+                  cloud_cover = cloud_cover_mean,
                   temperature_2m = temperature_2m_mean) |>
     tidyr::pivot_longer(-c("site_id", "model_id","datetime"), names_to = "variable", values_to = "prediction")
 
@@ -82,7 +82,7 @@ daily_to_hourly <- function(df, latitude, longitude){
                   avg.SW = mean(prediction, na.rm = TRUE))|> # daily sw mean from solar geometry
     dplyr::ungroup() |>
     dplyr::mutate(prediction = ifelse(variable %in% c("shortwave_radiation","surface_downwelling_shortwave_flux_in_air") & avg.rpot > 0.0, rpot * (avg.SW/avg.rpot),prediction)) |>
-    dplyr::select(any_of(var_order)) |>
+    dplyr::select(dplyr::any_of(var_order)) |>
     dplyr::left_join(units, by = "variable")
 
   return(df2)

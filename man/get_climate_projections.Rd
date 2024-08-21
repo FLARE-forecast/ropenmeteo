@@ -17,9 +17,9 @@ get_climate_projections(
 \arguments{
 \item{latitude}{latitude degree north}
 
-\item{longitude}{long longitude degree east or degree west}
+\item{longitude}{longitude degree east}
 
-\item{site_id}{= name of site location (optional, default = NULL)}
+\item{site_id}{name of site location (optional, default = NULL)}
 
 \item{start_date}{Number of days in the future for forecast (starts at current day)}
 
@@ -34,4 +34,15 @@ data frame
 }
 \description{
 Download point-level climate projections using open-meteo API
+}
+\examples{
+
+get_climate_projections(
+latitude = 37.30,
+longitude = -79.83,
+start_date = Sys.Date(),
+end_date = Sys.Date() + lubridate::years(1),
+model = "EC_Earth3P_HR",
+variables = c("temperature_2m_mean"))
+
 }

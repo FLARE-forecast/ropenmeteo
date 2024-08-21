@@ -4,11 +4,11 @@ Version: 0.1
 Authors@R: 
     person("Quinn", "Thomas", , "rqthomas@vt.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1282-7825"))
-Description: R wrappers for APIs on Open-Meteo project.  The Open-Meteo is a project that streamlines access to a range of publicly historical and forecasted meteorology data from agencies across the world.  The free access tier allows for 10,000 API calls per day.  The paid tiers increase the number of daily API calls (support for paid APIs in this package is pending). Learn more about the Open-Meteo project at their website ([https://open-meteo.com]) and consider supporting their efforts. The Open-Meteo citation is Zippenfenig, Patrick. (2023). Open-Meteo.com Weather API (0.2.69). Zenodo. https://doi.org/10.5281/zenodo.8112599. The package includes additional functionally to facilitate the use in mechanistic environmental/ecological models.  This includes the calculation of longwave radiation (not provided through the API) from air temperature and cloud cover, the writing of output to the format required by the General Lake Model (GLM), and the conversion to the standard used in the NEON Ecological Forecasting Challenge that is run by the Ecological Initiative Research Coordination Network ([https://neon4cast.org]).  Future functionally includes the temporal downscaling of the daily climate projection output and the 6-hourly seasonal forecast to the hourly time step. The package uses a long format standard that follows Dietze et al. 2023 (https://doi.org/10.1002/ecs2.4686)
+Description: This package uses provides R wrappers for the APIs from Open-Meteo project along with helper functions.  The Open-Meteo is a project that streamlines access to a range of publicly historical and forecasted meteorology data from agencies across the world.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Imports:
   stringr,
   dplyr,
@@ -17,7 +17,16 @@ Imports:
   jsonlite,
   lubridate,
   glue,
-  httr,
   imputeTS
-Suggests:
-  ggplot2
+Suggests: 
+    ggplot2,
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    readr,
+    tibble,
+    spelling
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Language: en-US
+URL: http://flare-forecast.org/RopenMeteo/

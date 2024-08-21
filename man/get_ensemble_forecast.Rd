@@ -11,16 +11,16 @@ get_ensemble_forecast(
   forecast_days,
   past_days,
   model = "gfs_seamless",
-  variables = c("relativehumidity_2m", "precipitation", "windspeed_10m", "cloudcover",
+  variables = c("relative_humidity_2m", "precipitation", "wind_speed_10m", "cloud_cover",
     "temperature_2m", "shortwave_radiation")
 )
 }
 \arguments{
 \item{latitude}{latitude degree north}
 
-\item{longitude}{long longitude degree east or degree west}
+\item{longitude}{longitude degree east}
 
-\item{site_id}{= name of site location (optional, default = NULL)}
+\item{site_id}{name of site location (optional, default = NULL)}
 
 \item{forecast_days}{Number of days in the future for forecast (starts at current day)}
 
@@ -35,4 +35,15 @@ data frame (in long format)
 }
 \description{
 Download point-level ensemble weather forecasting using open-meteo API
+}
+\examples{
+get_ensemble_forecast(
+latitude = 37.30,
+longitude = -79.83,
+forecast_days = 7,
+past_days = 2,
+model = "gfs_seamless",
+variables = c("temperature_2m"))
+
+
 }

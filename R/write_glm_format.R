@@ -1,10 +1,31 @@
-#' Write ensemble forecast dataframe to GLM formated csv files
+#' Write ensemble forecast dataframe to General Lake Model formatted csv files
 #'
-#' @param df data frame output by get_ensemble_forecast
+#' @param df data frame output by `get_ensemble_forecast()`
 #' @param path directory where csv files will be written
 #'
 #' @export
+#' @examples
 #'
+#' \dontshow{
+#' # Hide setting tempfile, since a user would specify a persistent location
+#'  path <- tempdir()
+#' }
+#'
+#' get_ensemble_forecast(
+#'latitude = 37.30,
+#'longitude = -79.83,
+#'forecast_days = 7,
+#'past_days = 2,
+#'model = "gfs_seamless",
+#'variables = RopenMeteo::glm_variables(product = "ensemble_forecast",
+#'                                      time_step = "hourly")) |>
+#'    add_longwave() |>
+#'    write_glm_format(path = path)
+
+#' \dontshow{
+#' # tidy
+#'  unlink(path)
+#' }
 write_glm_format <- function(df, path) {
 
   variables <- unique(df$variable)
@@ -13,10 +34,10 @@ write_glm_format <- function(df, path) {
   if(!("shortwave_radiation" %in% variables)) warning("missing shortwave")
   if(!("temperature_2m" %in% variables)) warning("missing temperature")
   if(!("precipitation" %in% variables)) warning("missing precipitation")
-  if(!("windspeed_10m" %in% variables)) warning("missing windspeed")
+  if(!("wind_speed_10m" %in% variables)) warning("missing wind_speed")
   if(!("relative_humidity_2m" %in% variables)) warning("missing relative humidity")
 
-  df <- df |> mutate(prediction = round(prediction, 2))
+  df <- df |> dplyr::mutate(prediction = round(prediction, 2))
   if("ensemble" %in% names(df)){
     ensemble_list <- df |> dplyr::distinct(model_id, ensemble)
 
@@ -36,7 +57,7 @@ write_glm_format <- function(df, path) {
                     ShortWave = shortwave_radiation,
                     AirTemp = temperature_2m,
                     Rain = precipitation,
-                    WindSpeed = windspeed_10m,
+                    WindSpeed = wind_speed_10m,
                     RelHum = relative_humidity_2m,
                     time = datetime
                   ) |>
@@ -46,7 +67,7 @@ write_glm_format <- function(df, path) {
                   dplyr::arrange(time) |>
                   dplyr::mutate(time = strftime(time, format = "%Y-%m-%d %H:%M", tz = "UTC")) |>
                   dplyr::slice(-1) |>
-                  write.csv(
+                  utils::write.csv(
                     file = file.path(
                       normalizePath(path),
                       paste0(
@@ -83,7 +104,7 @@ write_glm_format <- function(df, path) {
       dplyr::select(time, AirTemp, ShortWave, LongWave, RelHum, WindSpeed, Rain) |>
       dplyr::arrange(time) |>
       dplyr::mutate(time = strftime(time, format = "%Y-%m-%d %H:%M", tz = "UTC")) |>
-      write.csv( file = file.path(
+      utils::write.csv( file = file.path(
           normalizePath(path),
           paste0(
             "met.csv"

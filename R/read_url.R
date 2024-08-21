@@ -1,11 +1,3 @@
-
-#' Read open-meteo url to JSON
-#'
-#' @param url API url
-#' @param max_tries number tries before fails
-#'
-#' @return list
-#'
 read_url <- function(url, max_tries = 3){
 
   tries <- 0

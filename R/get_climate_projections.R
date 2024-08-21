@@ -1,8 +1,8 @@
 #' Download point-level climate projections using open-meteo API
 #'
 #' @param latitude latitude degree north
-#' @param longitude long longitude degree east or degree west
-#' @param site_id = name of site location (optional, default = NULL)
+#' @param longitude  longitude degree east
+#' @param site_id name of site location (optional, default = NULL)
 #' @param start_date Number of days in the future for forecast (starts at current day)
 #' @param end_date Number of days in the past to include in the data
 #' @param model id of forest model https://open-meteo.com/en/docs/climate-api
@@ -10,6 +10,15 @@
 #'
 #' @return data frame
 #' @export
+#' @examples
+#'
+#' get_climate_projections(
+#' latitude = 37.30,
+#' longitude = -79.83,
+#' start_date = Sys.Date(),
+#' end_date = Sys.Date() + lubridate::years(1),
+#' model = "EC_Earth3P_HR",
+#' variables = c("temperature_2m_mean"))
 #'
 get_climate_projections <- function(latitude,
                                     longitude,

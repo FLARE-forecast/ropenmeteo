@@ -1,8 +1,8 @@
 #' Download point-level ensemble weather forecasting using open-meteo API
 #'
 #' @param latitude latitude degree north
-#' @param longitude long longitude degree east or degree west
-#' @param site_id = name of site location (optional, default = NULL)
+#' @param longitude longitude degree east
+#' @param site_id name of site location (optional, default = NULL)
 #' @param forecast_days Number of days in the future for forecast (starts at current day)
 #' @param past_days Number of days in the past to include in the data
 #' @param model id of forest model https://open-meteo.com/en/docs/ensemble-api
@@ -10,6 +10,16 @@
 #'
 #' @return data frame (in long format)
 #' @export
+#'
+#' @examples
+#' get_ensemble_forecast(
+#' latitude = 37.30,
+#' longitude = -79.83,
+#' forecast_days = 7,
+#' past_days = 2,
+#' model = "gfs_seamless",
+#' variables = c("temperature_2m"))
+#'
 #'
 get_ensemble_forecast <- function(latitude,
                                   longitude,
@@ -47,7 +57,7 @@ get_ensemble_forecast <- function(latitude,
   units <- dplyr::tibble(variable = stringr::str_split_i(names(v$hourly),"_member",1), unit = unlist(v$hourly_units)) |> dplyr::distinct() |> dplyr::filter(variable != "time")
   df  <- dplyr::as_tibble(v$hourly) |>
     dplyr::mutate(time = lubridate::as_datetime(paste0(time,":00")))  |>
-    RopenMeteo:::pivot_ensemble_forecast() |>
+    pivot_ensemble_forecast() |>
     dplyr::rename(datetime = time) |>
     dplyr::mutate(
       model_id = model,

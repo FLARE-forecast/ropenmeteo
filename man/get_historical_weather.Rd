@@ -10,14 +10,14 @@ get_historical_weather(
   site_id = NULL,
   start_date,
   end_date,
-  variables = c("relativehumidity_2m", "precipitation", "windspeed_10m", "cloudcover",
+  variables = c("relative_humidity_2m", "precipitation", "wind_speed_10m", "cloud_cover",
     "temperature_2m", "shortwave_radiation")
 )
 }
 \arguments{
 \item{latitude}{latitude degree north}
 
-\item{longitude}{long longitude degree east or degree west}
+\item{longitude}{longitude degree east}
 
 \item{site_id}{name of site location (optional, default = NULL)}
 
@@ -32,4 +32,13 @@ data frame
 }
 \description{
 Download point-level historical weather (ERA5) using open-meteo API
+}
+\examples{
+get_historical_weather(
+latitude = 37.30,
+longitude = -79.83,
+start_date = "2023-01-01",
+end_date = Sys.Date(),
+variables = c("temperature_2m"))
+
 }
