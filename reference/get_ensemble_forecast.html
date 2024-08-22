@@ -94,30 +94,16 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_ensemble_forecast</span><span class="op">(</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># interactive()</span></span></span>
+<span class="r-in"><span><span class="fu">get_ensemble_forecast</span><span class="op">(</span></span></span>
 <span class="r-in"><span>latitude <span class="op">=</span> <span class="fl">37.30</span>,</span></span>
 <span class="r-in"><span>longitude <span class="op">=</span> <span class="op">-</span><span class="fl">79.83</span>,</span></span>
 <span class="r-in"><span>forecast_days <span class="op">=</span> <span class="fl">7</span>,</span></span>
 <span class="r-in"><span>past_days <span class="op">=</span> <span class="fl">2</span>,</span></span>
 <span class="r-in"><span>model <span class="op">=</span> <span class="st">"gfs_seamless"</span>,</span></span>
 <span class="r-in"><span>variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature_2m"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6,696 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    datetime            reference_datetime  site_id    model_id ensemble variable</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.… gfs_sea… 00       tempera…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.… gfs_sea… 01       tempera…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.… gfs_sea… 02       tempera…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.… gfs_sea… 03       tempera…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.… gfs_sea… 04       tempera…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.… gfs_sea… 05       tempera…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.… gfs_sea… 06       tempera…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.… gfs_sea… 07       tempera…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.… gfs_sea… 08       tempera…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.… gfs_sea… 09       tempera…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6,686 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: prediction &lt;dbl&gt;, unit &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

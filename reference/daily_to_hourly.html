@@ -69,7 +69,8 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="get_climate_projections.html">get_climate_projections</a></span><span class="op">(</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># interactive()</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="get_climate_projections.html">get_climate_projections</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>latitude <span class="op">=</span> <span class="fl">37.30</span>,</span></span>
 <span class="r-in"><span>longitude <span class="op">=</span> <span class="op">-</span><span class="fl">79.83</span>,</span></span>
 <span class="r-in"><span>start_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
@@ -77,36 +78,7 @@
 <span class="r-in"><span>model <span class="op">=</span> <span class="st">"EC_Earth3P_HR"</span>,</span></span>
 <span class="r-in"><span>variables <span class="op">=</span> <span class="fu"><a href="glm_variables.html">glm_variables</a></span><span class="op">(</span>product <span class="op">=</span> <span class="st">"climate_projection"</span>, time_step <span class="op">=</span> <span class="st">"daily"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span><span class="fu">daily_to_hourly</span><span class="op">(</span>latitude <span class="op">=</span> <span class="fl">37.30</span>, longitude <span class="op">=</span> <span class="op">-</span><span class="fl">79.83</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■        </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■                       </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■        </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■                       </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■         </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■                        </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■         </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■                        </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 52,566 × 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    datetime            site_id     model_id      variable       prediction unit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 EC_Earth3P_HR temperature_2m     21.7   C    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 EC_Earth3P_HR wind_speed_10m      0.77  m/s  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 EC_Earth3P_HR cloud_cover        63     %    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 EC_Earth3P_HR shortwave_rad…      0     W/m2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 EC_Earth3P_HR relative_humi…     86     %    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 EC_Earth3P_HR precipitation       0.223 mm/hr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2024-08-22 <span style="color: #949494;">01:00:00</span> 37.3_-79.83 EC_Earth3P_HR temperature_2m     21.7   C    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2024-08-22 <span style="color: #949494;">01:00:00</span> 37.3_-79.83 EC_Earth3P_HR wind_speed_10m      0.77  m/s  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2024-08-22 <span style="color: #949494;">01:00:00</span> 37.3_-79.83 EC_Earth3P_HR cloud_cover        63     %    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2024-08-22 <span style="color: #949494;">01:00:00</span> 37.3_-79.83 EC_Earth3P_HR shortwave_rad…      0     W/m2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 52,556 more rows</span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
