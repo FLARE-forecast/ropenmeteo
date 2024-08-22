@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>R Wrappers for Open Meteo API • RopenMeteo</title>
+<title>R Wrappers for Open-Meteo API • RopenMeteo</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="R Wrappers for Open Meteo API">
-<meta name="description" content="This package uses provides R wrappers for the APIs from Open-Meteo project along with helper functions. The Open-Meteo is a project that streamlines access to a range of publicly historical and forecasted meteorology data from agencies across the world.">
-<meta property="og:description" content="This package uses provides R wrappers for the APIs from Open-Meteo project along with helper functions. The Open-Meteo is a project that streamlines access to a range of publicly historical and forecasted meteorology data from agencies across the world.">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="R Wrappers for Open-Meteo API">
+<meta name="description" content="R wrappers for the Application Programming Interface from the &lt;https://open-meteo.com&gt; project along with helper functions. The &lt;https://open-meteo.com&gt; project streamlines access to a range of publicly historical and forecast meteorology data from agencies across the world.">
+<meta property="og:description" content="R wrappers for the Application Programming Interface from the &lt;https://open-meteo.com&gt; project along with helper functions. The &lt;https://open-meteo.com&gt; project streamlines access to a range of publicly historical and forecast meteorology data from agencies across the world.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -57,9 +57,9 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>R wrappers for APIs on Open-Meteo project. The Open-Meteo is a amazing project that streamlines the access to a range of publicly historical and forecasted meteorology data from agencies across the world. The free access tier allows for 10,000 API calls per day. The paid tiers increase the number of daily API calls . Learn more about the Open-Meteo project at their website (<a href="https://open-meteo.com" class="external-link uri">https://open-meteo.com</a>) and consider supporting their efforts.</p>
+<p>R wrappers for application programming interfaces on the Open-Meteo project. The Open-Meteo is a amazing project that streamlines the access to a range of publicly available historical and forecast meteorology data from agencies across the world. The free access tier allows for 10,000 API calls per day. The paid tiers increase the number of daily API calls . Learn more about the Open-Meteo project at their website (<a href="https://open-meteo.com" class="external-link uri">https://open-meteo.com</a>) and consider supporting their efforts.</p>
 <p>Open-Meteo citation: Zippenfenig, Patrick. (2023). Open-Meteo.com Weather API (0.2.69). Zenodo. <a href="https://doi.org/10.5281/zenodo.8112599" class="external-link uri">https://doi.org/10.5281/zenodo.8112599</a></p>
-<p>The package includes additional functionally to facilitate the use in mechanistic environmental/ecological models. This includes the calculation of longwave radiation (not provided through the API) from air temperature and cloud cover, the writing of output to the format required by the General Lake Model (GLM), and the conversion to the standard used in the NEON Ecological Forecasting Challenge that is run by the Ecological Initiative Research Coordination Network (<a href="https://neon4cast.org" class="external-link uri">https://neon4cast.org</a>).</p>
+<p>The package includes additional functionally to facilitate the use in mechanistic environmental/ecological models. This includes the calculation of longwave radiation (not provided through the API) from air temperature and cloud cover, the writing of output to the format required by the General Lake Model (GLM), and the conversion to the standard used in the NEON Ecological Forecasting Challenge that is run by the Ecological Initiative Research Coordination Network.</p>
 <p>The package uses a long format standard with the following columns</p>
 <ul>
 <li>
@@ -106,12 +106,12 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="do">## # A tibble: 6 × 8</span></span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="do">##   datetime            reference_datetime  site_id     model_id ensemble variable</span></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="do">##   &lt;dttm&gt;              &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   </span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="do">## 1 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="do">## 2 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="do">## 3 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="do">## 4 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="do">## 5 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="do">## 6 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="do">## 1 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="do">## 2 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="do">## 3 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="do">## 4 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="do">## 5 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="do">## 6 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…</span></span>
 <span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="do">## # ℹ 2 more variables: prediction &lt;dbl&gt;, unit &lt;chr&gt;</span></span></code></pre></div>
 <p>The resulting dataframe is in a long format that is easily visualized using ggplot</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
