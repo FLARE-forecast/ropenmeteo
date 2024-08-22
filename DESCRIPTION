@@ -1,10 +1,10 @@
 Package: RopenMeteo
-Title: R Wrappers for Open Meteo API
+Title: R Wrappers for Open-Meteo API
 Version: 0.1
 Authors@R: 
     person("Quinn", "Thomas", , "rqthomas@vt.edu", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0003-1282-7825"))
-Description: This package uses provides R wrappers for the APIs from Open-Meteo project along with helper functions.  The Open-Meteo is a project that streamlines access to a range of publicly historical and forecasted meteorology data from agencies across the world.
+Description: R wrappers for the Application Programming Interface from the <https://open-meteo.com> project along with helper functions.  The <https://open-meteo.com> project streamlines access to a range of publicly historical and forecast meteorology data from agencies across the world.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

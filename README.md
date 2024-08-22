@@ -6,13 +6,13 @@ RopenMeteo
 [![R-CMD-check](https://github.com/FLARE-forecast/RopenMeteo/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FLARE-forecast/RopenMeteo/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-R wrappers for APIs on Open-Meteo project. The Open-Meteo is a amazing
-project that streamlines the access to a range of publicly historical
-and forecasted meteorology data from agencies across the world. The free
-access tier allows for 10,000 API calls per day. The paid tiers increase
-the number of daily API calls . Learn more about the Open-Meteo project
-at their website (<https://open-meteo.com>) and consider supporting
-their efforts.
+R wrappers for application programming interfaces on the Open-Meteo
+project. The Open-Meteo is a amazing project that streamlines the access
+to a range of publicly available historical and forecast meteorology
+data from agencies across the world. The free access tier allows for
+10,000 API calls per day. The paid tiers increase the number of daily
+API calls . Learn more about the Open-Meteo project at their website
+(<https://open-meteo.com>) and consider supporting their efforts.
 
 Open-Meteo citation: Zippenfenig, Patrick. (2023). Open-Meteo.com
 Weather API (0.2.69). Zenodo. <https://doi.org/10.5281/zenodo.8112599>
@@ -23,8 +23,7 @@ calculation of longwave radiation (not provided through the API) from
 air temperature and cloud cover, the writing of output to the format
 required by the General Lake Model (GLM), and the conversion to the
 standard used in the NEON Ecological Forecasting Challenge that is run
-by the Ecological Initiative Research Coordination Network
-(<https://neon4cast.org>).
+by the Ecological Initiative Research Coordination Network.
 
 The package uses a long format standard with the following columns
 
@@ -72,12 +71,12 @@ head(df)
     ## # A tibble: 6 × 8
     ##   datetime            reference_datetime  site_id     model_id ensemble variable
     ##   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
-    ## 1 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…
-    ## 2 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…
-    ## 3 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…
-    ## 4 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…
-    ## 5 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…
-    ## 6 2024-08-19 00:00:00 2024-08-21 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…
+    ## 1 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…
+    ## 2 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…
+    ## 3 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…
+    ## 4 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…
+    ## 5 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…
+    ## 6 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…
     ## # ℹ 2 more variables: prediction <dbl>, unit <chr>
 
 The resulting dataframe is in a long format that is easily visualized
