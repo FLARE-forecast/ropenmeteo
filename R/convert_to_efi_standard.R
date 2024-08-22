@@ -18,7 +18,7 @@
 #' file <- system.file("extdata", "test-data.csv", package="RopenMeteo")
 #' df <- readr::read_csv(file, show_col_types = FALSE)
 #' df  |>
-#'   add_longwave()
+#'   add_longwave() |>
 #'   convert_to_efi_standard()
 #'
 convert_to_efi_standard <- function(df){
