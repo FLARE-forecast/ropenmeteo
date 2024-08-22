@@ -37,6 +37,7 @@ data frame (in long format)
 Download point-level ensemble weather forecasting using open-meteo API
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 get_ensemble_forecast(
 latitude = 37.30,
 longitude = -79.83,
@@ -45,5 +46,5 @@ past_days = 2,
 model = "gfs_seamless",
 variables = c("temperature_2m"))
 
-
+\dontshow{\}) # examplesIf}
 }

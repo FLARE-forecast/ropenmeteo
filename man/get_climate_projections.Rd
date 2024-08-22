@@ -36,6 +36,7 @@ data frame
 Download point-level climate projections using open-meteo API
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 get_climate_projections(
 latitude = 37.30,
@@ -44,5 +45,5 @@ start_date = Sys.Date(),
 end_date = Sys.Date() + lubridate::years(1),
 model = "EC_Earth3P_HR",
 variables = c("temperature_2m_mean"))
-
+\dontshow{\}) # examplesIf}
 }

@@ -34,11 +34,12 @@ data frame
 Download point-level historical weather (ERA5) using open-meteo API
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 get_historical_weather(
 latitude = 37.30,
 longitude = -79.83,
 start_date = "2023-01-01",
 end_date = Sys.Date(),
 variables = c("temperature_2m"))
-
+\dontshow{\}) # examplesIf}
 }

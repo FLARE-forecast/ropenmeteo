@@ -36,6 +36,7 @@ data frame (in long format)
 Download point-level seasonal weather forecast using open-meteo API
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 get_seasonal_forecast(
 latitude = 37.30,
@@ -44,5 +45,5 @@ forecast_days = 30,
 past_days = 5,
 variables = glm_variables(product = "seasonal_forecast",
                          time_step = "6hourly"))
-
+\dontshow{\}) # examplesIf}
 }
