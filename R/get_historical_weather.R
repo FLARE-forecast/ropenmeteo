@@ -9,7 +9,7 @@
 #'
 #' @return data frame
 #' @export
-#' @examples
+#' @examplesIf interactive()
 #' get_historical_weather(
 #' latitude = 37.30,
 #' longitude = -79.83,

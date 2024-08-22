@@ -6,7 +6,7 @@
 #'
 #' @return data frame
 #' @export
-#' @examples
+#' @examplesIf interactive()
 #' get_climate_projections(
 #' latitude = 37.30,
 #' longitude = -79.83,

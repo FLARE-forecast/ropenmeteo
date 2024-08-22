@@ -11,7 +11,7 @@
 #' @return data frame (in long format)
 #' @export
 #'
-#' @examples
+#' @examplesIf interactive()
 #' get_ensemble_forecast(
 #' latitude = 37.30,
 #' longitude = -79.83,

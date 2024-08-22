@@ -7,7 +7,7 @@
 #'
 #' @return data frame
 #' @export
-#' @examples
+#' @examplesIf interactive()
 #' get_seasonal_forecast(
 #' latitude = 37.30,
 #' longitude = -79.83,
