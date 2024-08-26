@@ -17,7 +17,8 @@ Imports:
   lubridate,
   glue,
   imputeTS,
-  httr2
+  httr2,
+  jsonlite
 Suggests: 
     ggplot2,
     knitr,
