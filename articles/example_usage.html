@@ -91,12 +91,12 @@ defines this as <code>model = "generic"</code>.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
 <span><span class="co">#&gt;   datetime            reference_datetime  site_id   model_id variable prediction</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       21.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-20 <span style="color: #949494;">01:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       20.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-20 <span style="color: #949494;">02:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       19.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-20 <span style="color: #949494;">03:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       18.8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-20 <span style="color: #949494;">04:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       18.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-20 <span style="color: #949494;">05:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       17.9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       20.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-24 <span style="color: #949494;">01:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       18.9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-24 <span style="color: #949494;">02:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       18  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-24 <span style="color: #949494;">03:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       17.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-24 <span style="color: #949494;">04:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       17.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-24 <span style="color: #949494;">05:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79… generic  tempera…       16.6</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: unit &lt;chr&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -155,12 +155,12 @@ temperature.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
 <span><span class="co">#&gt;   datetime            reference_datetime  site_id     model_id ensemble variable</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 00       relativ…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 01       relativ…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 02       relativ…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 03       relativ…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 04       relativ…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 05       relativ…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 00       relativ…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 01       relativ…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 02       relativ…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 03       relativ…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 04       relativ…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… 05       relativ…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: prediction &lt;dbl&gt;, unit &lt;chr&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -188,12 +188,12 @@ temperature.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
 <span><span class="co">#&gt;   time                AirTemp ShortWave LongWave RelHum WindSpeed  Rain</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-20 <span style="color: #949494;">00:00:00</span>    19.5         0     317.     70      3.55     0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-20 <span style="color: #949494;">01:00:00</span>    18.1         0     307.     76      3.11     0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-20 <span style="color: #949494;">02:00:00</span>    16.8         0     300.     81      2.76     0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-20 <span style="color: #949494;">03:00:00</span>    15.7         0     294.     86      2.48     0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-20 <span style="color: #949494;">04:00:00</span>    14.7         0     290.     89      2.27     0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-20 <span style="color: #949494;">05:00:00</span>    13.9         0     285.     90      2.2      0</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-24 <span style="color: #949494;">00:00:00</span>    17           0     299.     66      1.08     0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-24 <span style="color: #949494;">01:00:00</span>    15.4         0     294.     71      0.9      0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-24 <span style="color: #949494;">02:00:00</span>    14.6         0     290.     73      0.85     0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-24 <span style="color: #949494;">03:00:00</span>    14           0     287.     75      0.86     0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-24 <span style="color: #949494;">04:00:00</span>    13.4         0     286.     79      0.72     0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-24 <span style="color: #949494;">05:00:00</span>    12.9         0     284.     83      0.71     0</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="converting-to-ecological-forecasting-initative-convention">Converting to Ecological Forecasting Initative convention<a class="anchor" aria-label="anchor" href="#converting-to-ecological-forecasting-initative-convention"></a>
@@ -218,16 +218,16 @@ the same as the output from <code>neon4cast::stage2()</code></p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 53,568 × 8</span></span></span>
 <span><span class="co">#&gt;    datetime            reference_datetime  site_id     model_id family parameter</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 01       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 01       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 01       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 01       </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 53,558 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: variable &lt;chr&gt;, prediction &lt;dbl&gt;</span></span></span></code></pre></div>
 <p>Note that <code>neon4cast::stage3()</code> is similar to</p>
@@ -239,16 +239,16 @@ the same as the output from <code>neon4cast::stage2()</code></p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11,904 × 8</span></span></span>
 <span><span class="co">#&gt;    datetime            reference_datetime  site_id     model_id family parameter</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 01       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 01       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 00       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 01       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2024-08-24 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 gfs_sea… ensem… 01       </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11,894 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: variable &lt;chr&gt;, prediction &lt;dbl&gt;</span></span></span></code></pre></div>
 <p>With the only difference that the number of days is equal to the
@@ -275,12 +275,12 @@ API.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
 <span><span class="co">#&gt;   datetime            site_id     model_id variable       prediction unit </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-19 <span style="color: #949494;">19:00:00</span> 37.3_-79.83 ERA5     temperature_2m       25   °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-19 <span style="color: #949494;">20:00:00</span> 37.3_-79.83 ERA5     temperature_2m       24.3 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-19 <span style="color: #949494;">21:00:00</span> 37.3_-79.83 ERA5     temperature_2m       24.7 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-19 <span style="color: #949494;">22:00:00</span> 37.3_-79.83 ERA5     temperature_2m       23.3 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-19 <span style="color: #949494;">23:00:00</span> 37.3_-79.83 ERA5     temperature_2m       22.8 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-20 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 ERA5     temperature_2m       21.2 °C</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-24 <span style="color: #949494;">19:00:00</span> 37.3_-79.83 ERA5     temperature_2m       27.2 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-24 <span style="color: #949494;">20:00:00</span> 37.3_-79.83 ERA5     temperature_2m       27.1 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-24 <span style="color: #949494;">21:00:00</span> 37.3_-79.83 ERA5     temperature_2m       26.7 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-24 <span style="color: #949494;">22:00:00</span> 37.3_-79.83 ERA5     temperature_2m       26.1 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-24 <span style="color: #949494;">23:00:00</span> 37.3_-79.83 ERA5     temperature_2m       24   °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-25 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 ERA5     temperature_2m       20.6 °C</span></span></code></pre></div>
 <p>Notice the delay of ~7 days.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -289,7 +289,7 @@ API.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#F8766D"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_vline</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/with_tz.html" class="external-link">with_tz</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span>, tzone <span class="op">=</span> <span class="st">"UTC"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">variable</span>, scale <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Removed 71 rows containing missing values or values outside the scale range</span></span>
+<span><span class="co">#&gt; Warning: Removed 47 rows containing missing values or values outside the scale range</span></span>
 <span><span class="co">#&gt; (`geom_line()`).</span></span></code></pre></div>
 <p><img src="example_usage_files/figure-html/hist-plot-1.png" width="700"></p>
 </div>
@@ -310,12 +310,12 @@ the NOAA Climate Forecasting System</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
 <span><span class="co">#&gt;   datetime            reference_datetime  site_id     model_id ensemble variable</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-17 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      01       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-17 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      02       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-17 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      03       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-17 <span style="color: #949494;">00:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      04       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-17 <span style="color: #949494;">06:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      01       tempera…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-17 <span style="color: #949494;">06:00:00</span> 2024-08-22 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      02       tempera…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-21 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      01       tempera…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-21 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      02       tempera…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-21 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      03       tempera…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-21 <span style="color: #949494;">00:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      04       tempera…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-21 <span style="color: #949494;">06:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      01       tempera…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-21 <span style="color: #949494;">06:00:00</span> 2024-08-26 <span style="color: #949494;">00:00:00</span> 37.3_-79.83 cfs      02       tempera…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: prediction &lt;dbl&gt;, unit &lt;chr&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -324,7 +324,7 @@ the NOAA Climate Forecasting System</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_vline</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">reference_datetime</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">variable</span>, scale <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Removed 2073 rows containing missing values or values outside the scale range</span></span>
+<span><span class="co">#&gt; Warning: Removed 2121 rows containing missing values or values outside the scale range</span></span>
 <span><span class="co">#&gt; (`geom_line()`).</span></span></code></pre></div>
 <p><img src="example_usage_files/figure-html/seasonal-plot-1.png" width="700"></p>
 <div class="section level3">
@@ -340,7 +340,7 @@ the NOAA Climate Forecasting System</p>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="../reference/glm_variables.html">glm_variables</a></span><span class="op">(</span>product <span class="op">=</span> <span class="st">"seasonal_forecast"</span>, </span>
 <span>                            time_step <span class="op">=</span> <span class="st">"6hourly"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Waiting 4s for throttling delay <span style="color: #00BB00;">■■■■■■■■                        </span></span></span>
-<span><span class="co">#&gt; Waiting 4s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span></span>
+<span><span class="co">#&gt; Waiting 4s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■             </span></span></span>
 <span><span class="co">#&gt; Waiting 4s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span></span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -376,12 +376,12 @@ projection.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
 <span><span class="co">#&gt;   datetime   site_id     model_id      variable            prediction unit </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-22 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       21.7 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-23 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       22.3 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-24 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       21.9 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-25 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       20.6 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-26 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       19.5 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-27 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       20.3 °C</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-26 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       19.5 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-27 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       20.3 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-28 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       20.7 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-29 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       21.1 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-30 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       21.9 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-31 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       22.6 °C</span></span></code></pre></div>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="va">unit</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -409,25 +409,26 @@ projection.</p>
 <span>    variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature_2m_mean"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■                 </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■                   </span></span></span>
 <span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■                 </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■                </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■                  </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■              </span></span></span>
-<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■             </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■                   </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■    </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■              </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■                    </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■     </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■                    </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■       </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
@@ -458,22 +459,22 @@ to add column that denotes the different sites.</p>
 <span>    variables <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature_2m_mean"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span>,</span>
 <span><span class="va">sites</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■                        </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span></span></span>
 <span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■              </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
 <span><span class="co">#&gt;   datetime   site_id model_id      variable            prediction unit </span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-22 fcre    MPI_ESM1_2_XR temperature_2m_mean       21.6 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-23 fcre    MPI_ESM1_2_XR temperature_2m_mean       20.7 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-24 fcre    MPI_ESM1_2_XR temperature_2m_mean       21.3 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-25 fcre    MPI_ESM1_2_XR temperature_2m_mean       18.9 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-26 fcre    MPI_ESM1_2_XR temperature_2m_mean       17.6 °C   </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-27 fcre    MPI_ESM1_2_XR temperature_2m_mean       17.9 °C</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2024-08-26 fcre    MPI_ESM1_2_XR temperature_2m_mean       17.6 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2024-08-27 fcre    MPI_ESM1_2_XR temperature_2m_mean       17.9 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2024-08-28 fcre    MPI_ESM1_2_XR temperature_2m_mean       17.8 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2024-08-29 fcre    MPI_ESM1_2_XR temperature_2m_mean       16.8 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> 2024-08-30 fcre    MPI_ESM1_2_XR temperature_2m_mean       17.2 °C   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> 2024-08-31 fcre    MPI_ESM1_2_XR temperature_2m_mean       15.5 °C</span></span></code></pre></div>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">variable</span>, <span class="va">unit</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -501,23 +502,23 @@ applied to each hour.</p>
 <span>  end_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/period.html" class="external-link">years</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>,</span>
 <span>  model <span class="op">=</span> <span class="st">"EC_Earth3P_HR"</span>,</span>
 <span>  variables <span class="op">=</span> <span class="fu"><a href="../reference/glm_variables.html">glm_variables</a></span><span class="op">(</span>product <span class="op">=</span> <span class="st">"climate_projection"</span>, time_step <span class="op">=</span> <span class="st">"daily"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■              </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■                       </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■        </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■                       </span></span></span>
+<span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■     </span></span></span>
 <span><span class="co">#&gt; Waiting 5s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■             </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■                    </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■     </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■             </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■                     </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■      </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■              </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■                      </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■       </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■               </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■                          </span></span></span>
-<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■                </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■                       </span></span></span>
+<span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■        </span></span></span>
 <span><span class="co">#&gt; Waiting 6s for throttling delay <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span></span></code></pre></div>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">|&gt;</span> </span>
