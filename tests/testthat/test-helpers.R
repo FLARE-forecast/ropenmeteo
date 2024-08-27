@@ -1,6 +1,6 @@
 test_that("write_glm_format works", {
 
-  file <- system.file("extdata", "test-data.csv", package="RopenMeteo")
+  file <- system.file("extdata", "test-data.csv", package="ropenmeteo")
   df <- readr::read_csv(file, show_col_types = FALSE)
 
   df <- df |>
