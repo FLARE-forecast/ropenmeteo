@@ -1,4 +1,4 @@
-RopenMeteo
+ropenmeteo
 ================
 
 <!-- badges: start -->
