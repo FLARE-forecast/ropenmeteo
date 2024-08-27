@@ -7,7 +7,7 @@
 #' @param end_date latest date requested
 #' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api
 #'
-#' @return data frame
+#' @returns data frame with the results from the call to the open-meteo API.  The data frame is in a long format and has the following columns: "datetime", "site_id", "model_id", "variable", "prediction","unit".
 #' @export
 #' @examplesIf interactive()
 #' get_historical_weather(

@@ -19,7 +19,7 @@ library(ggplot2)
 library(dplyr)
 library(purrr)
 library(tibble)
-library(RopenMeteo)
+library(ropenmeteo)
 library(lubridate)
 library(readr)
 ```
@@ -99,7 +99,7 @@ df <- get_ensemble_forecast(
   forecast_days = 7,
   past_days = 2,
   model = "gfs_seamless",
-  variables = RopenMeteo::glm_variables(product = "ensemble_forecast", 
+  variables = glm_variables(product = "ensemble_forecast", 
                                         time_step = "hourly"))
 head(df)
 ```
@@ -129,7 +129,7 @@ The standard used in the NEON Ecological Forecasting Challenge is slightly diffe
 
 The EFI standard also follows CF-conventions so the variable names are converted to be CF compliant. 
 
-The output from `RopenMeteo::convert_to_efi_standard()` is the same as the output from `neon4cast::stage2()`
+The output from `convert_to_efi_standard()` is the same as the output from `neon4cast::stage2()`
 
 Learn more about `neon4cast::stage2()` here: [https://projects.ecoforecast.org/neon4cast-docs/Shared-Forecast-Drivers.html]
 
@@ -148,7 +148,7 @@ df |>
   filter(datetime < reference_datetime)
 ```
 
-With the only difference that the number of days is equal to the `past_days` in the call to `RopenMeteo::get_ensemble_forecast()`.  The max `past_days` from open-meteo is ~60 days.
+With the only difference that the number of days is equal to the `past_days` in the call to `get_ensemble_forecast()`.  The max `past_days` from open-meteo is ~60 days.
 
 ## Historical Weather
 

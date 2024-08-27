@@ -1,10 +1,10 @@
 #' Convert daily climate projections to hourly time-step
 #'
-#' @param df data frame output by `get_seasonal_forecast()`
+#' @param df data frame output by `get_climate_projections()` that has daily values for the variable
 #' @param latitude latitude degree north
 #' @param longitude longitude degree east
 #'
-#' @return data frame
+#' @return data frame with an hourly time step
 #' @export
 #' @examplesIf interactive()
 #' get_climate_projections(

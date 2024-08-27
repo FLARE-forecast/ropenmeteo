@@ -4,6 +4,7 @@
 #' @param path directory where csv files will be written
 #'
 #' @export
+#' @returns No return value, called to generate csv files in the GLM required format
 #' @examples
 #'
 #' \dontshow{
@@ -13,7 +14,7 @@
 #'
 #' file <- system.file("extdata", "test-data.csv", package="RopenMeteo")
 #' df <- readr::read_csv(file, show_col_types = FALSE)
-#'df |>
+#' df |>
 #'    add_longwave() |>
 #'    write_glm_format(path = path)
 

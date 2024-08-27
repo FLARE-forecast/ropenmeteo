@@ -7,14 +7,14 @@
 daily_to_hourly(df, latitude, longitude)
 }
 \arguments{
-\item{df}{data frame output by \code{get_seasonal_forecast()}}
+\item{df}{data frame output by \code{get_climate_projections()} that has daily values for the variable}
 
 \item{latitude}{latitude degree north}
 
 \item{longitude}{longitude degree east}
 }
 \value{
-data frame
+data frame with an hourly time step
 }
 \description{
 Convert daily climate projections to hourly time-step

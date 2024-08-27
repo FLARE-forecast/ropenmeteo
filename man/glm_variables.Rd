@@ -12,7 +12,7 @@ glm_variables(product, time_step)
 \item{time_step}{model and time-step: hourly, 6hour, daily}
 }
 \value{
-character vector
+a vector of variables requires by the GLM model; the vector can be used in the \code{variables} argument in the API function calls (e.g., \code{get_ensemble_forecast}).
 }
 \description{
 Get set of variables required for the GLM model

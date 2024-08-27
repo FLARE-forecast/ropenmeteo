@@ -31,7 +31,7 @@ get_ensemble_forecast(
 \item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api}
 }
 \value{
-data frame (in long format)
+data frame with the results from the call to the open-meteo API.  The data frame is in a long format and has the following columns: "datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit".
 }
 \description{
 Download point-level ensemble weather forecasting using open-meteo API

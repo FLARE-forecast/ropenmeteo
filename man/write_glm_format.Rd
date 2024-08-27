@@ -11,6 +11,9 @@ write_glm_format(df, path)
 
 \item{path}{directory where csv files will be written}
 }
+\value{
+No return value, called to generate csv files in the GLM required format
+}
 \description{
 Write ensemble forecast dataframe to General Lake Model formatted csv files
 }

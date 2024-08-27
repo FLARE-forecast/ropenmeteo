@@ -7,10 +7,10 @@
 add_longwave(df)
 }
 \arguments{
-\item{df}{data frame output by \code{get_ensemble_forecast()}}
+\item{df}{data frame output from one of the functions that gets a data frame from the API (e.g., \code{get_ensemble_forecast}).  The data frame must has \code{cloud_cover} and \code{temperature_2m} as variables}
 }
 \value{
-data frame (in long format)
+data frame with the same columns as the input \code{df} but with \code{longwave_radiation} added as a variable
 }
 \description{
 Add longwave to ensemble forecast dataframe using Idso and Jackson (1969).  Requires cloud cover and temperature variables in input data frame.

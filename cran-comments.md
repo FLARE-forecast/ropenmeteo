@@ -1,6 +1,9 @@
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
-* This is a new release.
-* devtools::check_win_release() returns one note that "Possibly misspelled words in DESCRIPTION: Meteo (2:28)".  Meteo is the name of the API that the package is a wrapper for (see <https://open-meteo.com>)
+* This is a resubmission that addresses the feedback.
+* package names, software names and API (application programming interface) now have single quotes in title and description.'Open-Meteo'
+* Package names is changes to be `ropenmeteo` because it is case sensitive.
+* The redundant "R" at the start of the title and description has been removed
+* All exported functions have a "\value" with the class (e.g. data frame) and what it means.

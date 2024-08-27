@@ -1,11 +1,11 @@
 #' Convert 6 hour seasonal forecast to hourly time-step
 #'
-#' @param df data frame output by get_seasonal_forecast
+#' @param df data frame with 6-hour time step
 #' @param latitude latitude degree north
 #' @param longitude long longitude degree east
 #' @param use_solar_geom use solar geometry to determine hourly solar radiation
 #'
-#' @return data frame
+#' @returns data frame with an hourly time step
 #' @export
 #' @examplesIf interactive()
 #' get_seasonal_forecast(

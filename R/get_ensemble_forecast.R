@@ -8,7 +8,7 @@
 #' @param model id of forest model https://open-meteo.com/en/docs/ensemble-api
 #' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api
 #'
-#' @return data frame (in long format)
+#' @returns data frame with the results from the call to the open-meteo API.  The data frame is in a long format and has the following columns: "datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit".
 #' @export
 #'
 #' @examplesIf interactive()

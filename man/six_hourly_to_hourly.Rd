@@ -7,7 +7,7 @@
 six_hourly_to_hourly(df, latitude, longitude, use_solar_geom = TRUE)
 }
 \arguments{
-\item{df}{data frame output by get_seasonal_forecast}
+\item{df}{data frame with 6-hour time step}
 
 \item{latitude}{latitude degree north}
 
@@ -16,7 +16,7 @@ six_hourly_to_hourly(df, latitude, longitude, use_solar_geom = TRUE)
 \item{use_solar_geom}{use solar geometry to determine hourly solar radiation}
 }
 \value{
-data frame
+data frame with an hourly time step
 }
 \description{
 Convert 6 hour seasonal forecast to hourly time-step

@@ -1,8 +1,8 @@
 #' Add longwave to ensemble forecast dataframe using Idso and Jackson (1969).  Requires cloud cover and temperature variables in input data frame.
 #'
-#' @param df data frame output by `get_ensemble_forecast()`
+#' @param df data frame output from one of the functions that gets a data frame from the API (e.g., `get_ensemble_forecast`).  The data frame must has `cloud_cover` and `temperature_2m` as variables
 #'
-#' @return data frame (in long format)
+#' @returns data frame with the same columns as the input `df` but with `longwave_radiation` added as a variable
 #' @export
 #' @examples
 #'

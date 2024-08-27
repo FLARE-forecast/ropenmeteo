@@ -28,7 +28,7 @@ get_historical_weather(
 \item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api}
 }
 \value{
-data frame
+data frame with the results from the call to the open-meteo API.  The data frame is in a long format and has the following columns: "datetime", "site_id", "model_id", "variable", "prediction","unit".
 }
 \description{
 Download point-level historical weather (ERA5) using open-meteo API
