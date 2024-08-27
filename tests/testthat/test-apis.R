@@ -38,7 +38,7 @@ test_that("get_historical_weather works", {
     latitude = 37.30,
     longitude = -79.83,
     start_date = "2023-01-01",
-    end_date = Sys.Date(),
+    end_date = Sys.Date() - lubridate::days(1),
     variables = c("temperature_2m"))
 
   expect_s3_class(df, "data.frame")
