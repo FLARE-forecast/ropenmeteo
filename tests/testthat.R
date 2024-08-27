@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(RopenMeteo)
+library(ropenmeteo)
 
-test_check("RopenMeteo")
+test_check("ropenmeteo")

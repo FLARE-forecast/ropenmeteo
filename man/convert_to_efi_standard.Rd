@@ -26,7 +26,7 @@ Output units:
 }
 }
 \examples{
-file <- system.file("extdata", "test-data.csv", package="RopenMeteo")
+file <- system.file("extdata", "test-data.csv", package="ropenmeteo")
 df <- readr::read_csv(file, show_col_types = FALSE)
 df  |>
   add_longwave() |>
