@@ -1,4 +1,4 @@
-ropenmeteo
+RopenMeteo
 ================
 
 <!-- badges: start -->
@@ -43,12 +43,12 @@ The package uses a long format standard with the following columns
 
 Install the development version from GitHub with:
 
-    devtools::install_github("FLARE-forecast/RopenMeteo")
+    devtools::install_github("FLARE-forecast/ropenmeteo")
 
 ## Quick Start
 
 ``` r
-library(RopenMeteo)
+library(ropenmeteo)
 library(ggplot2)
 library(dplyr)
 ```
@@ -58,7 +58,7 @@ Ensemble forecasts from individual models are available.
 <https://open-meteo.com/en/docs/ensemble-api>
 
 ``` r
-df <- RopenMeteo::get_ensemble_forecast(
+df <- get_ensemble_forecast(
   latitude = 37.30,
   longitude = -79.83,
   forecast_days = 7,
@@ -71,12 +71,12 @@ head(df)
     ## # A tibble: 6 × 8
     ##   datetime            reference_datetime  site_id     model_id ensemble variable
     ##   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
-    ## 1 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…
-    ## 2 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…
-    ## 3 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…
-    ## 4 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…
-    ## 5 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…
-    ## 6 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…
+    ## 1 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…
+    ## 2 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…
+    ## 3 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…
+    ## 4 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…
+    ## 5 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…
+    ## 6 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…
     ## # ℹ 2 more variables: prediction <dbl>, unit <chr>
 
 The resulting dataframe is in a long format that is easily visualized

@@ -30,13 +30,13 @@ The package uses a long format standard with the following columns
 Install the development version from GitHub with:
 
 ```         
-devtools::install_github("FLARE-forecast/RopenMeteo")
+devtools::install_github("FLARE-forecast/ropenmeteo")
 ```
 
 ## Quick Start
 
 ```{r, message=FALSE}
-library(RopenMeteo)
+library(ropenmeteo)
 library(ggplot2)
 library(dplyr)
 ```
@@ -46,7 +46,7 @@ Ensemble forecasts from individual models are available.
 <https://open-meteo.com/en/docs/ensemble-api>
 
 ```{r}
-df <- RopenMeteo::get_ensemble_forecast(
+df <- get_ensemble_forecast(
   latitude = 37.30,
   longitude = -79.83,
   forecast_days = 7,

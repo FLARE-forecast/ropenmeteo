@@ -20,13 +20,13 @@ Imports:
   httr2,
   jsonlite
 Suggests: 
-    ggplot2,
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0),
-    readr,
-    tibble,
-    spelling
+  ggplot2,
+  knitr,
+  rmarkdown,
+  testthat (>= 3.0.0),
+  readr,
+  tibble,
+  spelling
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 Language: en-US
