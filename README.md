@@ -1,4 +1,4 @@
-RopenMeteo
+ropenmeteo
 ================
 
 <!-- badges: start -->
@@ -6,7 +6,7 @@ RopenMeteo
 [![R-CMD-check](https://github.com/FLARE-forecast/RopenMeteo/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FLARE-forecast/RopenMeteo/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-R wrappers for application programming interfaces on the Open-Meteo
+Wrappers for application programming interfaces on the Open-Meteo
 project. The Open-Meteo is a amazing project that streamlines the access
 to a range of publicly available historical and forecast meteorology
 data from agencies across the world. The free access tier allows for
@@ -90,8 +90,6 @@ df |>
   geom_vline(aes(xintercept = reference_datetime)) + 
   facet_wrap(~variable, scale = "free", ncol = 2)
 ```
-
-![](README_files/figure-gfm/example-plot-1.png)<!-- -->
 
 ## Examples
 
