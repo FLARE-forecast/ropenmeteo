@@ -3,7 +3,7 @@ pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   example_usage: example_usage.html
-last_built: 2024-08-27T15:27Z
+last_built: 2024-08-27T15:38Z
 urls:
   reference: http://flare-forecast.org/ropenmeteo/reference
   article: http://flare-forecast.org/ropenmeteo/articles
