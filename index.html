@@ -53,7 +53,7 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="ropenmeteo">ropenmeteo<a class="anchor" aria-label="anchor" href="#ropenmeteo"></a>
+<div class="page-header"><h1 id="ropenmeteo">RopenMeteo<a class="anchor" aria-label="anchor" href="#ropenmeteo"></a>
 </h1></div>
 <!-- badges: start -->
 
@@ -83,19 +83,19 @@
 <h2 id="install">Install<a class="anchor" aria-label="anchor" href="#install"></a>
 </h2>
 <p>Install the development version from GitHub with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"FLARE-forecast/RopenMeteo"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"FLARE-forecast/ropenmeteo"</span>)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://flare-forecast.org/RopenMeteo/" class="external-link">RopenMeteo</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://flare-forecast.org/ropenmeteo/">ropenmeteo</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
 <p>Ensemble forecasts from individual models are available.</p>
 <p><a href="https://open-meteo.com/en/docs/ensemble-api" class="external-link uri">https://open-meteo.com/en/docs/ensemble-api</a></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">RopenMeteo</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RopenMeteo/man/get_ensemble_forecast.html" class="external-link">get_ensemble_forecast</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_ensemble_forecast.html">get_ensemble_forecast</a></span><span class="op">(</span></span>
 <span>  latitude <span class="op">=</span> <span class="fl">37.30</span>,</span>
 <span>  longitude <span class="op">=</span> <span class="op">-</span><span class="fl">79.83</span>,</span>
 <span>  forecast_days <span class="op">=</span> <span class="fl">7</span>,</span>
@@ -106,12 +106,12 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="do">## # A tibble: 6 × 8</span></span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="do">##   datetime            reference_datetime  site_id     model_id ensemble variable</span></span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="do">##   &lt;dttm&gt;              &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;   </span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="do">## 1 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="do">## 2 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="do">## 3 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="do">## 4 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="do">## 5 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="do">## 6 2024-08-20 00:00:00 2024-08-22 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="do">## 1 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="do">## 2 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="do">## 3 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="do">## 4 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="do">## 5 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="do">## 6 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…</span></span>
 <span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="do">## # ℹ 2 more variables: prediction &lt;dbl&gt;, unit &lt;chr&gt;</span></span></code></pre></div>
 <p>The resulting dataframe is in a long format that is easily visualized using ggplot</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
