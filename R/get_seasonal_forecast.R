@@ -40,13 +40,13 @@ get_seasonal_forecast <- function(latitude,
 
   url_base <- "https://seasonal-api.open-meteo.com/v1/seasonal"
   url_path <-  glue::glue(
-    "?latitude={latitude}&longitude={longitude}&six_hourly={variables_api}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
+    "?latitude={latitude}&longitude={longitude}&hourly={variables_api}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
   )
   v <- read_url(url_base, url_path)
 
 
-  units <- dplyr::tibble(variable = stringr::str_split_i(names(v$six_hourly),"_member",1), unit = unlist(v$six_hourly_units)) |> dplyr::distinct() |> dplyr::filter(variable != "time")
-  df  <- dplyr::as_tibble(v$six_hourly) |>
+  units <- dplyr::tibble(variable = stringr::str_split_i(names(v$hourly),"_member",1), unit = unlist(v$hourly_units)) |> dplyr::distinct() |> dplyr::filter(variable != "time")
+  df  <- dplyr::as_tibble(v$hourly) |>
     dplyr::mutate(time = lubridate::as_datetime(paste0(time,":00")))  |>
     pivot_ensemble_forecast() |>
     dplyr::rename(datetime = time) |>
