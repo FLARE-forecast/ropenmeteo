@@ -10,33 +10,39 @@ get_seasonal_forecast(
   site_id = NULL,
   forecast_days,
   past_days,
-  model = "cfs",
+  model = "ecmwf_seasonal_seamless",
   variables = c("temperature_2m")
 )
 }
 \arguments{
-\item{latitude}{latitude degree north}
+\item{latitude}{latitude in decimal degrees north}
 
-\item{longitude}{longitude degree east}
+\item{longitude}{longitude in decimal degrees east}
 
-\item{site_id}{name of site location (optional, default = NULL)}
+\item{site_id}{optional site label added to output; defaults to "latitude_longitude"}
 
-\item{forecast_days}{Number of days in the future for forecast (starts at current day)}
+\item{forecast_days}{number of forecast days. EC46 supports up to 46 days;
+SEAS5 and the seamless blend support up to ~214 days (7 months).}
 
-\item{past_days}{Number of days in the past to include in the data}
+\item{past_days}{number of past days to include}
 
-\item{model}{id of forest model https://open-meteo.com/en/docs/ensemble-api}
+\item{model}{seasonal model id. Default \code{"ecmwf_seasonal_seamless"}. Other
+options: \code{"ecmwf_seas5"}, \code{"ecmwf_ec46"}.
+See \url{https://open-meteo.com/en/docs/seasonal-forecast-api} for details.}
 
-\item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api}
+\item{variables}{character vector of variable names.
+See \url{https://open-meteo.com/en/docs/seasonal-forecast-api} for the full list.}
 }
 \value{
-data frame with the results from the call to the open-meteo API.  The data frame is in a long format and has the following columns: "datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit".
+data frame in long format with columns: datetime, reference_datetime,
+site_id, model_id, ensemble, variable, prediction, unit.
 }
 \description{
-Download point-level seasonal weather forecast using open-meteo API
+Returns 6-hourly ensemble forecasts from ECMWF seasonal models. The seamless
+model uses EC46 for the first 46 days and SEAS5 for up to 7 months ahead.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 
 get_seasonal_forecast(
 latitude = 37.30,

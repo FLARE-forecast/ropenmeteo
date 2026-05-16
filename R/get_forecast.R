@@ -1,14 +1,22 @@
-#' Download point-level ensemble weather forecasting using open-meteo API
+#' Download point-level weather forecast using open-meteo API
 #'
-#' @param latitude latitude degree north
-#' @param longitude longitude degree east
-#' @param site_id name of site location (optional, default = NULL)
-#' @param forecast_days Number of days in the future for forecast (starts at current day)
-#' @param past_days Number of days in the past to include in the data
-#' @param model id of forest model https://open-meteo.com/en/docs/climate-api. Default = "generic"
-#' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api.
+#' Returns the best-match single forecast (not ensemble) for a location. Use
+#' [get_ensemble_forecast()] for probabilistic ensemble output.
 #'
-#' @return data frame (in long format)
+#' @param latitude latitude in decimal degrees north
+#' @param longitude longitude in decimal degrees east
+#' @param site_id optional site label added to output; defaults to "latitude_longitude"
+#' @param forecast_days number of forecast days (max 16)
+#' @param past_days number of past days to include (max 92)
+#' @param model weather model id. Default `"generic"` selects the best available
+#'   model for each location. Other options: `"gfs"`, `"ecmwf"`, `"meteofrance"`,
+#'   `"dwd"`, `"gem"`, `"jma"`, `"metno"`, `"kma"`, `"bom"`, `"ukmo"`.
+#'   See <https://open-meteo.com/en/docs> for details.
+#' @param variables character vector of variable names.
+#'   See <https://open-meteo.com/en/docs> for the full list.
+#'
+#' @return data frame in long format with columns: datetime, reference_datetime,
+#'   site_id, model_id, variable, prediction, unit
 #' @export
 #'
 #' @examplesIf interactive()
@@ -26,18 +34,28 @@ get_forecast <- function(latitude,
                          model = "generic",
                          variables = c("temperature_2m")){
 
-  if(forecast_days > 35) stop("forecast_days is longer than avialable (max = 35")
-  if(past_days > 92) stop("hist_days is longer than avialable (max = 92)")
+  if(forecast_days > 16) stop("forecast_days is longer than available (max = 16)")
+  if(past_days > 92) stop("past_days is longer than available (max = 92)")
 
   api <- switch(model,
-                "generic" = "/v1/forecast",
-                "metno" = "/v1/metno",
-                "dwd" = "/v1/dwd",
-                "gfs" = "/v1/gfs",
+                "generic"     = "/v1/forecast",
+                "metno"       = "/v1/metno",
+                "dwd"         = "/v1/forecast",
+                "gfs"         = "/v1/gfs",
                 "meteofrance" = "/v1/meteofrance",
-                "ecmwf" = "/v1/ecmwf",
-                "jma"= "/v1/jma",
-                "gem" = "/v1/gem")
+                "ecmwf"       = "/v1/ecmwf",
+                "jma"         = "/v1/jma",
+                "gem"         = "/v1/gem",
+                "kma"         = "/v1/forecast",
+                "bom"         = "/v1/forecast",
+                "ukmo"        = "/v1/forecast")
+
+  models_param <- switch(model,
+                         "dwd"  = "&models=icon_seamless",
+                         "kma"  = "&models=kma_seamless",
+                         "bom"  = "&models=bom_access_global",
+                         "ukmo" = "&models=ukmo_seamless",
+                         "")
 
   latitude <- round(latitude, 2)
   longitude <- round(longitude, 2)
@@ -50,7 +68,7 @@ get_forecast <- function(latitude,
 
     url_base <- "https://api.open-meteo.com"
     url_path <-  glue::glue(
-      "{api}?latitude={latitude}&longitude={longitude}&hourly={variable}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}"
+      "{api}?latitude={latitude}&longitude={longitude}&hourly={variable}&wind_speed_unit=ms&forecast_days={forecast_days}&past_days={past_days}{models_param}"
     )
     v <- read_url(url_base, url_path)
 

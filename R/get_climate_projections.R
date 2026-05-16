@@ -1,14 +1,25 @@
 #' Download point-level climate projections using open-meteo API
 #'
-#' @param latitude latitude degree north
-#' @param longitude  longitude degree east
-#' @param site_id name of site location (optional, default = NULL)
-#' @param start_date Number of days in the future for forecast (starts at current day)
-#' @param end_date Number of days in the past to include in the data
-#' @param model id of forest model https://open-meteo.com/en/docs/climate-api
-#' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/climate-api
+#' Returns daily climate projections from high-resolution CMIP6 models covering
+#' 1950–2050. Use [daily_to_hourly()] to downscale to hourly resolution.
 #'
-#' @returns data frame with the results from the call to the open-meteo API.  The data frame is in a long format and has the following columns: "datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit".
+#' @param latitude latitude in decimal degrees north
+#' @param longitude longitude in decimal degrees east
+#' @param site_id optional site label added to output; defaults to "latitude_longitude"
+#' @param start_date start of the date range (ISO format "YYYY-MM-DD").
+#'   Data available from 1950-01-01.
+#' @param end_date end of the date range (ISO format "YYYY-MM-DD").
+#'   Projections available through 2050-12-31.
+#' @param model climate model id. Default `"EC_Earth3P_HR"`. All seven models:
+#'   `"CMCC_CM2_VHR4"`, `"FGOALS_f3_H"`, `"HiRAM_SIT_HR"`, `"MRI_AGCM3_2_S"`,
+#'   `"EC_Earth3P_HR"`, `"MPI_ESM1_2_XR"`, `"NICAM16_8S"`.
+#'   See <https://open-meteo.com/en/docs/climate-api> for details.
+#' @param variables character vector of daily variable names (use `_mean`, `_max`,
+#'   `_min`, or `_sum` suffixes as appropriate, e.g. `"temperature_2m_mean"`).
+#'   See <https://open-meteo.com/en/docs/climate-api> for the full list.
+#'
+#' @returns data frame in long format with columns: datetime, site_id, model_id,
+#'   variable, prediction, unit. Output is at daily resolution.
 #' @export
 #' @examplesIf interactive()
 #'
@@ -42,7 +53,7 @@ get_climate_projections <- function(latitude,
 
     url_base <- "https://climate-api.open-meteo.com/v1/climate"
     url_path <-  glue::glue(
-      "?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&daily={variable}&windspeed_unit=ms&models={model}"
+      "?latitude={latitude}&longitude={longitude}&start_date={start_date}&end_date={end_date}&daily={variable}&wind_speed_unit=ms&models={model}"
     )
     v <- read_url(url_base, url_path)
 

@@ -15,28 +15,37 @@ get_climate_projections(
 )
 }
 \arguments{
-\item{latitude}{latitude degree north}
+\item{latitude}{latitude in decimal degrees north}
 
-\item{longitude}{longitude degree east}
+\item{longitude}{longitude in decimal degrees east}
 
-\item{site_id}{name of site location (optional, default = NULL)}
+\item{site_id}{optional site label added to output; defaults to "latitude_longitude"}
 
-\item{start_date}{Number of days in the future for forecast (starts at current day)}
+\item{start_date}{start of the date range (ISO format "YYYY-MM-DD").
+Data available from 1950-01-01.}
 
-\item{end_date}{Number of days in the past to include in the data}
+\item{end_date}{end of the date range (ISO format "YYYY-MM-DD").
+Projections available through 2050-12-31.}
 
-\item{model}{id of forest model https://open-meteo.com/en/docs/climate-api}
+\item{model}{climate model id. Default \code{"EC_Earth3P_HR"}. All seven models:
+\code{"CMCC_CM2_VHR4"}, \code{"FGOALS_f3_H"}, \code{"HiRAM_SIT_HR"}, \code{"MRI_AGCM3_2_S"},
+\code{"EC_Earth3P_HR"}, \code{"MPI_ESM1_2_XR"}, \code{"NICAM16_8S"}.
+See \url{https://open-meteo.com/en/docs/climate-api} for details.}
 
-\item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/climate-api}
+\item{variables}{character vector of daily variable names (use \verb{_mean}, \verb{_max},
+\verb{_min}, or \verb{_sum} suffixes as appropriate, e.g. \code{"temperature_2m_mean"}).
+See \url{https://open-meteo.com/en/docs/climate-api} for the full list.}
 }
 \value{
-data frame with the results from the call to the open-meteo API.  The data frame is in a long format and has the following columns: "datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit".
+data frame in long format with columns: datetime, site_id, model_id,
+variable, prediction, unit. Output is at daily resolution.
 }
 \description{
-Download point-level climate projections using open-meteo API
+Returns daily climate projections from high-resolution CMIP6 models covering
+1950–2050. Use \code{\link[=daily_to_hourly]{daily_to_hourly()}} to downscale to hourly resolution.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 
 get_climate_projections(
 latitude = 37.30,

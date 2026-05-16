@@ -30,7 +30,7 @@ convert_to_efi_standard <- function(df){
            variable = ifelse(variable == "relative_humidity_2m", "relative_humidity", variable),
            prediction = ifelse(variable == "relative_humidity", prediction/100, prediction),
            unit = ifelse(variable == "relative_humidity", "proportion", unit),
-           variable = ifelse(variable == "longwave", "surface_downwelling_longwave_flux_in_air", variable),
+           variable = ifelse(variable == "longwave_radiation", "surface_downwelling_longwave_flux_in_air", variable),
            variable = ifelse(variable == "shortwave_radiation", "surface_downwelling_shortwave_flux_in_air", variable),
            variable = ifelse(variable == "precipitation", "precipitation_flux", variable),
            prediction = ifelse(variable == "precipitation_flux", prediction/(60 * 60), prediction),
