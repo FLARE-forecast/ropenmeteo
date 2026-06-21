@@ -22,7 +22,7 @@ data frame with an hourly time step
 Convert 6 hour seasonal forecast to hourly time-step
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 get_seasonal_forecast(
 latitude = 37.30,
 longitude = -79.83,

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_ensemble_forecast.R
 \name{get_ensemble_forecast}
 \alias{get_ensemble_forecast}
-\title{Download point-level ensemble weather forecasting using open-meteo API}
+\title{Download point-level ensemble weather forecast using open-meteo API}
 \usage{
 get_ensemble_forecast(
   latitude,
@@ -16,28 +16,33 @@ get_ensemble_forecast(
 )
 }
 \arguments{
-\item{latitude}{latitude degree north}
+\item{latitude}{latitude in decimal degrees north}
 
-\item{longitude}{longitude degree east}
+\item{longitude}{longitude in decimal degrees east}
 
-\item{site_id}{name of site location (optional, default = NULL)}
+\item{site_id}{optional site label added to output; defaults to "latitude_longitude"}
 
-\item{forecast_days}{Number of days in the future for forecast (starts at current day)}
+\item{forecast_days}{number of forecast days (max 35)}
 
-\item{past_days}{Number of days in the past to include in the data}
+\item{past_days}{number of past days to include (max 92)}
 
-\item{model}{id of forest model https://open-meteo.com/en/docs/ensemble-api}
+\item{model}{ensemble model id. Default \code{"gfs_seamless"}. Common options:
+\code{"gfs_seamless"}, \code{"icon_seamless_eps"}, \code{"ecmwf_ifs025"}, \code{"ecmwf_aifs025"},
+\code{"gem_global"}, \code{"bom_access_global"}, \code{"ukmo_global_20km"}.
+Note: \code{ecmwf_ifs025} does not include shortwave radiation.
+See \url{https://open-meteo.com/en/docs/ensemble-api} for the full list.}
 
-\item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api}
+\item{variables}{character vector of variable names.
+See \url{https://open-meteo.com/en/docs/ensemble-api} for the full list.}
 }
 \value{
 data frame with the results from the call to the open-meteo API.  The data frame is in a long format and has the following columns: "datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit".
 }
 \description{
-Download point-level ensemble weather forecasting using open-meteo API
+Download point-level ensemble weather forecast using open-meteo API
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 get_ensemble_forecast(
 latitude = 37.30,
 longitude = -79.83,

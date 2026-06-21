@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_forecast.R
 \name{get_forecast}
 \alias{get_forecast}
-\title{Download point-level ensemble weather forecasting using open-meteo API}
+\title{Download point-level weather forecast using open-meteo API}
 \usage{
 get_forecast(
   latitude,
@@ -15,28 +15,34 @@ get_forecast(
 )
 }
 \arguments{
-\item{latitude}{latitude degree north}
+\item{latitude}{latitude in decimal degrees north}
 
-\item{longitude}{longitude degree east}
+\item{longitude}{longitude in decimal degrees east}
 
-\item{site_id}{name of site location (optional, default = NULL)}
+\item{site_id}{optional site label added to output; defaults to "latitude_longitude"}
 
-\item{forecast_days}{Number of days in the future for forecast (starts at current day)}
+\item{forecast_days}{number of forecast days (max 16)}
 
-\item{past_days}{Number of days in the past to include in the data}
+\item{past_days}{number of past days to include (max 92)}
 
-\item{model}{id of forest model https://open-meteo.com/en/docs/climate-api. Default = "generic"}
+\item{model}{weather model id. Default \code{"generic"} selects the best available
+model for each location. Other options: \code{"gfs"}, \code{"ecmwf"}, \code{"meteofrance"},
+\code{"dwd"}, \code{"gem"}, \code{"jma"}, \code{"metno"}, \code{"kma"}, \code{"bom"}, \code{"ukmo"}.
+See \url{https://open-meteo.com/en/docs} for details.}
 
-\item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api.}
+\item{variables}{character vector of variable names.
+See \url{https://open-meteo.com/en/docs} for the full list.}
 }
 \value{
-data frame (in long format)
+data frame in long format with columns: datetime, reference_datetime,
+site_id, model_id, variable, prediction, unit
 }
 \description{
-Download point-level ensemble weather forecasting using open-meteo API
+Returns the best-match single forecast (not ensemble) for a location. Use
+\code{\link[=get_ensemble_forecast]{get_ensemble_forecast()}} for probabilistic ensemble output.
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 get_forecast(latitude = 37.30,
             longitude = -79.83,
             forecast_days = 7,

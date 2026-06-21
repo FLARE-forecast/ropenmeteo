@@ -8,8 +8,12 @@ Description: Wrappers for the Application Programming Interface from the <https:
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
+<<<<<<< HEAD
 RoxygenNote: 7.3.2
 Depends: R (>= 4.1.0)
+=======
+RoxygenNote: 7.3.3
+>>>>>>> 767d077bb239a572868020d4d8d44162a0c1d622
 Imports:
   stringr,
   dplyr,

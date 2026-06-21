@@ -1,7 +1,7 @@
 #' Get set of variables required for the GLM model
 
 #' @param product api type: climate, forecast, ensemble_forecast, historical, seasonal_forecast
-#' @param time_step model and time-step: hourly, 6hour, daily
+#' @param time_step model and time-step: hourly, 6hourly, daily
 #'
 #' @returns a vector of variables requires by the GLM model; the vector can be used in the `variables` argument in the API function calls (e.g., `get_ensemble_forecast`).
 #' @export

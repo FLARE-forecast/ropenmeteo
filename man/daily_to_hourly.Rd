@@ -20,7 +20,7 @@ data frame with an hourly time step
 Convert daily climate projections to hourly time-step
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 get_climate_projections(
 latitude = 37.30,
 longitude = -79.83,

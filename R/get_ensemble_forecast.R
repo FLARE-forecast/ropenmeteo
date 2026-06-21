@@ -1,12 +1,17 @@
-#' Download point-level ensemble weather forecasting using open-meteo API
+#' Download point-level ensemble weather forecast using open-meteo API
 #'
-#' @param latitude latitude degree north
-#' @param longitude longitude degree east
-#' @param site_id name of site location (optional, default = NULL)
-#' @param forecast_days Number of days in the future for forecast (starts at current day)
-#' @param past_days Number of days in the past to include in the data
-#' @param model id of forest model https://open-meteo.com/en/docs/ensemble-api
-#' @param variables vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api
+#' @param latitude latitude in decimal degrees north
+#' @param longitude longitude in decimal degrees east
+#' @param site_id optional site label added to output; defaults to "latitude_longitude"
+#' @param forecast_days number of forecast days (max 35)
+#' @param past_days number of past days to include (max 92)
+#' @param model ensemble model id. Default `"gfs_seamless"`. Common options:
+#'   `"gfs_seamless"`, `"icon_seamless_eps"`, `"ecmwf_ifs025"`, `"ecmwf_aifs025"`,
+#'   `"gem_global"`, `"bom_access_global"`, `"ukmo_global_20km"`.
+#'   Note: `ecmwf_ifs025` does not include shortwave radiation.
+#'   See <https://open-meteo.com/en/docs/ensemble-api> for the full list.
+#' @param variables character vector of variable names.
+#'   See <https://open-meteo.com/en/docs/ensemble-api> for the full list.
 #'
 #' @returns data frame with the results from the call to the open-meteo API.  The data frame is in a long format and has the following columns: "datetime", "reference_datetime", "site_id", "model_id", "ensemble", "variable", "prediction","unit".
 #' @export
@@ -46,7 +51,7 @@ get_ensemble_forecast <- function(latitude,
 
   url_base <- "https://ensemble-api.open-meteo.com/v1/ensemble"
   url_path <-  glue::glue(
-    "?latitude={latitude}&longitude={longitude}&hourly={variables_api}&windspeed_unit=ms&forecast_days={forecast_days}&past_days={past_days}&models={model}"
+    "?latitude={latitude}&longitude={longitude}&hourly={variables_api}&wind_speed_unit=ms&forecast_days={forecast_days}&past_days={past_days}&models={model}"
   )
   v <- ropenmeteo:::read_url(url_base, url_path)
 

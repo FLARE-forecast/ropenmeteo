@@ -15,26 +15,30 @@ get_historical_weather(
 )
 }
 \arguments{
-\item{latitude}{latitude degree north}
+\item{latitude}{latitude in decimal degrees north}
 
-\item{longitude}{longitude degree east}
+\item{longitude}{longitude in decimal degrees east}
 
-\item{site_id}{name of site location (optional, default = NULL)}
+\item{site_id}{optional site label added to output; defaults to "latitude_longitude"}
 
-\item{start_date}{earliest date requested. Must be on or after 1950-01-01}
+\item{start_date}{earliest date requested (ISO format "YYYY-MM-DD").
+ERA5 is available from 1940-01-01 to present.}
 
-\item{end_date}{latest date requested}
+\item{end_date}{latest date requested (ISO format "YYYY-MM-DD"). Note that
+ERA5 has a processing delay of approximately 5 days.}
 
-\item{variables}{vector of name of variable(s) https://open-meteo.com/en/docs/ensemble-api}
+\item{variables}{character vector of variable names.
+See \url{https://open-meteo.com/en/docs/historical-weather-api} for the full list.}
 }
 \value{
-data frame with the results from the call to the open-meteo API.  The data frame is in a long format and has the following columns: "datetime", "site_id", "model_id", "variable", "prediction","unit".
+data frame in long format with columns: datetime, site_id, model_id,
+variable, prediction, unit. model_id is always "ERA5".
 }
 \description{
 Download point-level historical weather (ERA5) using open-meteo API
 }
 \examples{
-\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 get_historical_weather(
 latitude = 37.30,
 longitude = -79.83,

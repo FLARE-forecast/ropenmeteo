@@ -9,7 +9,7 @@ glm_variables(product, time_step)
 \arguments{
 \item{product}{api type: climate, forecast, ensemble_forecast, historical, seasonal_forecast}
 
-\item{time_step}{model and time-step: hourly, 6hour, daily}
+\item{time_step}{model and time-step: hourly, 6hourly, daily}
 }
 \value{
 a vector of variables requires by the GLM model; the vector can be used in the \code{variables} argument in the API function calls (e.g., \code{get_ensemble_forecast}).

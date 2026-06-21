@@ -7,25 +7,25 @@ ropenmeteo
 <!-- badges: end -->
 
 Wrappers for application programming interfaces on the Open-Meteo
-project. The Open-Meteo is a amazing project that streamlines the access
-to a range of publicly available historical and forecast meteorology
-data from agencies across the world. The free access tier allows for
-10,000 API calls per day. The paid tiers increase the number of daily
-API calls . Learn more about the Open-Meteo project at their website
+project. Open-Meteo is an amazing project that streamlines access to a
+range of publicly available historical and forecast meteorology data from
+agencies across the world. The free access tier allows for 10,000 API
+calls per day. The paid tiers increase the number of daily API calls.
+Learn more about the Open-Meteo project at their website
 (<https://open-meteo.com>) and consider supporting their efforts.
 
 Open-Meteo citation: Zippenfenig, Patrick. (2023). Open-Meteo.com
 Weather API (0.2.69). Zenodo. <https://doi.org/10.5281/zenodo.8112599>
 
-The package includes additional functionally to facilitate the use in
+The package includes additional functionality to facilitate use in
 mechanistic environmental/ecological models. This includes the
 calculation of longwave radiation (not provided through the API) from
 air temperature and cloud cover, the writing of output to the format
 required by the General Lake Model (GLM), and the conversion to the
 standard used in the NEON Ecological Forecasting Challenge that is run
-by the Ecological Initiative Research Coordination Network.
+by the Ecological Forecasting Initiative Research Coordination Network.
 
-The package uses a long format standard with the following columns
+The package uses a long format standard with the following columns:
 
 - `datetime` = date and time of forecasted value
 - `reference_datetime` = the date and time of the beginning of the
@@ -53,9 +53,34 @@ library(ggplot2)
 library(dplyr)
 ```
 
-Ensemble forecasts from individual models are available.
+The simplest call returns a best-match single forecast for any location
+on Earth using `get_forecast()` (max 16 days, all variables returned in
+m/s, °C, mm, etc.):
 
-<https://open-meteo.com/en/docs/ensemble-api>
+``` r
+df <- get_forecast(
+  latitude = 37.30,
+  longitude = -79.83,
+  forecast_days = 7,
+  past_days = 2,
+  model = "generic",
+  variables = c("temperature_2m", "wind_speed_10m"))
+head(df)
+```
+
+    ## # A tibble: 6 × 7
+    ##   datetime            reference_datetime  site_id      model_id variable
+    ##   <dttm>              <dttm>              <chr>        <chr>    <chr>
+    ## 1 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 generic  temperature_2m
+    ## 2 2024-08-25 01:00:00 2024-08-27 00:00:00 37.3_-79.83 generic  temperature_2m
+    ## 3 2024-08-25 02:00:00 2024-08-27 00:00:00 37.3_-79.83 generic  temperature_2m
+    ## 4 2024-08-25 03:00:00 2024-08-27 00:00:00 37.3_-79.83 generic  temperature_2m
+    ## 5 2024-08-25 04:00:00 2024-08-27 00:00:00 37.3_-79.83 generic  temperature_2m
+    ## 6 2024-08-25 05:00:00 2024-08-27 00:00:00 37.3_-79.83 generic  temperature_2m
+    ## # ℹ 2 more variables: prediction <dbl>, unit <chr>
+
+For probabilistic forecasts use `get_ensemble_forecast()` (max 35 days,
+30–51 ensemble members depending on model):
 
 ``` r
 df <- get_ensemble_forecast(
@@ -65,32 +90,21 @@ df <- get_ensemble_forecast(
   past_days = 2,
   model = "gfs_seamless",
   variables = c("temperature_2m"))
-head(df)
 ```
 
-    ## # A tibble: 6 × 8
-    ##   datetime            reference_datetime  site_id     model_id ensemble variable
-    ##   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
-    ## 1 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 00       tempera…
-    ## 2 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 01       tempera…
-    ## 3 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 02       tempera…
-    ## 4 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 03       tempera…
-    ## 5 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 04       tempera…
-    ## 6 2024-08-25 00:00:00 2024-08-27 00:00:00 37.3_-79.83 gfs_sea… 05       tempera…
-    ## # ℹ 2 more variables: prediction <dbl>, unit <chr>
-
-The resulting dataframe is in a long format that is easily visualized
-using ggplot
+The long format output is straightforward to visualize with ggplot2:
 
 ``` r
-df |> 
-  mutate(variable = paste(variable, unit)) |> 
-  ggplot(aes(x = datetime, y = prediction, color = ensemble)) + 
-  geom_line() + 
-  geom_vline(aes(xintercept = reference_datetime)) + 
+df |>
+  mutate(variable = paste(variable, unit)) |>
+  ggplot(aes(x = datetime, y = prediction, color = ensemble)) +
+  geom_line() +
+  geom_vline(aes(xintercept = reference_datetime)) +
   facet_wrap(~variable, scale = "free", ncol = 2)
 ```
 
 ## Examples
 
-See Vignettes for more examples
+See the [vignette](vignettes/example_usage.Rmd) for full examples
+covering ensemble forecasts, historical weather, seasonal forecasts,
+climate projections, GLM integration, and the EFI standard.
