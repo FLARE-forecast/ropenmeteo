@@ -25,6 +25,7 @@
 write_glm_format <- function(df, path) {
 
   variables <- unique(df$variable)
+  model <- unique(df$model_id)
 
   if(!("longwave_radiation" %in% variables)) warning("missing longwave")
   if(!("shortwave_radiation" %in% variables)) warning("missing shortwave")
@@ -103,7 +104,7 @@ write_glm_format <- function(df, path) {
       utils::write.csv( file = file.path(
           normalizePath(path),
           paste0(
-            "met.csv"
+            "met_",model,".csv"
           )
         ),
         quote = FALSE,
