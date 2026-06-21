@@ -31,12 +31,12 @@ head(df)
 #> # A tibble: 6 × 7
 #>   datetime            reference_datetime  site_id   model_id variable prediction
 #>   <dttm>              <dttm>              <chr>     <chr>    <chr>         <dbl>
-#> 1 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79… generic  tempera…       14  
-#> 2 2026-05-14 01:00:00 2026-05-16 00:00:00 37.3_-79… generic  tempera…       13.3
-#> 3 2026-05-14 02:00:00 2026-05-16 00:00:00 37.3_-79… generic  tempera…       13  
-#> 4 2026-05-14 03:00:00 2026-05-16 00:00:00 37.3_-79… generic  tempera…       12.3
-#> 5 2026-05-14 04:00:00 2026-05-16 00:00:00 37.3_-79… generic  tempera…       11.9
-#> 6 2026-05-14 05:00:00 2026-05-16 00:00:00 37.3_-79… generic  tempera…       11.6
+#> 1 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79… generic  tempera…       24.1
+#> 2 2026-06-19 01:00:00 2026-06-21 00:00:00 37.3_-79… generic  tempera…       23  
+#> 3 2026-06-19 02:00:00 2026-06-21 00:00:00 37.3_-79… generic  tempera…       22.8
+#> 4 2026-06-19 03:00:00 2026-06-21 00:00:00 37.3_-79… generic  tempera…       21.9
+#> 5 2026-06-19 04:00:00 2026-06-21 00:00:00 37.3_-79… generic  tempera…       20.3
+#> 6 2026-06-19 05:00:00 2026-06-21 00:00:00 37.3_-79… generic  tempera…       19.6
 #> # ℹ 1 more variable: unit <chr>
 ```
 
@@ -145,12 +145,12 @@ head(df)
 #> # A tibble: 6 × 8
 #>   datetime            reference_datetime  site_id     model_id ensemble variable
 #>   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
-#> 1 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… 00       relativ…
-#> 2 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… 01       relativ…
-#> 3 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… 02       relativ…
-#> 4 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… 03       relativ…
-#> 5 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… 04       relativ…
-#> 6 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… 05       relativ…
+#> 1 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… 00       relativ…
+#> 2 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… 01       relativ…
+#> 3 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… 02       relativ…
+#> 4 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… 03       relativ…
+#> 5 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… 04       relativ…
+#> 6 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… 05       relativ…
 #> # ℹ 2 more variables: prediction <dbl>, unit <chr>
 ```
 
@@ -179,12 +179,12 @@ head(read_csv(list.files(path = path, full.names = TRUE, pattern = ".csv")[1],
 #> # A tibble: 6 × 7
 #>   time                AirTemp ShortWave LongWave RelHum WindSpeed   Rain
 #>   <dttm>                <dbl>     <dbl>    <dbl>  <dbl>     <dbl>  <dbl>
-#> 1 2026-05-14 00:00:00    11.8         1     323.     94      2.31 0.0144
-#> 2 2026-05-14 01:00:00    10.8         0     292.     97      1.84 0.0144
-#> 3 2026-05-14 02:00:00    10.4         0     268.     97      1.96 0.0144
-#> 4 2026-05-14 03:00:00     9.9         0     264.     96      2.63 0     
-#> 5 2026-05-14 04:00:00     9.1         0     260.     95      2.69 0     
-#> 6 2026-05-14 05:00:00     8.3         0     256.     94      2.58 0
+#> 1 2026-06-19 00:00:00    22.7        10     426.     72      4.19 0.0336
+#> 2 2026-06-19 01:00:00    21           0     414.     81      3.52 0.0336
+#> 3 2026-06-19 02:00:00    19.6         0     407.     89      2.78 0.0336
+#> 4 2026-06-19 03:00:00    18.6         0     402.     95      2.33 0.0072
+#> 5 2026-06-19 04:00:00    18.1         0     402.     97      2.47 0.0072
+#> 6 2026-06-19 05:00:00    18           0     401.     96      2.92 0.0072
 ```
 
 ### Converting to Ecological Forecasting Initiative convention
@@ -212,16 +212,16 @@ df |>
 #> # A tibble: 53,568 × 8
 #>    datetime            reference_datetime  site_id     model_id family parameter
 #>    <dttm>              <dttm>              <chr>       <chr>    <chr>  <chr>    
-#>  1 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  2 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  3 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  4 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  5 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  6 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  7 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  8 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  9 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
-#> 10 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+#>  1 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  2 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  3 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  4 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  5 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  6 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  7 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  8 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  9 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+#> 10 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
 #> # ℹ 53,558 more rows
 #> # ℹ 2 more variables: variable <chr>, prediction <dbl>
 ```
@@ -238,16 +238,16 @@ df |>
 #> # A tibble: 11,904 × 8
 #>    datetime            reference_datetime  site_id     model_id family parameter
 #>    <dttm>              <dttm>              <chr>       <chr>    <chr>  <chr>    
-#>  1 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  2 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  3 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  4 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  5 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  6 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  7 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  8 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
-#>  9 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
-#> 10 2026-05-14 00:00:00 2026-05-16 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+#>  1 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  2 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  3 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  4 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  5 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  6 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  7 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  8 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 00       
+#>  9 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
+#> 10 2026-06-19 00:00:00 2026-06-21 00:00:00 37.3_-79.83 gfs_sea… ensem… 01       
 #> # ℹ 11,894 more rows
 #> # ℹ 2 more variables: variable <chr>, prediction <dbl>
 ```
@@ -278,12 +278,12 @@ tail(df |> na.omit())
 #> # A tibble: 6 × 6
 #>   datetime            site_id     model_id variable       prediction unit 
 #>   <dttm>              <chr>       <chr>    <chr>               <dbl> <chr>
-#> 1 2026-05-11 18:00:00 37.3_-79.83 ERA5     temperature_2m        8.5 °C   
-#> 2 2026-05-11 19:00:00 37.3_-79.83 ERA5     temperature_2m       10.9 °C   
-#> 3 2026-05-11 20:00:00 37.3_-79.83 ERA5     temperature_2m       12.8 °C   
-#> 4 2026-05-11 21:00:00 37.3_-79.83 ERA5     temperature_2m       13.6 °C   
-#> 5 2026-05-11 22:00:00 37.3_-79.83 ERA5     temperature_2m       12.8 °C   
-#> 6 2026-05-11 23:00:00 37.3_-79.83 ERA5     temperature_2m       11.3 °C
+#> 1 2026-06-16 18:00:00 37.3_-79.83 ERA5     temperature_2m       20.9 °C   
+#> 2 2026-06-16 19:00:00 37.3_-79.83 ERA5     temperature_2m       21.2 °C   
+#> 3 2026-06-16 20:00:00 37.3_-79.83 ERA5     temperature_2m       21.1 °C   
+#> 4 2026-06-16 21:00:00 37.3_-79.83 ERA5     temperature_2m       21.1 °C   
+#> 5 2026-06-16 22:00:00 37.3_-79.83 ERA5     temperature_2m       21.4 °C   
+#> 6 2026-06-16 23:00:00 37.3_-79.83 ERA5     temperature_2m       20.6 °C
 ```
 
 ``` r
@@ -319,12 +319,12 @@ head(df)
 #> # A tibble: 6 × 8
 #>   datetime            reference_datetime  site_id     model_id ensemble variable
 #>   <dttm>              <dttm>              <chr>       <chr>    <chr>    <chr>   
-#> 1 2026-05-11 00:00:00 2026-05-16 00:00:00 37.3_-79.83 ecmwf_s… 00       tempera…
-#> 2 2026-05-11 00:00:00 2026-05-16 00:00:00 37.3_-79.83 ecmwf_s… 01       tempera…
-#> 3 2026-05-11 00:00:00 2026-05-16 00:00:00 37.3_-79.83 ecmwf_s… 02       tempera…
-#> 4 2026-05-11 00:00:00 2026-05-16 00:00:00 37.3_-79.83 ecmwf_s… 03       tempera…
-#> 5 2026-05-11 00:00:00 2026-05-16 00:00:00 37.3_-79.83 ecmwf_s… 04       tempera…
-#> 6 2026-05-11 00:00:00 2026-05-16 00:00:00 37.3_-79.83 ecmwf_s… 05       tempera…
+#> 1 2026-06-16 00:00:00 2026-06-21 00:00:00 37.3_-79.83 ecmwf_s… 00       tempera…
+#> 2 2026-06-16 00:00:00 2026-06-21 00:00:00 37.3_-79.83 ecmwf_s… 01       tempera…
+#> 3 2026-06-16 00:00:00 2026-06-21 00:00:00 37.3_-79.83 ecmwf_s… 02       tempera…
+#> 4 2026-06-16 00:00:00 2026-06-21 00:00:00 37.3_-79.83 ecmwf_s… 03       tempera…
+#> 5 2026-06-16 00:00:00 2026-06-21 00:00:00 37.3_-79.83 ecmwf_s… 04       tempera…
+#> 6 2026-06-16 00:00:00 2026-06-21 00:00:00 37.3_-79.83 ecmwf_s… 05       tempera…
 #> # ℹ 2 more variables: prediction <dbl>, unit <chr>
 ```
 
@@ -397,12 +397,12 @@ head(df)
 #> # A tibble: 6 × 6
 #>   datetime   site_id     model_id      variable            prediction unit 
 #>   <date>     <chr>       <chr>         <chr>                    <dbl> <chr>
-#> 1 2026-05-16 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       17.5 °C   
-#> 2 2026-05-17 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       19.6 °C   
-#> 3 2026-05-18 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       20.4 °C   
-#> 4 2026-05-19 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       18.9 °C   
-#> 5 2026-05-20 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       20.9 °C   
-#> 6 2026-05-21 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       20.1 °C
+#> 1 2026-06-21 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       18.7 °C   
+#> 2 2026-06-22 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       20.1 °C   
+#> 3 2026-06-23 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       20.7 °C   
+#> 4 2026-06-24 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       21.3 °C   
+#> 5 2026-06-25 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       22.4 °C   
+#> 6 2026-06-26 37.3_-79.83 EC_Earth3P_HR temperature_2m_mean       23.1 °C
 ```
 
 ``` r
@@ -472,12 +472,12 @@ head(df)
 #> # A tibble: 6 × 6
 #>   datetime   site_id model_id      variable            prediction unit 
 #>   <date>     <chr>   <chr>         <chr>                    <dbl> <chr>
-#> 1 2026-05-16 fcre    MPI_ESM1_2_XR temperature_2m_mean       22.4 °C   
-#> 2 2026-05-17 fcre    MPI_ESM1_2_XR temperature_2m_mean       21.5 °C   
-#> 3 2026-05-18 fcre    MPI_ESM1_2_XR temperature_2m_mean       19.6 °C   
-#> 4 2026-05-19 fcre    MPI_ESM1_2_XR temperature_2m_mean       18.8 °C   
-#> 5 2026-05-20 fcre    MPI_ESM1_2_XR temperature_2m_mean       19.9 °C   
-#> 6 2026-05-21 fcre    MPI_ESM1_2_XR temperature_2m_mean       19.7 °C
+#> 1 2026-06-21 fcre    MPI_ESM1_2_XR temperature_2m_mean       23.8 °C   
+#> 2 2026-06-22 fcre    MPI_ESM1_2_XR temperature_2m_mean       24.3 °C   
+#> 3 2026-06-23 fcre    MPI_ESM1_2_XR temperature_2m_mean       24.7 °C   
+#> 4 2026-06-24 fcre    MPI_ESM1_2_XR temperature_2m_mean       25.8 °C   
+#> 5 2026-06-25 fcre    MPI_ESM1_2_XR temperature_2m_mean       25.2 °C   
+#> 6 2026-06-26 fcre    MPI_ESM1_2_XR temperature_2m_mean       24.5 °C
 ```
 
 ``` r
@@ -509,23 +509,21 @@ df <- get_climate_projections(
   end_date = Sys.Date() + lubridate::years(1),
   model = "EC_Earth3P_HR",
   variables = glm_variables(product = "climate_projection", time_step = "daily"))
-#> Waiting 4s for throttling delay ■■■■■■■■■■                      
-#> Waiting 4s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 7s for throttling delay ■■■■■■                          
-#> Waiting 7s for throttling delay ■■■■■■■■■■■■■■■                 
-#> Waiting 7s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
-#> Waiting 7s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 6s for throttling delay ■■■■■■■■■■■■■■■■■               
+#> Waiting 3s for throttling delay ■■■■■■■■■■                      
+#> Waiting 3s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■      
+#> Waiting 3s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  
+#> Waiting 6s for throttling delay ■■■■■■■■■■                      
+#> Waiting 6s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■       
 #> Waiting 6s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 7s for throttling delay ■■■■■■                          
-#> Waiting 7s for throttling delay ■■■■■■■■■■■■■■■■■■■             
-#> Waiting 7s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 7s for throttling delay ■■■■■■                          
-#> Waiting 7s for throttling delay ■■■■■■■■■■■■■■■■■■              
-#> Waiting 7s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
-#> Waiting 7s for throttling delay ■■■■■■                          
-#> Waiting 7s for throttling delay ■■■■■■■■■■■■■■■■■■              
-#> Waiting 7s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 5s for throttling delay ■■■■■■                          
+#> Waiting 5s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 5s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 5s for throttling delay ■■■■■■                          
+#> Waiting 5s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■         
+#> Waiting 5s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
+#> Waiting 5s for throttling delay ■■■■■■■■■■                      
+#> Waiting 5s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■    
+#> Waiting 5s for throttling delay ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ 
 ```
 
 ``` r
